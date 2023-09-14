@@ -9,19 +9,27 @@ import LandingPageSearch from './Search';
 import {useState} from 'react';
 import { IndexProps } from './LandingPageTypes';
 
-const LandingPage = ({setPlace, setPostcode}: IndexProps) => {
+const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps) => {
 
   
-  const handleSubmit = (event: React.SyntheticEvent) => {
+  const handlePostcodeSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault()
-    console.log('submitting')
+    console.log('submitting pc')
+    getGeoLocationData()
+  }
+
+  const handlePlacesubmit = (event: React.SyntheticEvent) => {
+    event.preventDefault()
+    console.log('submitting place')
+    getGeoLocationData()
   }
     return(<>
     <h1>Enter the Postcode or Place you would Like to see Data for</h1>
     
       <Container className='d-flex'>
       <LandingPageSearch
-        handleSubmit={handleSubmit}
+        handlePostcodeSubmit={handlePostcodeSubmit}
+        handlePlaceSubmit={handlePlacesubmit}
         setPlace={setPlace}
         setPostcode={setPostcode}
       />

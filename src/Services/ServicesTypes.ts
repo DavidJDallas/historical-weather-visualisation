@@ -15,8 +15,8 @@ export interface Features{
 }
 
 export interface LatAndLong{
-    longitude: string,
-    latitude: string,
+    longitude: number,
+    latitude: number,
 }
 
 export interface Properties{

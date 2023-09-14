@@ -1,7 +1,7 @@
 import axios, {AxiosError} from "axios";
 import {  APICallGeoLocation, HistoricalWeatherDataType, DailyData, LatAndLong} from './ServicesTypes';
 
-export const getGeoLocationByPostcode = async (postcodeOrPlace: string): Promise <LatAndLong | unknown> => {
+export const getGeoLocation = async (postcodeOrPlace: string): Promise <LatAndLong | unknown> => {
   
         try{
             const {data: {features}}: APICallGeoLocation = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${postcodeOrPlace}.json`, {
@@ -19,7 +19,7 @@ export const getGeoLocationByPostcode = async (postcodeOrPlace: string): Promise
 
         } catch(error: unknown){
             if(error instanceof AxiosError){               
-                return `There was an error with the API call: ${error}`
+                return `There was an error with the API call: ${error}, ${error.response?.status}`
             } else {
                 return `Non-axios related error: ${error}`
             }
@@ -27,17 +27,17 @@ export const getGeoLocationByPostcode = async (postcodeOrPlace: string): Promise
 
 
 
-export const getHistoricalWeatherData = async (latitude: string, longitude: string, yearValue: number, tempDisplay: string): Promise<DailyData | unknown | AxiosError> => {
+export const getHistoricalWeatherData = async (latitude: number, longitude: number): Promise<DailyData | unknown | AxiosError> => {
     try{
         const {data: {daily: dailyData}}: HistoricalWeatherDataType= await axios.get(`https://archive-api.open-meteo.com/v1/archive`, {
             params: {
                 latitude: latitude,
                 longitude: longitude,
                 timezone: 'GMT',
-                start_date: `${yearValue}-01-01`,
+                start_date: `1941-01-01`,
                 end_date: '2022-12-31',
                 daily: ['temperature_2m_max', 'temperature_2m_min', 'rain_sum', 'windspeed_10m_max'],
-                temperature_unit: tempDisplay
+                temperature_unit: 'celsius'
             }, 
             responseType: 'json'
         })
@@ -45,10 +45,5 @@ export const getHistoricalWeatherData = async (latitude: string, longitude: stri
         return dailyData
 
     } catch(error: unknown){
-        if(error instanceof AxiosError){
-           
-        return `There was an error with the API call: ${error}`
-        } else {
-            return `Non-axios related error: ${error}`
-        }
+        return error
 }}

@@ -1,6 +1,6 @@
 import axios, { AxiosError } from 'axios';
 import '@testing-library/jest-dom'
-import { getGeoLocationByPostcode, getHistoricalWeatherData } from './APICalls';
+import { getGeoLocation, getHistoricalWeatherData } from './APICalls';
 import * as React from 'react';
 
 describe('getGeoLocationByPostcode', () => {
@@ -27,7 +27,7 @@ describe('getGeoLocationByPostcode', () => {
         .fn()
         .mockResolvedValue(mockData);
   
-       const response = await getGeoLocationByPostcode('bn20 8dy');    
+       const response = await getGeoLocation('bn20 8dy');    
       
      expect(response).toEqual(mockResponse); 
       
@@ -39,7 +39,7 @@ describe('getGeoLocationByPostcode', () => {
         .fn()
         .mockRejectedValue(new AxiosError('incorrect address'))
   
-      const response = await getGeoLocationByPostcode('bn20 8dy');    
+      const response = await getGeoLocation('bn20 8dy');    
 
       expect(response).toBe('There was an error with the API call: AxiosError: incorrect address')  
     });
@@ -49,7 +49,7 @@ describe('getGeoLocationByPostcode', () => {
         .fn()
         .mockRejectedValue(new Error('incorrect address'));
 
-      const response = await getGeoLocationByPostcode('bn20 8dy');
+      const response = await getGeoLocation('bn20 8dy');
 
       expect(response).toBe('Non-axios related error: Error: incorrect address');    
   })
@@ -86,7 +86,7 @@ describe('getHistoricalWeatherData', () => {
       .fn()
       .mockResolvedValue(mockData);
 
-     const response = await getHistoricalWeatherData('28.562', '-80.577', 1989, 'celsius');    
+     const response = await getHistoricalWeatherData(28.562, -80.577);    
     
    expect(response).toEqual(mockResponse); 
     
@@ -98,7 +98,7 @@ describe('getHistoricalWeatherData', () => {
       .fn()
       .mockRejectedValue(new AxiosError('incorrect address'))
 
-      const response = await getHistoricalWeatherData('28.562', '-80.577', 1989, 'celsius');       
+      const response = await getHistoricalWeatherData(28.562, -80.577);       
 
     expect(response).toBe('There was an error with the API call: AxiosError: incorrect address')  
   });
@@ -108,7 +108,7 @@ describe('getHistoricalWeatherData', () => {
       .fn()
       .mockRejectedValue(new Error('incorrect address'));
 
-      const response = await getHistoricalWeatherData('28.562', '-80.577', 1989, 'celsius');  
+      const response = await getHistoricalWeatherData(28.562, -80.577);  
 
     expect(response).toBe('Non-axios related error: Error: incorrect address');    
 })
