@@ -15,27 +15,24 @@ const App = (): JSX.Element => {
   const [postcode, setPostcode] = useState<string>('');
   const [place, setPlace] = useState<string>('');
   const [latAndLong, setLatAndLong] = useState<LatAndLong>({latitude: 0, longitude: 0});
-  const [weatherData, setWeatherData] = useState<DailyData | {}>({});
+  const [weatherData, setWeatherData] = useState<DailyData | undefined>();
 
  const getGeoLocationData = async () => {  
     try{
         const apiResponse = await getGeoLocation(postcode) as LatAndLong;
-        console.log(apiResponse);
-    
+
         setLatAndLong({
             latitude: apiResponse.latitude,
             longitude: apiResponse.longitude
-          })
+          })        
           
-          
-        //getWeatherData()
       } catch(err){
           console.log(err);
       }  
   }
 
   const getWeatherData = async () => {
-    try{          
+    try{        
 
       const {latitude, longitude} = latAndLong;     
       const apiResponse: DailyData | unknown | AxiosError = await getHistoricalWeatherData(latitude, longitude);      
@@ -49,8 +46,7 @@ const App = (): JSX.Element => {
           }       
         }     
   
-      setWeatherData(apiResponse as DailyData);
-      console.log(weatherData)
+      setWeatherData(apiResponse as DailyData);   
 
     } catch(err){
       console.log(err)
@@ -63,6 +59,7 @@ const App = (): JSX.Element => {
        getWeatherData()
     }   
   }, [latAndLong]);
+
 
   return (
   <div className='main-app '>
