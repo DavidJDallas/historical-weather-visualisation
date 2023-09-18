@@ -13,15 +13,13 @@ const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps) =>
 
   
   const handlePostcodeSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault()
-    console.log('submitting pc')
-    getGeoLocationData()
+    event.preventDefault();
+    getGeoLocationData();
   }
 
   const handlePlacesubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault()
-    console.log('submitting place')
-    getGeoLocationData()
+    event.preventDefault();
+    getGeoLocationData();
   }
     return(<>
     <h1>Enter the Postcode or Place you would Like to see Data for</h1>

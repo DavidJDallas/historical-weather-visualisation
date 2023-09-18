@@ -31,6 +31,12 @@ const App = (): JSX.Element => {
           console.log(err);
       }  
   }
+  
+  useEffect(() => {
+    if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
+      getWeatherData()
+    }   
+  }, [latAndLong]);
 
   const getWeatherData = async () => {
     try{        
@@ -48,17 +54,14 @@ const App = (): JSX.Element => {
         }     
   
       setWeatherData(apiResponse as DailyData);   
+      setFormSubmitted(true);
 
     } catch(err){
       console.log(err)
     }
   }
   
-  useEffect(() => {
-    if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
-       getWeatherData()
-    }   
-  }, [latAndLong]);
+
 
 
   return (
@@ -68,6 +71,7 @@ const App = (): JSX.Element => {
           <Header
             postcode={postcode}
             place={place}
+            formSubmitted={formSubmitted}
           />
       </Row>
       <Row className='d-flex flex-row'>
