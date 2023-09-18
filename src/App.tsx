@@ -16,6 +16,7 @@ const App = (): JSX.Element => {
   const [place, setPlace] = useState<string>('');
   const [latAndLong, setLatAndLong] = useState<LatAndLong>({latitude: 0, longitude: 0});
   const [weatherData, setWeatherData] = useState<DailyData | undefined>();
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false)
 
  const getGeoLocationData = async () => {  
     try{
@@ -54,7 +55,6 @@ const App = (): JSX.Element => {
   }
   
   useEffect(() => {
-    console.log(typeof latAndLong.latitude)
     if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
        getWeatherData()
     }   

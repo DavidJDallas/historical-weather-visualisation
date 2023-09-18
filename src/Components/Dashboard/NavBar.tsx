@@ -23,7 +23,7 @@ const NavBar: React.FC = () => {
                 >
                     Rain
                 </NavLink>
-                    {/* <Link className='Link-button' to = '/rain'>Rain</Link> */}
+              
                
                 
                 </Col>    
