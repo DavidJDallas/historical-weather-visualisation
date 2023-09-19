@@ -8,9 +8,7 @@ import MainDashboard from './Components/Dashboard/Index';
 import { LatAndLong, DailyData } from './Services/ServicesTypes';
 import { AxiosError } from 'axios';
 
-
-
-const App = (): JSX.Element => {
+const App: React.FC = (): JSX.Element => {
 
   const [postcode, setPostcode] = useState<string>('');
   const [place, setPlace] = useState<string>('');
@@ -76,7 +74,9 @@ const App = (): JSX.Element => {
       </Row>
       <Row className='d-flex flex-row'>
       {weatherData ? 
-      <MainDashboard/> 
+      <MainDashboard
+        weatherData={weatherData}      
+      /> 
       :
        <LandingPage
           setPostcode={setPostcode}

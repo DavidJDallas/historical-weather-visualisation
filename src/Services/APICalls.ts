@@ -41,6 +41,7 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
             }, 
             responseType: 'json'
         })
+        
 
         return dailyData
 
