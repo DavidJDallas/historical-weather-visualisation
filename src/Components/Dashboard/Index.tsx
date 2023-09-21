@@ -72,11 +72,6 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     groupDataByMonth()
 
-    console.log(groupDataByYear)
-
-    
-
-    console.log(Array.from(groupDataByYear))  
     
     // const groupDataByMonth = d3.group(initialFormatting(weatherData), (d) => d.date.getMonth())
 
