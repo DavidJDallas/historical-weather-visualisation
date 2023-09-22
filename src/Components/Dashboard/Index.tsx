@@ -5,7 +5,10 @@ import * as d3 from 'd3';
 import {DailyData} from '../../Services/ServicesTypes'
 import { FormattedData } from './Types';
 import { useState, useEffect } from 'react';
-
+import {Route, Routes, createBrowserRouter, createRoutesFromElements, Outlet} from 'react-router-dom'
+import Temperature from './Temperature/IndexTemperature';
+import Rain from './Rain/IndexRain';
+import Wind from './Wind/IndexWind';
 
 const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
@@ -97,11 +100,11 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     }
 
-    useEffect(() => {
-        groupDataByYear(weatherData)
-        groupDataByMonth(weatherData)
-        //groupDataBySeason(formattedData)
-    }, [])
+    // useEffect(() => {
+    //     groupDataByYear(weatherData)
+    //     groupDataByMonth(weatherData)
+    //     //groupDataBySeason(formattedData)
+    // }, [])
 
 
 
@@ -109,7 +112,15 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     return(<>
     <h1>    Dashboard</h1>
-    {/* <NavBar/> */}
+    <NavBar/>
+        
+        <Routes>
+            
+            <Route path="/temp" element={<Temperature/>}/>
+
+
+        </Routes>
+
    
 
 

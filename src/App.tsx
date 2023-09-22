@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { getGeoLocation, getHistoricalWeatherData } from './Services/APICalls';
 import LandingPage from './Components/LandingPage/Index';
 import Header from './Components/Header/Index';
-import {useState, useEffect} from 'react';
+import {useState, useEffect, createContext} from 'react';
 import {Container, Row, Col} from 'react-bootstrap'
 import MainDashboard from './Components/Dashboard/Index';
 import { LatAndLong, DailyData } from './Services/ServicesTypes';

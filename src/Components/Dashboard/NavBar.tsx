@@ -32,7 +32,7 @@ const NavBar: React.FC = () => {
                     className={({isActive, isPending}) =>
                     isPending ? 'Link-button' : isActive ? 'active-link' : 'Link-button'                 
                     }
-                    to='/temperature'
+                    to='/temp'
                 >
                     Temperature
                 </NavLink>
