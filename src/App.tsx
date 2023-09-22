@@ -8,6 +8,8 @@ import MainDashboard from './Components/Dashboard/Index';
 import { LatAndLong, DailyData } from './Services/ServicesTypes';
 import { AxiosError } from 'axios';
 
+
+
 const App: React.FC = (): JSX.Element => {
 
   const [postcode, setPostcode] = useState<string>('');

@@ -4,6 +4,7 @@ import {RouterProvider} from 'react-router-dom';
 import router from './Routes/router';
 import './General.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
+import App from './App';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -11,7 +12,8 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>   
+    <RouterProvider router={router}/>
+ 
   </React.StrictMode>
 );
 

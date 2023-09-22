@@ -109,7 +109,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     return(<>
     <h1>    Dashboard</h1>
-    <NavBar/>
+    {/* <NavBar/> */}
    
 
 
