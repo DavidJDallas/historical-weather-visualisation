@@ -117,6 +117,8 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
         <Routes>
             
             <Route path="/temp" element={<Temperature/>}/>
+            <Route path = "/wind" element={<Wind/>}/>
+            <Route path ="/rain" element={<Rain/>}/>
 
 
         </Routes>
