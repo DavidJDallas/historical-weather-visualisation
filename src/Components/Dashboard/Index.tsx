@@ -24,6 +24,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     const initialFormatting = (data: DailyData): FormattedData[] => {
 
+
        return dates.map((date, i) => ({
                     date: date,
                     rain: data.rain_sum[i],
@@ -100,11 +101,11 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     }
 
-    // useEffect(() => {
-    //     groupDataByYear(weatherData)
-    //     groupDataByMonth(weatherData)
-    //     //groupDataBySeason(formattedData)
-    // }, [])
+    useEffect(() => {
+        groupDataByYear(weatherData)
+        groupDataByMonth(weatherData)
+        groupDataBySeason(formattedData)
+    }, [weatherData])
 
 
 
