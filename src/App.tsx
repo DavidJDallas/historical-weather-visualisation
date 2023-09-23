@@ -18,6 +18,7 @@ const App: React.FC = (): JSX.Element => {
   const [weatherData, setWeatherData] = useState<DailyData | undefined>();
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false)
 
+  console.log(postcode)
  const getGeoLocationData = async () => {  
     try{
         const apiResponse = await getGeoLocation(postcode) as LatAndLong;
@@ -60,31 +61,34 @@ const App: React.FC = (): JSX.Element => {
       console.log(err)
     }
   }
-  
-
-
 
   return (
-  <div className='main-app '>
+    <>
+   
+      <Header
+          postcode={postcode}
+          place={place}
+          formSubmitted={formSubmitted}
+        />
+          
+  <div className='main-app '> 
     <Container className=''>
       <Row className='d-flex flex-row'>
-          <Header
-            postcode={postcode}
-            place={place}
-            formSubmitted={formSubmitted}
-          />
+        
       </Row>
-      <Row className='d-flex flex-row'>
+      <Row className='row-main'>
       {weatherData ? 
       <MainDashboard
         weatherData={weatherData}      
       /> 
       :
+      <div className=''>
        <LandingPage
           setPostcode={setPostcode}
           setPlace={setPlace}
           getGeoLocationData={getGeoLocationData}
         />
+        </div>
       }
        
       </Row>
@@ -93,6 +97,7 @@ const App: React.FC = (): JSX.Element => {
     </Container>
   
   </div>
+  </>
   );
 }
 

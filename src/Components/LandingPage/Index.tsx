@@ -22,9 +22,13 @@ const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps) =>
     getGeoLocationData();
   }
     return(<>
-    <h1>Enter the Postcode or Place you would Like to see Data for</h1>
+
+    <div className='landing-page-search'>
+
+  
+    <h2>Enter the Postcode or Place you would Like to see Data for</h2>
     
-      <Container className='d-flex'>
+      <Container className='search-box'>
       <LandingPageSearch
         handlePostcodeSubmit={handlePostcodeSubmit}
         handlePlaceSubmit={handlePlacesubmit}
@@ -32,9 +36,8 @@ const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps) =>
         setPostcode={setPostcode}
       />
       </Container>
-      
-   
- 
+        </div>
+
     </>
     )
 };

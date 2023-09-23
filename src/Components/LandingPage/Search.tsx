@@ -1,6 +1,8 @@
 import React from 'react';
 import {Form} from 'react-bootstrap'
 import { SearchFormProps } from './LandingPageTypes';
+import Box from '@mui/material/Box';
+import TextField from '@mui/material/TextField';
 
 const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, setPostcode}: SearchFormProps) => {
   
@@ -14,24 +16,34 @@ const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, se
 
     return(
     <>
-        
+        <Box
+          component="form"
+          sx={{
+            '& > :not(style)': { m: 1, width: '25ch' },
+          }}
+          noValidate
+          autoComplete="off"
+      >
 
-      <Form onSubmit = {handlePostcodeSubmit} className='search-by-postode'>
-      <Form.Group className="mb-3" controlId="formBasicEmail">
-        <Form.Label
-        style={{fontSize: '1.854rem', marginTop: '12px'}}
-       
-        >Search By Postcode or Place</Form.Label>
-        <Form.Control type="postcode" placeholder="Enter Postcode or Place" 
-        onChange={(event) =>setPostcode(event.target.value)}
-        onKeyDown ={handleTextChange} 
-        style={{width: '300px'}}
-        
-        />     
-      </Form.Group>
+   
+      <TextField
+         onSubmit={handlePostcodeSubmit} 
+         onChange={(event) =>setPostcode(event.target.value)}
+         onKeyDown ={handleTextChange} 
+         style={{width: '300px'}}
+         id="standard-basic" label="Enter Postcode" variant="standard" 
+      />     
+     <TextField
+         onSubmit={handlePlaceSubmit} 
+         onChange={(event) =>setPlace(event.target.value)}
+         onKeyDown ={handleTextChange} 
+         style={{width: '300px'}}
+         id="standard-basic" label="Enter Place" variant="standard" 
+      />    
+
       
-      </Form>
       
+    </Box>
 
   </>
     )

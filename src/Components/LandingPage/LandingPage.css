@@ -1,3 +1,15 @@
 .postcode-row{
     text-align: center;
 }
+
+.search-box{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.landing-page-search{
+    border: 10px solid #52b2cf;
+    border-radius: 10px;
+    padding: 50px
+}
