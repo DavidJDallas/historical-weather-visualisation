@@ -24,7 +24,6 @@ const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps) =>
     return(<>
 
     <div className='landing-page-search'>
-
   
     <h2>Enter the Postcode or Place you would Like to see Data for</h2>
     

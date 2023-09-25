@@ -9,7 +9,8 @@
 }
 
 .landing-page-search{
-    border: 10px solid #52b2cf;
+    border: 10px solid rgba(253, 127, 111, 1);
+
     border-radius: 10px;
     padding: 50px
 }
