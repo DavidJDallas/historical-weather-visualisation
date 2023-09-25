@@ -7,6 +7,7 @@ import {Container, Row, Col} from 'react-bootstrap'
 import MainDashboard from './Components/Dashboard/Index';
 import { LatAndLong, DailyData } from './Services/ServicesTypes';
 import { AxiosError } from 'axios';
+import LogIn from './Components/LogIn';
 
 
 
@@ -76,22 +77,25 @@ const App: React.FC = (): JSX.Element => {
       <Row className='d-flex flex-row'>
         
       </Row>
-      <Row className='row-main'>
+     
       {weatherData ? 
       <MainDashboard
         weatherData={weatherData}      
       /> 
-      :
+      : <Row className='row-main'>
       <div className=''>
        <LandingPage
           setPostcode={setPostcode}
           setPlace={setPlace}
           getGeoLocationData={getGeoLocationData}
         />
-        </div>
+        </div> 
+        </Row>
       }
+
+      <LogIn/>
        
-      </Row>
+     
       
     
     </Container>

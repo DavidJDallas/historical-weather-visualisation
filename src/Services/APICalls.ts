@@ -20,7 +20,7 @@ export const getGeoLocation = async (postcodeOrPlace: string): Promise <LatAndLo
 
         } catch(error: unknown){
             if(error instanceof AxiosError){               
-                return `There was an error with the API call: ${error}, ${error.response?.status}`
+                return `There was an error with the API call: ${error}`
             } else {
                 return `Non-axios related error: ${error}`
             }
@@ -48,5 +48,9 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
         return dailyData
 
     } catch(error: unknown){
-        return error
+        if(error instanceof AxiosError){               
+            return `There was an error with the API call: ${error}`
+        } else {
+            return `Non-axios related error: ${error}`
+        }
 }}
