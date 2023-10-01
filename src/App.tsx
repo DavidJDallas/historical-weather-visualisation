@@ -92,8 +92,8 @@ const App: React.FC = (): JSX.Element => {
         </div> 
         </Row>
       }
-
-      <LogIn/>
+{/* 
+      <LogIn/> */}
        
      
       

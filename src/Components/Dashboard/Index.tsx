@@ -101,18 +101,18 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     }
 
-    useEffect(() => {
-        groupDataByYear(weatherData)
-        groupDataByMonth(weatherData)
-        groupDataBySeason(formattedData)
-    }, [weatherData])
+    // useEffect(() => {
+    //     groupDataByYear(weatherData)
+    //     groupDataByMonth(weatherData)
+    //     groupDataBySeason(formattedData)
+    // }, [weatherData])
 
 
 
 
 
     return(<>
-    <h1>    Dashboard</h1>
+
     <NavBar/>
         
         <Routes>
