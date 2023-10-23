@@ -19,11 +19,9 @@ const App: React.FC = (): JSX.Element => {
   const [weatherData, setWeatherData] = useState<DailyData | undefined>();
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false)
 
-  console.log(postcode)
- const getGeoLocationData = async () => {  
+  const getGeoLocationData = async () => {  
     try{
         const apiResponse = await getGeoLocation(postcode) as LatAndLong;
-
         setLatAndLong({
             latitude: apiResponse.latitude,
             longitude: apiResponse.longitude

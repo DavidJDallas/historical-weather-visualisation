@@ -39,8 +39,8 @@ const NavBar: React.FC = () => {
                         to='/rain'
                         className='nav-link'
                         style={({ isActive, isPending }) => ({
-                        color: isActive ? 'black' : 'black',
-                        backgroundColor: isActive ? '#7eb0d5' : 'transparent',
+                        color: isActive ? '#fd7f6f': 'black',
+                        // backgroundColor: isActive ? '#7eb0d5' : 'black',
                         borderBottom: isActive ? '2px solid #7eb0d5' : '2px solid transparent',
                         fontSize: '2rem'
                         })}
@@ -57,7 +57,7 @@ const NavBar: React.FC = () => {
                         className='nav-link'
                         style={({ isActive, isPending }) => ({
                         color: isActive ? '#fd7f6f' : 'black',
-                        borderBottom: isActive ? '2px solid #8bd3c7' : '2px solid transparent',
+                        borderBottom: isActive ? '2px solid #7eb0d5' : '2px solid transparent',
                         fontSize: '2rem'
                         })}
                     >
@@ -73,7 +73,7 @@ const NavBar: React.FC = () => {
                         className='nav-link'
                         style={({ isActive, isPending }) => ({
                         color: isActive ? '#fd7f6f' : 'black',
-                        borderBottom: isActive ? '2px solid #8bd3c7' : '2px solid transparent',
+                        borderBottom: isActive ? '2px solid #7eb0d5' : '2px solid transparent',
                         fontSize: '2rem'
                         })}
                     >

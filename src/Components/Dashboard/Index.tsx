@@ -84,7 +84,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     const groupDataBySeason = (data: FormattedData[]): void => {
         
-         const seasonTranslator = {
+    const seasonTranslator = {
             January: 'Winter',
             February: 'Winter',
             March: 'Spring',
