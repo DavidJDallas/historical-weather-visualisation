@@ -12,20 +12,16 @@ import Wind from './Wind/IndexWind';
 
 const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
-    const [dataByYear, setDataByYear] = useState<GroupedDataByYear[] | []>([]);
-    const [dataByMonth, setDataByMonth] = useState<GroupedDataByMonth[] | []>([]);
-    const [dataBySeason, setDataBySeason] = useState<GroupedDataBySeason | []>([]);
-
     const parsedTime = d3.timeParse('%Y-%m-%d');
     const dates = weatherData && weatherData.time.map(element => parsedTime(element)) as Date[]
+
 
 
     //Format the data from an object with arrays as values into an array of objects with each object corresponding to one day.
 
     const initialFormatting = (data: DailyData): FormattedData[] => {
 
-
-       return dates.map((date, i) => ({
+        return dates.map((date, i) => ({
                     date: date,
                     rain: data.rain_sum[i],
                     temperatureMax: data.temperature_2m_max[i],
@@ -34,23 +30,24 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
                 }))
     }
 
-    const formattedData = initialFormatting(weatherData)
+    const formattedData = initialFormatting(weatherData);
 
 
     //Group data into years and format data this way. First, data is grouped into years using the d3 function getFullYear(). This creates a Map. The map is then converted into an Array, and then converted into an array of objects via the .map() function.
 
-    const groupDataByYear = (data: DailyData): void => {
+    const groupDataByYear = (data: FormattedData[]): GroupedDataByYear[] => {
         const dataGroupedByYear: GroupedDataByYear[] = Array
-                                        .from(d3.group(formattedData, (d) => d.date.getFullYear()))
+                                        .from(d3.group(data, (d) => d.date.getFullYear()))
                                         .map((element, i) => ({
                                                 year: element[0],
                                                 data: element[1]
                                             }))
 
-        setDataByYear(dataGroupedByYear)
+        return dataGroupedByYear
     }   
 
-    const groupDataByMonth = (data: DailyData): void => {
+    const groupDataByMonth = (data: FormattedData[]): GroupedDataByMonth[] => {
+        console.log('called group data by month')
 
         let numberToMonthTranslator = {
             0: 'January',
@@ -68,7 +65,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
         }
 
         const dataGroupedByMonth: GroupedDataByMonth[] = Array
-                            .from(d3.group(formattedData, (d) => d.date.getMonth()))
+                            .from(d3.group(data, (d) => d.date.getMonth()))
                             .map((element: TwoDimArray) => {
                                 const monthIndex = element[0] as keyof typeof numberToMonthTranslator;
                             
@@ -78,12 +75,17 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
                                 }}
                             )
 
-        setDataByMonth(dataGroupedByMonth)                            
+        return dataGroupedByMonth;                           
     }
 
 
     const groupDataBySeason = (data: FormattedData[]): void => {
-        
+    
+    console.log(groupDataByMonth(data));
+    console.log('called');
+
+    const groupedByMonth = groupDataByMonth(data);
+    
     const seasonTranslator = {
             January: 'Winter',
             February: 'Winter',
@@ -99,13 +101,38 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
             December: 'Winter'
         }
 
-    }
+        const replaceMonthsWithSeasons = groupedByMonth.map((element: GroupedDataByMonth) => {
+                    const seasonIndex = element.month as keyof typeof seasonTranslator;            
+                        return{
+                            season: seasonTranslator[seasonIndex],
+                            data: element.data
+                        }
+                        
+        })
 
-    // useEffect(() => {
-    //     groupDataByYear(weatherData)
+        const groupedBySeasons = Array
+                .from(d3.group(replaceMonthsWithSeasons, d=> d.season))
+                .map((season) => {
+                    return{
+                        season: season[0],
+                        data: season[1].flatMap(element => element.data)
+                    }
+                })
+        console.log(groupedBySeasons)
+
+
+
+
+    }
+        
+    console.log(groupDataByMonth(formattedData))
+    groupDataBySeason(formattedData);
+
+    // // useEffect(() => {
+    // //     groupDataByYear(weatherData)
     //     groupDataByMonth(weatherData)
     //     groupDataBySeason(formattedData)
-    // }, [weatherData])
+    // // }, [weatherData])
 
 
 
