@@ -4,7 +4,7 @@ import { useContext} from 'react';
 import {YearContext} from '../../../Context/Context';
 import {YearContextType} from '../../../Context/ContextTypes';
 import './TempStyling.css'
-
+import { MDBRange } from 'mdb-react-ui-kit';
 
 const RangeSliderTemp = () => {   
 
@@ -19,20 +19,23 @@ const RangeSliderTemp = () => {
         setYearValue(event.target.value)
     }
 
+    setYearValue(2000);
+
 
     return(
         <>
         <Form.Label>Select how far back you would like to see data for</Form.Label>
-        <Form.Range 
-            value = {yearValue}
-            onChange={handleSliderChange}
-            min={1945}
-            max = {2022}
-            step={1}
-            className='custom-range'
-        
-        />
-        <div>{yearValue}</div>
+       
+        <MDBRange
+      defaultValue={1941}
+      min='1941'
+      max='2022'
+      id='customRange'
+      
+    />
+      
+
+        {/* <div>{yearValue}</div> */}
         </>
     )
 
