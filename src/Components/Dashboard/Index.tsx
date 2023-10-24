@@ -24,9 +24,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
         return dates.map((date, i) => ({
                     date: date,
                     rain: data.rain_sum[i],
-                    temperatureMax: data.temperature_2m_max[i],
-                    temperatureMin: data.temperature_2m_min[i],
-                    windspeed: data.windspeed_10m_max[i]
+                    temperatureMax: data.temperature_2m_max[i],                 
                 }))
     }
 

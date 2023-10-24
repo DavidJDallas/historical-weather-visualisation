@@ -19,7 +19,7 @@ const App: React.FC = (): JSX.Element => {
   const [latAndLong, setLatAndLong] = useState<LatAndLong>({latitude: 0, longitude: 0});
   const [weatherData, setWeatherData] = useState<DailyData | undefined>();
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
-  const rateLimiter = useRateLimiter(3, 1000 );
+  const rateLimiter = useRateLimiter(1, 5000 );
 
   const getGeoLocationData = async () => {  
     
@@ -28,18 +28,19 @@ const App: React.FC = (): JSX.Element => {
         setLatAndLong({
             latitude: apiResponse.latitude,
             longitude: apiResponse.longitude
-          })        
+          })   
+        getWeatherData();     
           
       } catch(err){
           console.log(err);
       }  
   }
   
-  useEffect(() => {
-    if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
-      getWeatherData()
-    }   
-  }, [latAndLong]);
+  // useEffect(() => {
+  //   if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
+  //     getWeatherData()
+  //   }   
+  // }, [latAndLong]);
 
   const getWeatherData = async () => {
 
@@ -63,7 +64,8 @@ const App: React.FC = (): JSX.Element => {
     } catch(err){
       console.log(err)
     }
-    })
+    }
+    )
    
   }
 

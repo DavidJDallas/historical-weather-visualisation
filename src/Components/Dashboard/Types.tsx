@@ -7,9 +7,7 @@ export interface MainDashboardProps{
 export interface FormattedData{
     date: Date ,
     rain: number,
-    temperatureMax: number,
-    temperatureMin: number,
-    windspeed: number
+    temperatureMax: number,  
 }
 
 export type TwoDimArray = [number, FormattedData[]]

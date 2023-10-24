@@ -1,9 +1,6 @@
 import axios, {AxiosError} from "axios";
 import {  APICallGeoLocation, HistoricalWeatherDataType, DailyData, LatAndLong} from './ServicesTypes';
 
-const max_requests = 5;
-const intervals_ms = 1000;
-
 export const getGeoLocation = async (postcodeOrPlace: string): Promise <LatAndLong | unknown> => {
   
         try{
@@ -32,8 +29,10 @@ export const getGeoLocation = async (postcodeOrPlace: string): Promise <LatAndLo
 
 
 export const getHistoricalWeatherData = async (latitude: number, longitude: number): Promise<DailyData | unknown | AxiosError> => {
+    let count = 0
     try{
-        console.log('called main weatherapi')
+        count ++
+        console.log(`called historical weather API ${count} times`)
         const {data: {daily: dailyData}}: HistoricalWeatherDataType= await axios.get(`https://archive-api.open-meteo.com/v1/archive`, {
             params: {
                 latitude: latitude,
