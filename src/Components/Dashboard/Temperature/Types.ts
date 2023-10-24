@@ -7,3 +7,7 @@ export interface TemperatureProps {
     formattedData: FormattedData[] | []
 }
 
+export interface RangeSliderProps {
+    yearValue: number,
+    setYearValue: (value: number) => void
+}

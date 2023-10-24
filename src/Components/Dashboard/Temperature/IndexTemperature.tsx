@@ -10,8 +10,8 @@ const Temperature = ({groupDataBySeason, groupDataByMonth, groupDataByYear, form
 
     const [displayTempBySeasonAverage, setDisplayTempBySeasonAverage] = useState<boolean>(true);
     const [displayTempByMonthAverage, setDisplayTempByMonthAverage] = useState<boolean>(true);
-
-
+    const [yearValue, setYearValue] = useState<number>(1942)
+    
     return(
         <>
         <Container fluid={true}>
@@ -21,10 +21,14 @@ const Temperature = ({groupDataBySeason, groupDataByMonth, groupDataByYear, form
             displayTempBySeasonAverage={displayTempBySeasonAverage}
             setDisplayTempByMonthAverage={setDisplayTempByMonthAverage}
             setDisplayTempBySeasonAverage={setDisplayTempBySeasonAverage}
+
             />
         </Row>
         <Row >
-            <RangeSliderTemp/>
+            <RangeSliderTemp
+            yearValue ={yearValue}
+            setYearValue = {setYearValue}
+            />
 
         </Row>
 

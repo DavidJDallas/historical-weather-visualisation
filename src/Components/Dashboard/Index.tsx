@@ -9,10 +9,14 @@ import {Route, Routes, createBrowserRouter, createRoutesFromElements, Outlet} fr
 import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
 import Wind from './Wind/IndexWind';
+import { group } from 'console';
 
 const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     const [formattedData, setFormattedData] = useState<FormattedData[] | []>([]);
+    const [dataBySeason, setDataBySeason] = useState<GroupedDataBySeason[] | []>([]);
+    const [dataByMonth, setDataByMonth] = useState<GroupedDataByMonth[] | [] >([]);
+    const [dataByYear, setDataByYear] = useState<GroupedDataByYear[] | []>([])
     
 
     const parsedTime = d3.timeParse('%Y-%m-%d');
@@ -24,7 +28,8 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     const initialFormatting = (data: DailyData): FormattedData[] => {
 
-        return dates.map((date, i) => ({
+       
+            return dates.map((date, i) => ({
                     date: date,
                     rain: data.rain_sum[i],
                     temperatureMax: data.temperature_2m_max[i],                 
@@ -50,6 +55,12 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
         return dataGroupedByYear
     }   
+
+    useEffect(() => {
+        const dataByYear = groupDataByYear(formattedData);
+        setDataByYear(dataByYear);
+        console.log(dataByYear)
+    }, [formattedData]);
 
     const groupDataByMonth = (data: FormattedData[]): GroupedDataByMonth[] => {
         console.log('called group data by month')
@@ -83,8 +94,12 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
         return dataGroupedByMonth;                           
     }
 
+    useEffect(() => {
+        const groupedDataByMonth = groupDataByMonth(formattedData);
+        setDataByMonth(groupedDataByMonth);
+    }, [])
 
-    const groupDataBySeason = (data: FormattedData[]): void => {
+    const groupDataBySeason = (data: FormattedData[]): GroupedDataBySeason[] => {
     
     console.log(groupDataByMonth(data));
     console.log('called');
@@ -115,7 +130,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
                         
         })
 
-        const groupedBySeasons = Array
+        return Array
                 .from(d3.group(replaceMonthsWithSeasons, d=> d.season))
                 .map((season) => {
                     return{
@@ -123,14 +138,16 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
                         data: season[1].flatMap(element => element.data)
                     }
                 })
-        console.log(groupedBySeasons)
-
-
-
-
     }
+    useEffect(() => {
+        const groupedBySeason = groupDataBySeason(formattedData);
+        setDataBySeason(groupedBySeason);
+    }, [])
         
 
+    console.log(dataByMonth)
+    console.log(dataBySeason)
+    console.log(dataByYear)
 
     return(<>
 
