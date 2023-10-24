@@ -8,6 +8,7 @@ import MainDashboard from './Components/Dashboard/Index';
 import { LatAndLong, DailyData } from './Services/ServicesTypes';
 import { AxiosError } from 'axios';
 import LogIn from './Components/LogIn';
+import { useRateLimiter } from './Services/RateLimiter';
 
 
 
@@ -17,9 +18,11 @@ const App: React.FC = (): JSX.Element => {
   const [place, setPlace] = useState<string>('');
   const [latAndLong, setLatAndLong] = useState<LatAndLong>({latitude: 0, longitude: 0});
   const [weatherData, setWeatherData] = useState<DailyData | undefined>();
-  const [formSubmitted, setFormSubmitted] = useState<boolean>(false)
+  const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
+  const rateLimiter = useRateLimiter(3, 1000 );
 
   const getGeoLocationData = async () => {  
+    
     try{
         const apiResponse = await getGeoLocation(postcode) as LatAndLong;
         setLatAndLong({
@@ -39,26 +42,29 @@ const App: React.FC = (): JSX.Element => {
   }, [latAndLong]);
 
   const getWeatherData = async () => {
-    try{        
 
-      const {latitude, longitude} = latAndLong;     
-      const apiResponse: DailyData | unknown | AxiosError = await getHistoricalWeatherData(latitude, longitude);      
-     
-      //error handling
-      if(apiResponse instanceof Error){        
-          if(apiResponse instanceof AxiosError){
-              console.error(`Error with the API call. This error has been given by the Axios request. ${apiResponse.message}`)
-          } else{
-              console.error(`Non-axios related error: ${apiResponse.message}`)
-          }       
-        }     
-  
-      setWeatherData(apiResponse as DailyData);   
-      setFormSubmitted(true);
+    rateLimiter.enqueue(async () => {
+      try{   
+        const {latitude, longitude} = latAndLong;     
+        const apiResponse: DailyData | unknown | AxiosError = await getHistoricalWeatherData(latitude, longitude);      
+      
+        //error handling
+        if(apiResponse instanceof Error){        
+            if(apiResponse instanceof AxiosError){
+                console.error(`Error with the API call. This error has been given by the Axios request. ${apiResponse.message}`)
+            } else{
+                console.error(`Non-axios related error: ${apiResponse.message}`)
+            }       
+          }     
+    
+        setWeatherData(apiResponse as DailyData);   
+        setFormSubmitted(true);
 
     } catch(err){
       console.log(err)
     }
+    })
+   
   }
 
   return (
