@@ -6,7 +6,7 @@ import CheckForm from '../CheckForm';
 import RangeSliderTemp from './RangeSliderTemp';
 
 
-const Temperature = ({groupDataBySeason, groupDataByMonth, groupDataByYear, formattedData}: TemperatureProps) => {
+const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: TemperatureProps) => {
 
     const [displayTempBySeasonAverage, setDisplayTempBySeasonAverage] = useState<boolean>(true);
     const [displayTempByMonthAverage, setDisplayTempByMonthAverage] = useState<boolean>(true);

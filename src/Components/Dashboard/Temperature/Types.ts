@@ -1,10 +1,10 @@
 import { GroupedDataByMonth, GroupedDataByYear, GroupedDataBySeason, FormattedData } from "../Types";
 
 export interface TemperatureProps {
-    groupDataBySeason: (data: FormattedData[]) => void,
-    groupDataByYear: (data: FormattedData[]) => GroupedDataByYear[],
-    groupDataByMonth: (data: FormattedData[]) => GroupedDataByMonth[],
+    dataBySeason: GroupedDataBySeason[] | [],
     formattedData: FormattedData[] | []
+    dataByMonth: GroupedDataByMonth[] | [],
+    dataByYear: GroupedDataByYear[] | []
 }
 
 export interface RangeSliderProps {

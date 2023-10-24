@@ -57,13 +57,13 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
     }   
 
     useEffect(() => {
+        
         const dataByYear = groupDataByYear(formattedData);
         setDataByYear(dataByYear);
-        console.log(dataByYear)
+        
     }, [formattedData]);
 
     const groupDataByMonth = (data: FormattedData[]): GroupedDataByMonth[] => {
-        console.log('called group data by month')
 
         let numberToMonthTranslator = {
             0: 'January',
@@ -97,7 +97,8 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
     useEffect(() => {
         const groupedDataByMonth = groupDataByMonth(formattedData);
         setDataByMonth(groupedDataByMonth);
-    }, [])
+        
+    }, [formattedData])
 
     const groupDataBySeason = (data: FormattedData[]): GroupedDataBySeason[] => {
     
@@ -142,12 +143,9 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
     useEffect(() => {
         const groupedBySeason = groupDataBySeason(formattedData);
         setDataBySeason(groupedBySeason);
-    }, [])
+    }, [formattedData])
         
 
-    console.log(dataByMonth)
-    console.log(dataBySeason)
-    console.log(dataByYear)
 
     return(<>
 
@@ -155,9 +153,9 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
         
         <Routes>            
             <Route path="/temp" element={<Temperature
-                groupDataBySeason = {groupDataBySeason}
-                groupDataByMonth={groupDataByMonth}
-                groupDataByYear={groupDataByYear}
+                dataBySeason ={dataBySeason}
+                dataByMonth = {dataByMonth}
+                dataByYear = {dataByYear}
                 formattedData = {formattedData}
             />}/>
             <Route path = "/wind" element={<Wind/>}/>
