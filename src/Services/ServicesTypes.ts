@@ -66,8 +66,6 @@ export interface HistoricalData {
 
 export interface DailyData{
     rain_sum: number[],
-    temperature_2m_max: number[],
-    temperature_2m_min: number[],
-    time: string[],
-    windspeed_10m_max: number[],
+    temperature_2m_max: number[],    
+    time: string[],    
 }
