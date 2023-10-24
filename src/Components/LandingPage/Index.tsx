@@ -28,12 +28,12 @@ const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps) =>
     <h2>Enter the Postcode or Place you would Like to see Data for</h2>
     
       <Container className='search-box'>
-      <LandingPageSearch
-        handlePostcodeSubmit={handlePostcodeSubmit}
-        handlePlaceSubmit={handlePlacesubmit}
-        setPlace={setPlace}
-        setPostcode={setPostcode}
-      />
+        <LandingPageSearch
+          handlePostcodeSubmit={handlePostcodeSubmit}
+          handlePlaceSubmit={handlePlacesubmit}
+          setPlace={setPlace}
+          setPostcode={setPostcode}
+        />
       </Container>
         </div>
 

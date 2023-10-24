@@ -27,3 +27,10 @@ export interface GroupedDataBySeason{
     season: string,
     data: FormattedData[]
 }
+
+export interface CheckFormProps{
+    displayTempByMonthAverage: boolean,
+    displayTempBySeasonAverage: boolean,
+    setDisplayTempByMonthAverage: (data: boolean) => void,
+    setDisplayTempBySeasonAverage: (data: boolean) => void
+}

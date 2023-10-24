@@ -12,6 +12,9 @@ import Wind from './Wind/IndexWind';
 
 const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
+    const [formattedData, setFormattedData] = useState<FormattedData[] | []>([]);
+    
+
     const parsedTime = d3.timeParse('%Y-%m-%d');
     const dates = weatherData && weatherData.time.map(element => parsedTime(element)) as Date[]
 
@@ -28,7 +31,11 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
                 }))
     }
 
-    const formattedData = initialFormatting(weatherData);
+    useEffect(() => {
+        const initialData = initialFormatting(weatherData);
+        setFormattedData(initialData);
+    }, [])
+
 
 
     //Group data into years and format data this way. First, data is grouped into years using the d3 function getFullYear(). This creates a Map. The map is then converted into an Array, and then converted into an array of objects via the .map() function.
@@ -123,30 +130,21 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
     }
         
-    console.log(groupDataByMonth(formattedData))
-    groupDataBySeason(formattedData);
-
-    // // useEffect(() => {
-    // //     groupDataByYear(weatherData)
-    //     groupDataByMonth(weatherData)
-    //     groupDataBySeason(formattedData)
-    // // }, [weatherData])
-
-
-
 
 
     return(<>
 
     <NavBar/>
         
-        <Routes>
-            
-            <Route path="/temp" element={<Temperature/>}/>
+        <Routes>            
+            <Route path="/temp" element={<Temperature
+                groupDataBySeason = {groupDataBySeason}
+                groupDataByMonth={groupDataByMonth}
+                groupDataByYear={groupDataByYear}
+                formattedData = {formattedData}
+            />}/>
             <Route path = "/wind" element={<Wind/>}/>
             <Route path ="/rain" element={<Rain/>}/>
-
-
         </Routes>
 
    
