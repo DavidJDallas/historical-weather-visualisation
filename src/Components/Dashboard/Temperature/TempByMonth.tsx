@@ -3,12 +3,12 @@ import {useState, useEffect, useRef} from 'react';
 import * as d3 from 'd3'
 import {interpolateViridis} from 'd3-scale-chromatic'
 import {scaleSequential} from 'd3-scale'
-import { TempByMonthProps } from './Types';
+import { FilteredDataByYear, TempByMonthProps } from './Types';
 
 
 const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) => {
 
-    const [tempData, setTempData] = useState([]);
+    const [tempData, setTempData] = useState<[] | FilteredDataByYear[]>([]);
     const chartRef = useRef();
 
     console.log(dataByMonth)
@@ -19,7 +19,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
     console.log(year);
     console.log(dataByMonth[0].data[0].date);
 
-    const filteredDataByYear = dataByMonth.map((month) => {
+    const filteredDataByYear: FilteredDataByYear[] = dataByMonth.map((month) => {
         return {
             ...month,
             data: month.data.filter((day) => {
@@ -28,21 +28,14 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
                 return year >= yearValue;
             })
         };
-    }).filter(month => month.data.length > 0);
+    })
+
+    useEffect(()=>{
+        setTempData(filteredDataByYear)
+    }, [filteredDataByYear])
+
    
     
-
-    console.log(filteredDataByYear)
-
-    // useEffect((): void => {
-    //     let tempPerMonth = dataByMonth.map((object) => ({
-    //             month: object.month,
-    //             temp: d3.mean(object.data.map((element) => element.temperature_2m_max))
-    //         }))
-
-    //     setTempData(tempPerMonth)
-
-    // }, [formattedDataByMonth])
 
     
 

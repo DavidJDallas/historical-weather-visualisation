@@ -18,3 +18,8 @@ export interface TempByMonthProps{
     height: number,
     yearValue: number
 }
+
+export interface FilteredDataByYear{
+    month: string,
+    data: FormattedData[]
+}
