@@ -83,11 +83,12 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
         const dataGroupedByMonth: GroupedDataByMonth[] = Array
                             .from(d3.group(data, (d) => d.date.getMonth()))
                             .map((element: TwoDimArray) => {
-                                const monthIndex = element[0] as keyof typeof numberToMonthTranslator;
-                            
+                               
+                                const monthIndex = element[0] as keyof typeof numberToMonthTranslator;                              
                                 return {                 
                                     month: numberToMonthTranslator[monthIndex],
-                                    data: element[1]
+                                    data: element[1],
+                                      
                                 }}
                             )
 
@@ -140,6 +141,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
                     }
                 })
     }
+
     useEffect(() => {
         const groupedBySeason = groupDataBySeason(formattedData);
         setDataBySeason(groupedBySeason);

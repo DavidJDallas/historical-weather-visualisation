@@ -4,6 +4,7 @@ import {useState, useEffect} from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import CheckForm from '../CheckForm';
 import RangeSliderTemp from './RangeSliderTemp';
+import TempByMonth from './TempByMonth';
 
 
 const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: TemperatureProps) => {
@@ -12,29 +13,37 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
     const [displayTempByMonthAverage, setDisplayTempByMonthAverage] = useState<boolean>(true);
     const [yearValue, setYearValue] = useState<number>(1942)
     
+    console.log(yearValue);
+
+
+
     return(
         <>
         <Container fluid={true}>
-        <Row className='check-form-row'>
-            <CheckForm
-            displayTempByMonthAverage={displayTempByMonthAverage}
-            displayTempBySeasonAverage={displayTempBySeasonAverage}
-            setDisplayTempByMonthAverage={setDisplayTempByMonthAverage}
-            setDisplayTempBySeasonAverage={setDisplayTempBySeasonAverage}
+            <Row className='check-form-row'>
+                <CheckForm
+                    displayTempByMonthAverage={displayTempByMonthAverage}
+                    displayTempBySeasonAverage={displayTempBySeasonAverage}
+                    setDisplayTempByMonthAverage={setDisplayTempByMonthAverage}
+                    setDisplayTempBySeasonAverage={setDisplayTempBySeasonAverage}
+                />
+            </Row>
+            <Row >
+                <RangeSliderTemp
+                    yearValue ={yearValue}
+                    setYearValue = {setYearValue}
+                />
+            </Row>
+            <Row>
+                <TempByMonth
+                    dataByMonth={dataByMonth}
+                    width={400}
+                    height={250}
+                    yearValue={yearValue}
+                />
 
-            />
-        </Row>
-        <Row >
-            <RangeSliderTemp
-            yearValue ={yearValue}
-            setYearValue = {setYearValue}
-            />
-
-        </Row>
-
-
-        </Container>
-       
+            </Row>
+        </Container>       
         </>
     )
 }

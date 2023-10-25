@@ -4,7 +4,6 @@ import {  APICallGeoLocation, HistoricalWeatherDataType, DailyData, LatAndLong} 
 export const getGeoLocation = async (postcodeOrPlace: string): Promise <LatAndLong | unknown> => {
   
         try{
-            console.log('called geolocation')
             const {data: {features}}: APICallGeoLocation = await axios.get(`https://api.mapbox.com/geocoding/v5/mapbox.places/${postcodeOrPlace}.json`, {
                 params: {
                     //This is not a confidential key and so is fine to send and display like this.
@@ -29,10 +28,9 @@ export const getGeoLocation = async (postcodeOrPlace: string): Promise <LatAndLo
 
 
 export const getHistoricalWeatherData = async (latitude: number, longitude: number): Promise<DailyData | unknown | AxiosError> => {
-    let count = 0
+    
     try{
-        count ++
-        console.log(`called historical weather API ${count} times`)
+       
         const {data: {daily: dailyData}}: HistoricalWeatherDataType= await axios.get(`https://archive-api.open-meteo.com/v1/archive`, {
             params: {
                 latitude: latitude,
@@ -40,7 +38,7 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
                 timezone: 'GMT',
                 start_date: `1999-01-01`,
                 end_date: '2022-12-31',
-                daily: ['temperature_2m_max', 'rain_sum'],
+                daily: ['temperature_2m_max', 'temperature_2m_min','rain_sum'],
                 temperature_unit: 'celsius'
             }, 
             responseType: 'json'

@@ -29,18 +29,18 @@ const App: React.FC = (): JSX.Element => {
             latitude: apiResponse.latitude,
             longitude: apiResponse.longitude
           })   
-        getWeatherData();     
+        
           
       } catch(err){
           console.log(err);
       }  
   }
   
-  // useEffect(() => {
-  //   if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
-  //     getWeatherData()
-  //   }   
-  // }, [latAndLong]);
+  useEffect(() => {
+    if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
+      getWeatherData()
+    }   
+  }, [latAndLong]);
 
   const getWeatherData = async () => {
 

@@ -11,3 +11,10 @@ export interface RangeSliderProps {
     yearValue: number,
     setYearValue: (value: number) => void
 }
+
+export interface TempByMonthProps{
+    dataByMonth: GroupedDataByMonth[],
+    width: number,
+    height: number,
+    yearValue: number
+}
