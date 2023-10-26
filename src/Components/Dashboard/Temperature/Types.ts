@@ -23,3 +23,8 @@ export interface FilteredDataByYear{
     month: string,
     data: FormattedData[]
 }
+
+export interface TempData{
+    month: string,
+    temperature: number | any
+}

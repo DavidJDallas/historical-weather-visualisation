@@ -38,7 +38,7 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
                 timezone: 'GMT',
                 start_date: `1999-01-01`,
                 end_date: '2022-12-31',
-                daily: ['temperature_2m_max', 'temperature_2m_min','rain_sum'],
+                daily: ['temperature_2m_max', 'rain_sum'],
                 temperature_unit: 'celsius'
             }, 
             responseType: 'json'
