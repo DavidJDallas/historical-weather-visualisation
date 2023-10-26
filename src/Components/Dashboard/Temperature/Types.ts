@@ -28,3 +28,10 @@ export interface TempData{
     month: string,
     temperature: number | any
 }
+
+export interface TempBySeasonProps{
+    dataBySeason: GroupedDataBySeason[],
+    width: number,
+    height: number,
+    yearValue: number
+}

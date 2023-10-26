@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import CheckForm from '../CheckForm';
 import RangeSliderTemp from './RangeSliderTemp';
 import TempByMonth from './TempByMonth';
+import TempBySeason from './TempBySeason';
 
 
 const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: TemperatureProps) => {
@@ -44,6 +45,17 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                         height={250}
                         yearValue={yearValue}
                     />
+                </Col>
+                <Col>
+                    <TempBySeason
+                        dataBySeason={dataBySeason}
+                        width={400}
+                        height={250}
+                        yearValue={yearValue}
+                    
+                    />
+
+
                 </Col>
               
 
