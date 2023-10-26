@@ -60,7 +60,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
         const xAxis = d3.scaleBand()
                             .domain(tempData.map((x) => x.month.slice(0,3)))
                             .range([30, adjustedWidth])
-                            .padding(2);
+                            .padding(0);
 
         const yAxis = d3.axisLeft(yScale)
                         .tickFormat(d => d.toString().slice(0,3));       
@@ -107,7 +107,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
                    .attr('y', 30)
                    .style('text-anchor', 'middle')
                    .style('font-size', '18px')
-                   .text(`Average temperature by Month (degrees c)`);
+                   .text(`Average MaxTemperature by Month (deg c)`);
             
             svg.append('g')
                 .attr('transform', `translate(0, ${height})`)
@@ -119,9 +119,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
                 .attr('transform', `translate(30,0)`)              
                 .call(yAxis)
                 .selectAll('text')
-                .style('font-size', '9px')    
-
-     
+                .style('font-size', '9px')     
         }
 
     }, [tempData, height, width]);

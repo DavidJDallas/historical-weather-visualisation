@@ -37,12 +37,15 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
             <Row
             style={{height: '300px'}}
             >
-                <TempByMonth
-                    dataByMonth={dataByMonth}
-                    width={400}
-                    height={250}
-                    yearValue={yearValue}
-                />
+                <Col>
+                    <TempByMonth
+                        dataByMonth={dataByMonth}
+                        width={400}
+                        height={250}
+                        yearValue={yearValue}
+                    />
+                </Col>
+              
 
             </Row>
         </Container>       
