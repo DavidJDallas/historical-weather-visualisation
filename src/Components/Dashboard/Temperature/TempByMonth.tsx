@@ -3,12 +3,12 @@ import {useState, useEffect, useRef} from 'react';
 import * as d3 from 'd3'
 import {interpolateViridis} from 'd3-scale-chromatic'
 import {scaleSequential} from 'd3-scale'
-import { FilteredDataByYear, TempByMonthProps, TempData } from './Types';
+import { FilteredDataByYear, TempByMonthProps, TempDataMonth } from './Types';
 
 
 const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) => {
 
-    const [tempData, setTempData] = useState<[] | TempData[]>([]);
+    const [tempData, setTempData] = useState<[] | TempDataMonth[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);
 
     //useMemo is a React Hook that lets you cache the result of a calculation between re-renders. It looks at the dependency array and sees if anything has changed. If it has changed, it will re-run it. If not, it won't.

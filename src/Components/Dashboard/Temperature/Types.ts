@@ -12,6 +12,13 @@ export interface RangeSliderProps {
     setYearValue: (value: number) => void
 }
 
+export interface FilteredDataByYear{
+    month: string,
+    data: FormattedData[]
+}
+
+
+//TempByMonth
 export interface TempByMonthProps{
     dataByMonth: GroupedDataByMonth[],
     width: number,
@@ -19,13 +26,15 @@ export interface TempByMonthProps{
     yearValue: number
 }
 
-export interface FilteredDataByYear{
+export interface TempDataMonth{
     month: string,
-    data: FormattedData[]
+    temperature: number | any
 }
 
-export interface TempData{
-    month: string,
+
+//TempBySeason
+export interface TempDataSeason{
+    season: string,
     temperature: number | any
 }
 
@@ -34,4 +43,9 @@ export interface TempBySeasonProps{
     width: number,
     height: number,
     yearValue: number
+}
+
+export interface FilteredDataBySeason{
+    season: string,
+    data: FormattedData[]
 }
