@@ -2,7 +2,7 @@ import React, { ReactNode } from 'react';
 import { getGeoLocation, getHistoricalWeatherData } from './Services/APICalls';
 import LandingPage from './Components/LandingPage/Index';
 import Header from './Components/Header/Index';
-import {useState, useEffect, createContext} from 'react';
+import {useState, useEffect, createContext, useMemo} from 'react';
 import {Container, Row, Col} from 'react-bootstrap'
 import MainDashboard from './Components/Dashboard/Index';
 import { LatAndLong, DailyData } from './Services/ServicesTypes';
@@ -20,9 +20,10 @@ const App: React.FC = (): JSX.Element => {
   const [weatherData, setWeatherData] = useState<DailyData | undefined>();
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const rateLimiter = useRateLimiter(1, 5000 );
+  const [loading, setLoading] = useState<boolean>(false);
 
   const getGeoLocationData = async () => {  
-    
+      setLoading(true);
     try{
         const apiResponse = await getGeoLocation(postcode) as LatAndLong;
         setLatAndLong({
@@ -33,7 +34,8 @@ const App: React.FC = (): JSX.Element => {
           
       } catch(err){
           console.log(err);
-      }  
+      } 
+    
   }
   
   useEffect(() => {
@@ -44,6 +46,7 @@ const App: React.FC = (): JSX.Element => {
 
   const getWeatherData = async () => {
 
+    //custom rate limiter hook used here to stop client-side requests being made too frequently to the weather API. This is done as due to the fact that relatively large amounts of data are being called, if too many requests are made then the API will issue a 429 (too many calls) error and block usage for the day. 
     rateLimiter.enqueue(async () => {
       try{   
         const {latitude, longitude} = latAndLong;     

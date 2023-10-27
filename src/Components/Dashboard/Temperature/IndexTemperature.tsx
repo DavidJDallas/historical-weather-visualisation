@@ -14,10 +14,6 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
     const [displayTempByMonthAverage, setDisplayTempByMonthAverage] = useState<boolean>(true);
     const [yearValue, setYearValue] = useState<number>(1942)
     
-    console.log(yearValue);
-
-
-
     return(
         <>
         <Container fluid={true}>
