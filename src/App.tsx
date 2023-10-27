@@ -67,11 +67,14 @@ const App: React.FC = (): JSX.Element => {
     } catch(err){
       console.log(err)
     }
+    finally{
+      setLoading(false);
+    }
     }
     )
    
   }
-
+ 
   return (
     <>
    
