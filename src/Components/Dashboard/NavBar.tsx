@@ -64,23 +64,7 @@ const NavBar: React.FC = () => {
                         Temperature
                     </NavLink>
                     </MDBNavbarLink>
-                </MDBNavbarItem>
-
-                <MDBNavbarItem>
-                    <MDBNavbarLink>
-                    <NavLink
-                        to='/wind'
-                        className='nav-link'
-                        style={({ isActive, isPending }) => ({
-                        color: isActive ? '#fd7f6f' : 'black',
-                        borderBottom: isActive ? '2px solid #7eb0d5' : '2px solid transparent',
-                        fontSize: '2rem'
-                        })}
-                    >
-                        Wind
-                    </NavLink>
-                    </MDBNavbarLink>
-                </MDBNavbarItem>
+                </MDBNavbarItem>              
                 </MDBNavbarNav>
             </MDBContainer>
             </MDBNavbar>

@@ -9,6 +9,7 @@ import { LatAndLong, DailyData } from './Services/ServicesTypes';
 import { AxiosError } from 'axios';
 import LogIn from './Components/LogIn';
 import { useRateLimiter } from './Services/RateLimiter';
+import BigSpinner from './Components/BigSpinner';
 
 
 
@@ -66,13 +67,20 @@ const App: React.FC = (): JSX.Element => {
 
     } catch(err){
       console.log(err)
-    }
-    finally{
+    } finally{
       setLoading(false);
     }
     }
     )
    
+  }
+
+  if(loading){
+    return(
+      <>
+      <BigSpinner/>
+      </>
+    )
   }
  
   return (
