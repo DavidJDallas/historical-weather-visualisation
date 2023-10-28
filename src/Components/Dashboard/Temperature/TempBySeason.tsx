@@ -13,7 +13,7 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
 
     useEffect(() => {
         const filteredDataBySeason: FilteredDataBySeason[] = dataBySeason.map((season) => {
-           return {
+            return {
                ...season,
                data: season.data.filter((day) => {
                    let dateObj = new Date(day.date);

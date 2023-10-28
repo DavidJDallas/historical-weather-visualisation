@@ -160,7 +160,13 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
                 dataByYear = {dataByYear}
                 formattedData = {formattedData}
             />}/>           
-            <Route path ="/rain" element={<Rain/>}/>
+            <Route path ="/rain" element={<Rain
+            dataBySeason ={dataBySeason}
+            dataByMonth = {dataByMonth}
+            dataByYear = {dataByYear}
+            formattedData = {formattedData}
+            
+            />}/>
         </Routes>
 
    
