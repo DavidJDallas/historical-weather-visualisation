@@ -15,3 +15,12 @@
 .slider-row{
     height: 200px
 }
+
+.checkbox-container{
+  display: flex;
+  justify-content: center;
+}
+
+.form-label{
+    justify-content: center !important;
+}

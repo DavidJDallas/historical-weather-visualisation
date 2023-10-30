@@ -36,8 +36,6 @@ const RangeSliderTemp = ({yearValue, setYearValue}: RangeSliderProps) => {
       
     />
       
-
-        {/* <div>{yearValue}</div> */}
         </>
     )
 

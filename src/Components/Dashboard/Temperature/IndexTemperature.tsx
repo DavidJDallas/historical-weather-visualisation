@@ -6,6 +6,7 @@ import CheckForm from '../CheckForm';
 import RangeSliderTemp from './RangeSliderTemp';
 import TempByMonth from './TempByMonth';
 import TempBySeason from './TempBySeason';
+import './TempStyling.css'
 
 
 const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: TemperatureProps) => {
@@ -17,13 +18,16 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
     return(
         <>
         <Container fluid={true}>
-            <Row className='check-form-row'>
-                <CheckForm
+            <Row >
+                <div className= 'checkbox-container'>
+                     <CheckForm
                     displayTempByMonthAverage={displayTempByMonthAverage}
                     displayTempBySeasonAverage={displayTempBySeasonAverage}
                     setDisplayTempByMonthAverage={setDisplayTempByMonthAverage}
                     setDisplayTempBySeasonAverage={setDisplayTempBySeasonAverage}
                 />
+                </div>
+               
             </Row>
             <Row >
                 <RangeSliderTemp
