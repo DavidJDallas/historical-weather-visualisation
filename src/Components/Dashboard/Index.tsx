@@ -10,6 +10,7 @@ import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
 import Wind from './Wind/IndexWind';
 import { group } from 'console';
+import './Dashboard.css'
 
 const MainDashboard = ({weatherData}: MainDashboardProps) => {
 
@@ -152,7 +153,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
     return(<>
 
     <NavBar/>
-        
+        <div className='dashboard-container'>
         <Routes>            
             <Route path="/temp" element={<Temperature
                 dataBySeason ={dataBySeason}
@@ -168,6 +169,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
             
             />}/>
         </Routes>
+        </div>
 
    
 

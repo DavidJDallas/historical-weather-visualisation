@@ -5,7 +5,7 @@
     padding:0;
     margin:0; 
     font-size: 1rem;
- 
+     
 }
 
 h1{
@@ -23,3 +23,7 @@ h2{
     align-items: center;
     height: 40vh;
 }
+
+/* .main-app{
+    ;
+} */
