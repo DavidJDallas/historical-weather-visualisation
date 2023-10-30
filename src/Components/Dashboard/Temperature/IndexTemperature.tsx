@@ -34,25 +34,33 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
             <Row
             style={{height: '300px'}}
             >
+               
+                    {displayTempByMonthAverage &&   
+                    <Col>
+                        <TempByMonth
+                            dataByMonth={dataByMonth}
+                            width={400}
+                            height={250}
+                            yearValue={yearValue}
+                        /> 
+                    </Col>
+                    }
+                   
+               {displayTempBySeasonAverage && 
                 <Col>
-                    <TempByMonth
-                        dataByMonth={dataByMonth}
-                        width={400}
-                        height={250}
-                        yearValue={yearValue}
-                    />
+                
+                <TempBySeason
+                    dataBySeason={dataBySeason}
+                    width={400}
+                    height={250}
+                    yearValue={yearValue}                    
+                /> 
                 </Col>
-                <Col>
-                    <TempBySeason
-                        dataBySeason={dataBySeason}
-                        width={400}
-                        height={250}
-                        yearValue={yearValue}
+                }
                     
-                    />
 
 
-                </Col>
+               
               
 
             </Row>
