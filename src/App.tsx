@@ -3,13 +3,15 @@ import { getGeoLocation, getHistoricalWeatherData } from './Services/APICalls';
 import LandingPage from './Components/LandingPage/Index';
 import Header from './Components/Header/Index';
 import {useState, useEffect, createContext, useMemo} from 'react';
-import {Container, Row, Col} from 'react-bootstrap'
+import {Container, Row, Col, Image} from 'react-bootstrap'
 import MainDashboard from './Components/Dashboard/Index';
 import { LatAndLong, DailyData } from './Services/ServicesTypes';
 import { AxiosError } from 'axios';
 import LogIn from './Components/LogIn';
 import { useRateLimiter } from './Services/RateLimiter';
 import BigSpinner from './Components/BigSpinner';
+import vectorImage from './Vector.png';
+
 
 
 
@@ -112,8 +114,15 @@ const App: React.FC = (): JSX.Element => {
         </div> 
         </Row>
       }
-{/* 
-      <LogIn/> */}
+      <Row>
+          <Image
+      src={vectorImage}
+      />
+      </Row>
+    
+
+
+      
        
      
       
