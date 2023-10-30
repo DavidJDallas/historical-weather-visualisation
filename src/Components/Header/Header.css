@@ -1,11 +1,6 @@
 .header{
-  
     color: black;
     padding: 20px;
-    /*draw a solid line across the bottom*/
-    margin: 20px 150px 20px 150px;
-   
-   
-    border-bottom: 2px solid black;
-    
+    margin: 20px 150px 20px 150px;    
+    border-bottom: 2px solid black;    
 }

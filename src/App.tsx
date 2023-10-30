@@ -79,7 +79,14 @@ const App: React.FC = (): JSX.Element => {
   if(loading){
     return(
       <>
-      <BigSpinner/>
+      <Container
+      
+      style={{margin: '200px'}}
+      >
+        <BigSpinner/>
+       
+      </Container>
+      
       </>
     )
   }
