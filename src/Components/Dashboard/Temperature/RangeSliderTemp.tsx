@@ -25,7 +25,10 @@ const RangeSliderTemp = ({yearValue, setYearValue}: RangeSliderProps) => {
 
     return(
         <>
-        <Form.Label>Select how far back you would like to see data for</Form.Label>
+        <div className='checkbox-container'>
+           <Form.Label>Select how far back you would like to see data for</Form.Label>  
+        </div>
+       
        
         <MDBRange
       defaultValue={yearValue}
