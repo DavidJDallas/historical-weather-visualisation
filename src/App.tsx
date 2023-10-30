@@ -10,7 +10,6 @@ import { AxiosError } from 'axios';
 import LogIn from './Components/LogIn';
 import { useRateLimiter } from './Services/RateLimiter';
 import BigSpinner from './Components/BigSpinner';
-import vectorImage from './Vector.png';
 
 
 
@@ -113,19 +112,7 @@ const App: React.FC = (): JSX.Element => {
         />
         </div> 
         </Row>
-      }
-      <Row>
-          <Image
-      src={vectorImage}
-      />
-      </Row>
-    
-
-
-      
-       
-     
-      
+      }     
     
     </Container>
   

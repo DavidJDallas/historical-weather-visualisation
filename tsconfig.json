@@ -22,6 +22,5 @@
   },
   "include": [
     "src",
-    "path-to-your-declarations/images.d.ts"
   ]
 }
