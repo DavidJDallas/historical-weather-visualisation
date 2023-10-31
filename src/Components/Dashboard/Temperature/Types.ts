@@ -49,3 +49,11 @@ export interface FilteredDataBySeason{
     season: string,
     data: FormattedData[]
 }
+
+/* Data By Year */
+
+export interface TempByYearProps{
+    width: number,
+    height: number,
+    dataByYear: GroupedDataByYear[]
+}

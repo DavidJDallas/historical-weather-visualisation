@@ -7,6 +7,7 @@ import RangeSliderTemp from './RangeSliderTemp';
 import TempByMonth from './TempByMonth';
 import TempBySeason from './TempBySeason';
 import './TempStyling.css'
+import TempByYear from './TempByYear';
 
 
 const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: TemperatureProps) => {
@@ -61,11 +62,17 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                 /> 
                 </Col>
                 }
-                    
-
-
-               
-              
+            </Row>
+            <Row
+            style={{height: '300px'}}
+            >
+                <Col>
+                    <TempByYear
+                        dataByYear={dataByYear}
+                        width={400}
+                        height={250}
+                    />
+                </Col>
 
             </Row>
         </Container>       
