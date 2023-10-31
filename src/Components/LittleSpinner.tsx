@@ -1,9 +1,13 @@
 import React from "react";
+import CircularProgress from '@mui/material/CircularProgress';
+import Box from '@mui/material/Box';
 
 const LittleSpinner = () => {
 
     return(<>
-    <h1>Little Spinner</h1>
+   <Box sx={{ display: 'flex' }}>
+      <CircularProgress />
+    </Box>
     </>)
 }
 

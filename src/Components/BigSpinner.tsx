@@ -8,7 +8,7 @@ const BigSpinner = () => {
     return(  
     
     <Box sx={{ width: '100%' }}>
-    <LinearProgress />
+        <LinearProgress />
     </Box>
     
     )
