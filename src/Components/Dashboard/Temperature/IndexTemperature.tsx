@@ -71,6 +71,7 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                         dataByYear={dataByYear}
                         width={400}
                         height={250}
+                        yearValue={yearValue}
                     />
                 </Col>
 

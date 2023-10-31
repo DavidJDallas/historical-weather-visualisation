@@ -55,5 +55,11 @@ export interface FilteredDataBySeason{
 export interface TempByYearProps{
     width: number,
     height: number,
-    dataByYear: GroupedDataByYear[]
+    dataByYear: GroupedDataByYear[],
+    yearValue: number
+}
+
+export interface TempDataYear{
+    year: number,
+    temperature: number | any
 }
