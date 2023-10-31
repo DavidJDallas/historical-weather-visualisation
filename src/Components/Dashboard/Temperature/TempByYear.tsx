@@ -23,6 +23,10 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
         setTempData(calculateMeanByYear);
     }, [dataByYear, yearValue])
 
+    let selectiveListYear = tempData                    
+                    .filter(element => element.year % 5 === 0)
+                    .map(element => element.year.toString())
+
     useEffect(() => {
 
         d3.select(chartRef.current).selectAll('*').remove();
@@ -38,8 +42,39 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
                             .range([height, 50]);
 
         const xAxis = d3.scaleBand()
-                        .domain(tempData.map(x => String(x.year)))
-                        .range([height])
+                        .domain(selectiveListYear)
+                        .range([30, adjustedWidth])
+                        .padding(0);
+        
+        const yAxis = d3.axisLeft(yScale)
+                        .ticks(5)
+                        .tickFormat(d3.format("d"))
+        
+        const colourScale = d3.scaleSequential()
+                        .domain([0, d3.max(tempData.map((element) => element.temperature))])
+
+        const interpolatorColourFunction = d3.interpolateRgb('blue', 'red')
+
+        const svg= d3.select(chartRef.current)
+                            .append('svg')
+                            .attr('width', width)
+                            .attr('height', height+200);
+        
+        // const tooltip = d3.select('body').append('div')
+        //                     .style('position', 'absolute')
+        //                     .style('z-index', '10')
+        //                     .style('visibility', 'hidden')
+        //                     .style('background-color', 'white')
+        //                     .style('border-style', 'solid')
+        //                     .style('border-width', '2px')
+        //                     .style('border-color', '#50e991')
+        //                     .style('padding', '5px')
+        //                     .style('font-size', '12px');
+        
+        svg.append("g")
+            .attr("transform", `translate(0, ${height})`)
+            .call(d3.axisBottom(xAxis))
+        
 
 
     }, [])
@@ -48,7 +83,7 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
 
     return(
         <>
-            <h1> Temp by year</h1>
+               <svg className=''ref={chartRef} height={'100%'} width={'100%'}  ></svg>
         </>
     )
 
