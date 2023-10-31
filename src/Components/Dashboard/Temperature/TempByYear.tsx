@@ -25,6 +25,23 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
 
     useEffect(() => {
 
+        d3.select(chartRef.current).selectAll('*').remove();
+
+        let adjustedWidth = width -30;
+
+        const xScale = d3.scaleLinear()
+                            .domain([0, tempData.length])
+                            .range([0, d3.max(tempData.map((element) => element.temperature))])
+    
+        const yScale = d3.scaleLinear()
+                            .domain([0, d3.max(tempData.map((element) => element.temperature))])
+                            .range([height, 50]);
+
+        const xAxis = d3.scaleBand()
+                        .domain(tempData.map(x => String(x.year)))
+                        .range([height])
+
+
     }, [])
 
 
