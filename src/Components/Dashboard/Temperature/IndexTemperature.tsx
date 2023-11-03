@@ -26,7 +26,7 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                     displayTempBySeasonAverage={displayTempBySeasonAverage}
                     setDisplayTempByMonthAverage={setDisplayTempByMonthAverage}
                     setDisplayTempBySeasonAverage={setDisplayTempBySeasonAverage}
-                />
+                    />
                 </div>
                
             </Row>
@@ -64,13 +64,13 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                 }
             </Row>
             <Row
-            style={{height: '300px'}}
+            style={{height: '500px', marginLeft: '100px'}}
             >
                 <Col>
                     <TempByYear
                         dataByYear={dataByYear}
-                        width={400}
-                        height={250}
+                        width={800}
+                        height={400}
                         yearValue={yearValue}
                     />
                 </Col>

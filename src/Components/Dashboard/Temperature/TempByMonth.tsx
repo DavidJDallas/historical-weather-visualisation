@@ -95,7 +95,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
                         .attr('x', (d,i) => xScale(i)+1)
                         .attr('y', d => yScale(d.temperature))
                         .attr('width', xScale(1)-xScale(0) -1)
-                       .attr('height', d => height - yScale(d.temperature))
+                        .attr('height', d => height - yScale(d.temperature))
                         .attr('fill', d=> interpolatorColourFunction(colourScale(d.temperature)))                        
                         .on('mouseover', (event, d) => {
                                 tooltip.html(`${(d.month)}: ${String(d.temperature).slice(0,5)} `+ '&deg c')
