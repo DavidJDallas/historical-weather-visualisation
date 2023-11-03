@@ -23,7 +23,6 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
         setTempData(calculateMeanByYear);
     }, [dataByYear, yearValue])
 
-    console.log(typeof tempData[0].temperature)
 
     let selectiveListYear = tempData                    
                     .filter(element => element.year % 2 === 0)
@@ -35,6 +34,8 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
 
         let adjustedWidth = width-50;
 
+        
+
         const xScale = d3.scaleLinear()
                             .domain([0, tempData.length])
                             .range([0, d3.max(tempData.map((element) => element.temperature))]);
@@ -44,7 +45,9 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
                             .range([height, 50]);
 
         // const line = d3.line()
-        //                 .x(d => xScale(d.year))
+        //                 .y(d => yScale(d.temperature))
+
+        console.log(xScale(tempData[0].temperature))
 
         const xAxis = d3.scaleBand()
                         .domain(selectiveListYear)
@@ -88,6 +91,9 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
             .call(yAxis)
             .selectAll('text')
             .style('font-size', '9px')
+
+                                         
+                    
         
 
 
