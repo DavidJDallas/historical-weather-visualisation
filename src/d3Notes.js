@@ -25,3 +25,9 @@
 
 //Inserting and removing elements
 
+//Elements can be added to the document without manually adding SVGs via the d3 append() and insert() method. This is the default way to do so when doing data visualisation. 
+//Elements can be removed using .remove().
+//Insert is similar to append but it allows us to specify a 2nd argument which specifies (as a CSS selector) which element to insert the new element before. 
+//The .each() method lets you call a function for each element of a section. 
+//The .call() method allows a function to be called into which the selection itself is passed as the first argument. Each() iterates over each element, and .call() invokes a function once and passes the entire selection to that function.
+//Filter() can also be used, in the same way that you would use it for JS.
