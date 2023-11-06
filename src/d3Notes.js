@@ -43,4 +43,6 @@
 
 //Styling
 
-//Using a lot of inline styles on HTML elements can be hard to manage, and is often easier to use class elements. 
+//Using a lot of inline styles on HTML elements can be hard to manage, and is often easier to use class elements. Use the attr() method to add any HTML attributes to an element, including a class name. The attr() method works the same way as style does. It takes comma-seperated values, and can use a callback function.
+
+//Style vs attr. Both are methods in d3 that do similar things. I've so far been using attr in my code. Both attr and style change the DOM. You can also use CSS, which doesn't modify the DOM. 
