@@ -61,5 +61,5 @@ export interface TempByYearProps{
 
 export interface TempDataYear{
     year: number,
-    temperature: number | any
+    temperature: number
 }

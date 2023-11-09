@@ -56,7 +56,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
     
             const yScale = d3.scaleLinear()
                                 .domain(
-                                    [(d3.min(tempData.map((element) => element.temperature))) -2, 
+                                    [0, 
                                     d3.max(tempData.map((element) => element.temperature))])
                                 .range([height, 75]);
     
