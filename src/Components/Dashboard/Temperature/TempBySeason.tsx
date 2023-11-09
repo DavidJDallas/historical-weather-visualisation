@@ -45,7 +45,7 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
                             .range([30, adjustedWidth]);
 
         const yScale = d3.scaleLinear()
-                            .domain([0, d3.max(tempData.map((element) => element.temperature))])
+                        .domain([d3.min(tempData.map((element) => element.temperature) as number[]) ?? 0, d3.max(tempData.map((element) => element.temperature *1.2) as number[]) ?? 0])
                             .range([height, 50]);
 
         const xAxis = d3.scaleBand()
