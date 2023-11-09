@@ -25,7 +25,7 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
 
 
     let selectiveListYear = tempData                    
-                    .filter(element => element.year % 2 === 0)
+                    .filter(element => yearValue > 1976 ? element.year % 3 === 0 : element.year % 4 ===0)
                     .map(element => element.year.toString())
 
     useEffect(() => {
@@ -99,13 +99,13 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
             .attr('transform', `translate(20, ${height})`)
             .call(d3.axisBottom(xAxis))
             .selectAll('text')
-            .style('font-size', '13px')
+            .style('font-size', yearValue < 1980 ? '10px' : '11px') 
                     
         svg.append('g') 
             .attr('transform', `translate(20,0)`)              
             .call(yAxis)
             .selectAll('text')
-            .style('font-size', '9px')                                       
+            .style('font-size', yearValue < 1980 ? '9px' : '11px')                                       
                     
         
 
