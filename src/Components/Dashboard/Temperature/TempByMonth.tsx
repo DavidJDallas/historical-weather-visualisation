@@ -96,16 +96,16 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
                         .attr('height', d => height - yScale(d.temperature))
                         .attr('fill', d=> interpolatorColourFunction(colourScale(d.temperature)))                        
                         .on('mouseover', (event, d) => {
-                                tooltip.html(`${(d.month)}: ${String(d.temperature).slice(0,5)} `+ '&deg c')
-                                    .style('visibility', 'visible')
-                            })
-                        .on('mousemove', (event) => {
-                                tooltip.style('top', event.pageY - 10 + 'px')
-                                tooltip.style('left', event.pageX + 10 + 'px')
-                            })
-                        .on('mouseout', () => {
-                                tooltip.style('visibility', 'hidden')
-                            });
+                            tooltip.html(`${(d.month)}: ${String(d.temperature).slice(0,6)} `+ '&deg c')
+                                .style('visibility', 'visible')
+                        })
+                    .on('mousemove', (event) => {
+                            tooltip.style('top', event.pageY - 10 + 'px')
+                            tooltip.style('left', event.pageX + 10 + 'px')
+                        })
+                    .on('mouseout', () => {
+                            tooltip.style('visibility', 'hidden')
+                        });
                         
                  svg.append('text')
                        .attr('x', width/2)

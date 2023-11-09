@@ -11,9 +11,6 @@ import LogIn from './Components/LogIn';
 import { useRateLimiter } from './Services/RateLimiter';
 import BigSpinner from './Components/BigSpinner';
 
-
-
-
 const App: React.FC = (): JSX.Element => {
 
   const [postcode, setPostcode] = useState<string>('');
@@ -27,7 +24,9 @@ const App: React.FC = (): JSX.Element => {
   const getGeoLocationData = async () => {  
       setLoading(true);
     try{
-        const apiResponse = await getGeoLocation(postcode) as LatAndLong;
+      console.log(place);
+      console.log(postcode);
+        const apiResponse = await getGeoLocation(postcode || place) as LatAndLong;
         setLatAndLong({
             latitude: apiResponse.latitude,
             longitude: apiResponse.longitude
@@ -61,15 +60,15 @@ const App: React.FC = (): JSX.Element => {
             } else{
                 console.error(`Non-axios related error: ${apiResponse.message}`)
             }       
-          }     
+        }     
     
         setWeatherData(apiResponse as DailyData);   
         setFormSubmitted(true);
 
     } catch(err){
-      console.log(err)
+        console.log(err)
     } finally{
-      setLoading(false);
+        setLoading(false);
     }
     }
     )
@@ -79,9 +78,8 @@ const App: React.FC = (): JSX.Element => {
   if(loading){
     return(
       <>
-      <Container
-      
-      style={{margin: '200px'}}
+      <Container      
+        style={{margin: '200px'}}
       >
         <BigSpinner/>
        
