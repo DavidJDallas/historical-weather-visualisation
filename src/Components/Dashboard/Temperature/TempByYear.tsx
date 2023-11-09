@@ -40,7 +40,7 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
                             .range([0, adjustedWidth]);
     
             const yScale = d3.scaleLinear<number>()
-                            .domain([d3.min(tempData.map((element) => element.temperature) as number[]) ?? 0, d3.max(tempData.map((element) => element.temperature *1.2) as number[]) ?? 0])
+                            .domain([d3.min(tempData.map((element) => element.temperature /1.2) as number[]) ?? 0, d3.max(tempData.map((element) => element.temperature *1.2) as number[]) ?? 0])
                             .range([height, 0]);
                         
 
@@ -85,15 +85,31 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
 
 
         svg.append("path")
-            .datum<TempDataYear[]>(tempData)          
-            .attr("fill", "none")
-            .attr("stroke", "steelblue")
-            .attr("stroke-width", 1.5)
-            .attr("d", d3.line<TempDataYear>()
-                .x(d => xScale(d.year) +20)
-                .y(d => yScale(d.temperature))
-            )
-          
+    .datum<TempDataYear[]>(tempData)
+    .attr("fill", "none")
+    .attr("stroke", "steelblue")
+    .attr("stroke-width", 3)
+    .attr("d", d3.line<TempDataYear>()
+        .x(d => xScale(d.year) + 20)
+        .y(d => yScale(d.temperature))
+    )
+    .on('mouseover', function (event, d) {
+        const mouseX = xScale.invert(d3.pointer(event)[0] - 20);
+        const bisect = d3.bisector((d: TempDataYear) => d.year).right;
+        const index = bisect(tempData, mouseX);
+
+        const dataPoint = tempData[index];
+        tooltip.html(`${dataPoint.year}: ${String(dataPoint.temperature).slice(0, 6)} °C`)
+            .style('visibility', 'visible');
+    })
+    .on('mousemove', (event) => {
+        tooltip.style('top', event.pageY - 10 + 'px');
+        tooltip.style('left', event.pageX + 10 + 'px');
+    })
+    .on('mouseout', () => {
+        tooltip.style('visibility', 'hidden');
+    });
+
 
             svg.append('g')
             .attr('transform', `translate(20, ${height})`)
@@ -105,7 +121,18 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
             .attr('transform', `translate(20,0)`)              
             .call(yAxis)
             .selectAll('text')
-            .style('font-size', yearValue < 1980 ? '9px' : '11px')                                       
+            .style('font-size', yearValue < 1980 ? '9px' : '11px')       
+            
+            svg.selectAll('.grid-line')
+            .data(yScale.ticks())
+            .enter().append('line')
+            .attr('class', 'grid-line')
+            .attr('x1', 20)
+            .attr('x2', width)
+            .attr('y1', d => yScale(d))
+            .attr('y2', d => yScale(d))
+            .attr('stroke', '#ccc')
+            .attr('stroke-opacity', 0.5);
                     
         
 

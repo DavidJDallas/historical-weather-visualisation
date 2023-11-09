@@ -55,7 +55,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
                                 .range([30, adjustedWidth]);
     
             const yScale = d3.scaleLinear()                             
-                                    .domain([d3.min(tempData.map((element) => element.temperature) as number[]) ?? 0, d3.max(tempData.map((element) => element.temperature *1.2) as number[]) ?? 0])
+                                    .domain([d3.min(tempData.map((element) => element.temperature /1.2) as number[]) ?? 0, d3.max(tempData.map((element) => element.temperature *1.2) as number[]) ?? 0])
                                 .range([height, 75]);
     
             const xAxis = d3.scaleBand()
@@ -124,7 +124,8 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
                     .attr('transform', `translate(30,0)`)              
                     .call(yAxis)
                     .selectAll('text')
-                    .style('font-size', '9px')     
+                    .style('font-size', '9px')    
+                    
             }
         
 
