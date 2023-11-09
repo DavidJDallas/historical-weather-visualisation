@@ -46,3 +46,10 @@
 //Using a lot of inline styles on HTML elements can be hard to manage, and is often easier to use class elements. Use the attr() method to add any HTML attributes to an element, including a class name. The attr() method works the same way as style does. It takes comma-seperated values, and can use a callback function.
 
 //Style vs attr. Both are methods in d3 that do similar things. I've so far been using attr in my code. Both attr and style change the DOM. You can also use CSS, which doesn't modify the DOM. 
+
+//Displaying shapes with SVGs
+
+//When you place a shape into the SVG area, you specify where it goes with x and y co-ordinates. The origin point is (0,0), and this is the upper left hand corner. 
+//Positive values for x push shape to the RIGHT, and positive values for y push the shape DOWN.
+
+// When we initially draw bar charts, it'll be upside-down/inverted. This is because of how SVGs use (x,y) co-ordinates. In SVGs the origin point for the co-ordinates is the upper left hand corner. 
