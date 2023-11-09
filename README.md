@@ -20,3 +20,9 @@ When the user first enters the app, they will have a choice of searching for the
 The user will then be taken to a page where various choices can be made as to how they would like to see the data and what categories they would like to view. 
 
 For workings of more specific features, you can find comments in the places where I believe them to be helpful and in sections of code where I don't consider them to be completely self-explanatory. 
+
+To run tests, run:
+
+``npm run test``
+
+
