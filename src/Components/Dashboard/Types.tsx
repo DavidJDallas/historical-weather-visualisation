@@ -32,5 +32,7 @@ export interface CheckFormProps{
     displayTempByMonthAverage: boolean,
     displayTempBySeasonAverage: boolean,
     setDisplayTempByMonthAverage: (data: boolean) => void,
-    setDisplayTempBySeasonAverage: (data: boolean) => void
+    setDisplayTempBySeasonAverage: (data: boolean) => void,
+    displayTempByYearAverage: boolean,
+    setDisplayTempByYearAverage: (data: boolean) => void,
 }

@@ -3,13 +3,17 @@ import {Form} from 'react-bootstrap';
 
 import { CheckFormProps } from './Types';
 
-const CheckFormTemp = ({displayTempByMonthAverage, displayTempBySeasonAverage, setDisplayTempByMonthAverage, setDisplayTempBySeasonAverage}: CheckFormProps) => {
+const CheckFormTemp = ({displayTempByMonthAverage, displayTempByYearAverage, displayTempBySeasonAverage, setDisplayTempByYearAverage, setDisplayTempByMonthAverage, setDisplayTempBySeasonAverage}: CheckFormProps) => {
 
     const handleChangeTempMonthAverage = (event: any): void => {
         setDisplayTempByMonthAverage(!displayTempByMonthAverage)    
     }
     const handleChangeTempSeasonAverage = (): void => {
         setDisplayTempBySeasonAverage(!displayTempBySeasonAverage)
+    }
+
+    const handleChangeTempYearAverage = ():void => {
+      setDisplayTempByYearAverage(!displayTempByYearAverage)
     }
    
 
@@ -37,7 +41,16 @@ const CheckFormTemp = ({displayTempByMonthAverage, displayTempBySeasonAverage, s
             defaultChecked
             
           />
-        
+             <Form.Check
+            inline = {true}
+            label="Average Temperature by Year"
+            name="group1"
+            type={'checkbox'}
+            id={`inline-${'checkbox'}-1`}
+            onChange={handleChangeTempYearAverage}
+            defaultChecked
+            
+          />
           {/* <Form.Check
             inline = {true}          
             label= 'Amount of Dry Days per Month and Season'

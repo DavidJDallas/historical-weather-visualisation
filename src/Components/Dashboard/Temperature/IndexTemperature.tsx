@@ -14,6 +14,7 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
 
     const [displayTempBySeasonAverage, setDisplayTempBySeasonAverage] = useState<boolean>(true);
     const [displayTempByMonthAverage, setDisplayTempByMonthAverage] = useState<boolean>(true);
+    const [displayTempByYearAverage, setDisplayTempByYearAverage] = useState<boolean>(true);
     const [yearValue, setYearValue] = useState<number>(1942)
     
     return(
@@ -26,6 +27,8 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                     displayTempBySeasonAverage={displayTempBySeasonAverage}
                     setDisplayTempByMonthAverage={setDisplayTempByMonthAverage}
                     setDisplayTempBySeasonAverage={setDisplayTempBySeasonAverage}
+                    displayTempByYearAverage = {displayTempByYearAverage}
+                    setDisplayTempByYearAverage ={setDisplayTempByYearAverage}
                     />
                 </div>
                
@@ -66,14 +69,17 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
             <Row
             style={{height: '500px', marginLeft: '100px'}}
             >
-                <Col>
-                    <TempByYear
-                        dataByYear={dataByYear}
-                        width={800}
-                        height={400}
-                        yearValue={yearValue}
-                    />
-                </Col>
+                {displayTempByYearAverage && 
+                    <Col>
+                        <TempByYear
+                            dataByYear={dataByYear}
+                            width={800}
+                            height={400}
+                            yearValue={yearValue}
+                        />
+                    </Col>
+                }
+                
 
             </Row>
         </Container>       
