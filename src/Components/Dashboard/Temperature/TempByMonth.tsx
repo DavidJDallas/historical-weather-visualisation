@@ -5,6 +5,7 @@ import {interpolateViridis} from 'd3-scale-chromatic'
 import {scaleSequential} from 'd3-scale'
 import { FilteredDataByYear, TempByMonthProps, TempDataMonth } from './Types';
 import LittleSpinner from '../../LittleSpinner';
+import './TempStyling.css'
 
 
 const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) => {
@@ -42,7 +43,6 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
             if(tempData.length>0){  
                 d3.select(chartRef.current).selectAll('*').remove();
                 
-            let adjustedHeight = height-25
             let adjustedWidth = width-30
             
             const colourScale = d3.scaleSequential()
@@ -69,24 +69,17 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
             const svg= d3.select(chartRef.current)
                                 .append('svg')
                                 .attr('width', width)
-                                .attr('height', height+25);
+                                .attr('height', height+200);
 
             //Below removes all tooltips before implementing new ones to avoid tooltips lagging. The d3.selectAll().remove() doesn't cover tooltips since tooltips are added to the body. 
-            d3.selectAll('.tempMonthToolTip').remove();
+            //d3.selectAll('.tempMonthToolTip').remove();
     
             const tooltip = d3.select('body').append('div')
                                 .attr('class', 'tempMonthToolTip')
-                                .style('position', 'absolute')
-                                .style('z-index', '10')
-                                .style('visibility', 'hidden')
-                                .style('background-color', 'white')
-                                .style('border-style', 'solid')
-                                .style('border-width', '2px')
-                                .style('border-color', '#50e991')
-                                .style('padding', '5px')
-                                .style('font-size', '12px');
+                                //styles added in css file
+                                
     
-                svg.selectAll('rect')
+            svg.selectAll('rect')
                         .data(tempData)
                         .enter()
                         .append('rect')
@@ -112,7 +105,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
                        .attr('y', 30)
                        .style('text-anchor', 'middle')
                        .style('font-size', '18px')
-                       .text(`Average MaxTemperature by Month (deg c)`);
+                       .text(`Average Max Temperature by Month (degrees c)`);
                 
                 svg.append('g')
                     .attr('transform', `translate(0, ${height})`)

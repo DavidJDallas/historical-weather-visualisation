@@ -67,6 +67,8 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
                             .attr('width', width)
                             .attr('height', height+200);
 
+        d3.selectAll('.tempMonthToolTip').remove();
+        
         const tooltip = d3.select('body').append('div')
                             .style('position', 'absolute')
                             .style('z-index', '10')
