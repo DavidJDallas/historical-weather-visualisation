@@ -16,3 +16,8 @@ export interface CheckFormRainProps{
     setDisplayRainBySeasonAverage: (data: boolean) => void;
     setDisplayRainByYearAverage: (data: boolean) => void;
 }
+
+export interface RangeSliderRainProps{
+    yearValue: number, 
+    setYearValue: (data: any) => void
+}
