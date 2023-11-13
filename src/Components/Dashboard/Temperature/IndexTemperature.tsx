@@ -2,7 +2,7 @@ import React from 'react';
 import {TemperatureProps} from './Types'
 import {useState, useEffect} from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
-import CheckForm from '../CheckForm';
+import CheckForm from './CheckFormTemperature';
 import RangeSliderTemp from './RangeSliderTemp';
 import TempByMonth from './TempByMonth';
 import TempBySeason from './TempBySeason';

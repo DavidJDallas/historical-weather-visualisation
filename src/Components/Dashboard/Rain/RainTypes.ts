@@ -7,3 +7,7 @@ export interface IndexProps{
     dataByMonth: GroupedDataByMonth[] | [],
     dataByYear: GroupedDataByYear[] | []
 }
+
+export interface CheckFormRainProps{
+    
+}

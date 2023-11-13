@@ -1,7 +1,7 @@
 import * as React from 'react';
 import {Form} from 'react-bootstrap';
 
-import { CheckFormProps } from './Types';
+import { CheckFormProps } from '../Types';
 
 const CheckFormTemp = ({displayTempByMonthAverage, displayTempByYearAverage, displayTempBySeasonAverage, setDisplayTempByYearAverage, setDisplayTempByMonthAverage, setDisplayTempBySeasonAverage}: CheckFormProps) => {
 
