@@ -8,7 +8,6 @@ import { useState, useEffect } from 'react';
 import {Route, Routes, createBrowserRouter, createRoutesFromElements, Outlet} from 'react-router-dom'
 import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
-import Wind from './Wind/IndexWind';
 import { group } from 'console';
 import './Dashboard.css'
 
