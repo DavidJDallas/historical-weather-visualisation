@@ -9,5 +9,10 @@ export interface IndexProps{
 }
 
 export interface CheckFormRainProps{
-    
+    displayRainByMonthAverage: boolean,
+    displayRainBySeasonAverage: boolean,
+    displayRainByYearAverage: boolean,
+    setDisplayRainByMonthAverage: (data: boolean) => void;
+    setDisplayRainBySeasonAverage: (data: boolean) => void;
+    setDisplayRainByYearAverage: (data: boolean) => void;
 }

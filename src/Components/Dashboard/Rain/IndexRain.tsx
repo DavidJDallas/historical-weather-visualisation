@@ -14,8 +14,21 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
 
 
     return(<>
-    <h1>Rain</h1>
-    <Container>
+   
+    <Container fluid={true}>
+    <Row >
+                <div className= 'checkbox-container'>
+                     <CheckFormRain
+                    displayRainByMonthAverage={displayRainByMonthAverage}
+                    displayRainBySeasonAverage={displayRainBySeasonAverage}
+                    setDisplayRainByMonthAverage={setDisplayRainByMonthAverage}
+                    setDisplayRainBySeasonAverage={setDisplayRainBySeasonAverage}
+                    displayRainByYearAverage = {displayRainByYearAverage}
+                    setDisplayRainByYearAverage ={setDisplayRainByYearAverage}
+                    />
+                </div>
+               
+            </Row>
         <RainByMonth/>
 
     </Container>
