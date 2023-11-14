@@ -39,12 +39,16 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
 
 
             </Row>
-        <RainByMonth
-            dataByMonth={dataByMonth}
-            width={400}
-            height={250}
-            yearValue={yearValue}
-        />
+            <Row
+            style={{height: '300px'}}>
+                <RainByMonth
+                            dataByMonth={dataByMonth}
+                            width={400}
+                            height={250}
+                            yearValue={yearValue}
+                        />
+            </Row>
+      
         
 
     </Container>
