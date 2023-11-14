@@ -9,7 +9,6 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
     const [tempData, setTempData] = useState<TempDataSeason[] | []>([])
     const chartRef = useRef<SVGSVGElement | null>(null);
 
-    console.log(dataBySeason);
 
     useEffect(() => {
         const filteredDataBySeason: FilteredDataBySeason[] = dataBySeason.map((season) => {
@@ -29,7 +28,6 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
        setTempData(calculateMean);
    }, [dataBySeason, yearValue]);
 
-   console.log(tempData)
 
 
    useEffect((): void => {                 

@@ -16,8 +16,7 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
             //Nullish operator used as d3.mean() passes on types of Number | undefined and causes problems later on in the code. This handles that and allows for just number type .
             temperature: d3.mean(year.data.map((element) => Number(element.temperatureMax))) ?? 0,
         }))
-        console.log(filteredDataByYear)
-        console.log(calculateMeanByYear)
+      
         
 
         setTempData(calculateMeanByYear);
@@ -80,7 +79,7 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
                             .style('font-size', '12px');
 
         // svg.selectAll('')
-        console.log(tempData.map(d => yScale(d.temperature)));
+      
 
 
 

@@ -24,8 +24,6 @@ const App: React.FC = (): JSX.Element => {
   const getGeoLocationData = async () => {  
       setLoading(true);
     try{
-      console.log(place);
-      console.log(postcode);
         const apiResponse = await getGeoLocation(postcode || place) as LatAndLong;
         setLatAndLong({
             latitude: apiResponse.latitude,

@@ -102,9 +102,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
     }, [formattedData])
 
     const groupDataBySeason = (data: FormattedData[]): GroupedDataBySeason[] => {
-    
-    console.log(groupDataByMonth(data));
-    console.log('called');
+  
 
     const groupedByMonth = groupDataByMonth(data);
     

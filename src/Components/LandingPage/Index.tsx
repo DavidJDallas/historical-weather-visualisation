@@ -18,7 +18,7 @@ const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps) =>
   }
 
   const handlePlacesubmit = (event: React.SyntheticEvent) => {
-    console.log(event);
+   
     event.preventDefault();
     getGeoLocationData();
   }
