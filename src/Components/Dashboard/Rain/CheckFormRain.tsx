@@ -22,7 +22,7 @@ const CheckFormRain = ({displayRainByMonthAverage, displayRainBySeasonAverage, d
         <div className="mb-3">  
         <Form.Check
             inline = {true}
-            label="Average Temperature By Season"
+            label="Average Rainfall By Season"
             name="group1"
             type={'checkbox'}
             id={`inline-${'checkbox'}-2`}
@@ -32,7 +32,7 @@ const CheckFormRain = ({displayRainByMonthAverage, displayRainBySeasonAverage, d
           
           <Form.Check
             inline = {true}
-            label="Average Temperature by Month"
+            label="Average Rainfall by Month"
             name="group1"
             type={'checkbox'}
             id={`inline-${'checkbox'}-1`}
@@ -42,7 +42,7 @@ const CheckFormRain = ({displayRainByMonthAverage, displayRainBySeasonAverage, d
           />
              <Form.Check
             inline = {true}
-            label="Average Temperature by Year"
+            label="Average Rainfall by Year"
             name="group1"
             type={'checkbox'}
             id={`inline-${'checkbox'}-1`}
