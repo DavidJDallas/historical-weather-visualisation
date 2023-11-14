@@ -5,6 +5,7 @@ import { Container, Row, Col } from 'react-bootstrap';
 import {useState, useEffect} from 'react';
 import CheckFormRain from './CheckFormRain';
 import RangeSliderRain from './RangeSliderRain';
+import RainBySeason from './RainBySeason';
 
 const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps): JSX.Element => {
 
@@ -47,6 +48,17 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
                             height={250}
                             yearValue={yearValue}
                         />
+            </Row>
+            <Row
+            style={{height: '300px'}}
+            >
+                <RainBySeason
+                dataBySeason={dataBySeason}
+                yearValue={yearValue}
+                width={400}
+                height={250}
+                />
+
             </Row>
       
         
