@@ -12,7 +12,7 @@ const RainByMonth = ({dataByMonth, width, height, yearValue}: RainByMonthProps) 
 
     useEffect(() => {
         const filteredDataByYear: FilteredDataByMonth[] = filterDataByYear(dataByMonth, yearValue);
-        
+
        const calculateMean = filteredDataByYear.map((object) => ({
                month: object.month,
                rain: d3.mean((object.data.map((element) => element.rain)))
@@ -32,7 +32,7 @@ const RainByMonth = ({dataByMonth, width, height, yearValue}: RainByMonthProps) 
     const colourScale = d3.scaleSequential()
                         .domain([0, d3.max(rainData.map((element) => element.rain))])
 
-    const interpolatorColourFunction = d3.interpolateRgb('rgba(45,85,255,0.1', 'rgba(45,85,255,1)')
+    const interpolatorColourFunction = d3.interpolateRgb('#77ccff', '#0066ff')
 
     const xScale = d3.scaleLinear()
                         .domain([0, rainData.length])
