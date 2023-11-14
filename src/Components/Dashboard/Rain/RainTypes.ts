@@ -21,3 +21,17 @@ export interface RangeSliderRainProps{
     yearValue: number, 
     setYearValue: (data: any) => void
 }
+
+export interface RainByMonthProps{
+    dataByMonth: GroupedDataByMonth[],
+    width: number,
+    height: number,
+    yearValue: number,
+}
+
+//Rain By Month
+
+export interface RainDataMonth{
+    month: string,
+    rain: number | any
+}

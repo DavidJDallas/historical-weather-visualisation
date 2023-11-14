@@ -15,9 +15,7 @@ const RangeSliderRain = ({yearValue, setYearValue}: RangeSliderRainProps) => {
 
     const handleSliderChange = (event: any) => {
         setYearValue(event.target.value)
-    }
-
-    
+    }   
 
 
     return(
