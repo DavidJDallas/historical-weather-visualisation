@@ -12,10 +12,11 @@ export interface RangeSliderProps {
     setYearValue: (value: number) => void
 }
 
-export interface FilteredDataByYear{
+export interface FilteredDataByMonth{
     month: string,
     data: FormattedData[]
 }
+
 
 
 //TempByMonth

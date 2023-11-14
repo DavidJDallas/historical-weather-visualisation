@@ -3,6 +3,7 @@ import * as d3 from 'd3';
 import { RainDataSeasonProps, RainDataSeason } from './RainTypes';
 import { useEffect, useState, useRef } from 'react';
 import { FilteredDataBySeason } from '../Temperature/Types';
+import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 
 const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonProps) => {
 
@@ -10,16 +11,8 @@ const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonPr
     const chartRef = useRef<SVGSVGElement | null>(null);
 
     useEffect(() => {
-        const filteredDataBySeason: FilteredDataBySeason[] = dataBySeason.map((season) => {
-            return {
-               ...season,
-               data: season.data.filter((day) => {
-                   let dateObj = new Date(day.date);
-                   let year = dateObj.getFullYear();
-                   return year >= yearValue;
-               })
-           };
-       })
+        const filteredDataBySeason: FilteredDataBySeason[] = filterDataByYear(dataBySeason, yearValue);
+        
        const calculateMean = filteredDataBySeason.map((object) => ({
                season: object.season,
              rain: d3.mean((object.data.map((element: any) => element.rain)))

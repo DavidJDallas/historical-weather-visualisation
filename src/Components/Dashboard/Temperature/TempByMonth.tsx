@@ -3,7 +3,7 @@ import {useState, useEffect, useRef} from 'react';
 import * as d3 from 'd3'
 import {interpolateViridis} from 'd3-scale-chromatic'
 import {scaleSequential} from 'd3-scale'
-import { FilteredDataByYear, TempByMonthProps, TempDataMonth } from './Types';
+import { FilteredDataByMonth, TempByMonthProps, TempDataMonth } from './Types';
 import LittleSpinner from '../../LittleSpinner';
 import './TempStyling.css'
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
@@ -18,7 +18,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
 
   
     useEffect(() => {
-         const filteredDataByYear: FilteredDataByYear[] = filterDataByYear(dataByMonth, yearValue);
+         const filteredDataByYear: FilteredDataByMonth[] = filterDataByYear(dataByMonth, yearValue);
 
         const calculateMean = filteredDataByYear.map((object) => ({
                 month: object.month,

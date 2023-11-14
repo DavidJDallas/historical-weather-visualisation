@@ -1,6 +1,5 @@
-import { FilteredDataByYear } from "../Components/Dashboard/Temperature/Types"
 
-export const filterDataByYear = (data: any, yearValue: number): FilteredDataByYear[] => {
+export const filterDataByYear = (data: any, yearValue: number) => {
 
     return data.map((element: any) => {
         return {

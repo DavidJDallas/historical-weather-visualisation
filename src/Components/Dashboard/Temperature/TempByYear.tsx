@@ -1,6 +1,7 @@
 import { TempByYearProps, TempDataYear } from "./Types";
 import {useEffect, useState, useRef} from 'react';
 import * as d3 from 'd3';
+import { GroupedDataByYear } from "../Types";
 
 const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => {
 
@@ -10,13 +11,12 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
     
     useEffect(() => {
 
-        const filteredDataByYear = dataByYear.filter(year => year.year >= yearValue)
+        const filteredDataByYear: GroupedDataByYear[] = dataByYear.filter(year => year.year >= yearValue)
         const calculateMeanByYear = filteredDataByYear.map((year) => ({
             year: year.year,
             //Nullish operator used as d3.mean() passes on types of Number | undefined and causes problems later on in the code. This handles that and allows for just number type .
             temperature: d3.mean(year.data.map((element) => Number(element.temperatureMax))) ?? 0,
-        }))
-      
+        })) 
         
 
         setTempData(calculateMeanByYear);
@@ -53,11 +53,8 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
                         .padding(0);
         
         const yAxis = d3.axisLeft(yScale)
-                        .tickFormat(d => d.toString().slice(0,3)); 
-        
+                        .tickFormat(d => d.toString().slice(0,3));         
       
-
-        const interpolatorColourFunction = d3.interpolateRgb('blue', 'red')
 
         const svg= d3.select(chartRef.current)
                             .append('svg')
