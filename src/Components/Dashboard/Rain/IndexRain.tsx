@@ -6,6 +6,7 @@ import {useState, useEffect} from 'react';
 import CheckFormRain from './CheckFormRain';
 import RangeSliderRain from './RangeSliderRain';
 import RainBySeason from './RainBySeason';
+import RainByYear from './RainByYear';
 
 const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps): JSX.Element => {
 
@@ -40,6 +41,7 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
 
 
             </Row>
+            {displayRainByMonthAverage || displayRainBySeasonAverage ?  
             <Row
             style={{height: '300px'}}>
                 {displayRainByMonthAverage &&    
@@ -63,11 +65,14 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
                     }
                
                 
-            </Row>
+            </Row> 
+            : null    
+        }
+          
             <Row
-            style={{height: '300px'}}
+            style={{height: '500px'}}
             >
-                
+                <RainByYear/>
 
             </Row>
       

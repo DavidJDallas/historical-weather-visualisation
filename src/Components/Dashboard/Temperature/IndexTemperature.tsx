@@ -39,33 +39,36 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                     setYearValue = {setYearValue}
                 />
             </Row>
-            <Row
-            style={{height: '300px'}}
-            >
-               
-                    {displayTempByMonthAverage &&   
+            {displayTempByMonthAverage || displayTempBySeasonAverage ?
+                <Row
+                style={{height: '300px'}}
+                >
+                
+                        {displayTempByMonthAverage &&   
+                        <Col>
+                            <TempByMonth
+                                dataByMonth={dataByMonth}
+                                width={400}
+                                height={250}
+                                yearValue={yearValue}
+                            /> 
+                        </Col>
+                        }
+                    
+                {displayTempBySeasonAverage && 
                     <Col>
-                        <TempByMonth
-                            dataByMonth={dataByMonth}
-                            width={400}
-                            height={250}
-                            yearValue={yearValue}
-                        /> 
+                    
+                    <TempBySeason
+                        dataBySeason={dataBySeason}
+                        width={400}
+                        height={250}
+                        yearValue={yearValue}                    
+                    /> 
                     </Col>
                     }
-                   
-               {displayTempBySeasonAverage && 
-                <Col>
-                
-                <TempBySeason
-                    dataBySeason={dataBySeason}
-                    width={400}
-                    height={250}
-                    yearValue={yearValue}                    
-                /> 
-                </Col>
-                }
-            </Row>
+                </Row>
+            : null}
+            
             <Row
             style={{height: '500px', marginLeft: '100px'}}
             >
