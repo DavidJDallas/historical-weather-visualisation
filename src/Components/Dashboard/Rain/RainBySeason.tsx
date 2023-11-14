@@ -96,7 +96,7 @@ const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonPr
                .attr('y', 30)
                .style('text-anchor', 'middle')
                .style('font-size', '18px')
-               .text(`Average Rainfall per day (mm)`);
+               .text(`Average Rainfall per day By Season(mm)`);
         
         svg.append('g')
             .attr('transform', `translate(0, ${height})`)
