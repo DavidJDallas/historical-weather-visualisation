@@ -11,10 +11,10 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
 
 
     useEffect(() => {
-        const filteredDataBySeason: FilteredDataBySeason[] = dataBySeason.map((season) => {
+        const filteredDataBySeason: FilteredDataBySeason[] = dataBySeason.map((element) => {
             return {
-               ...season,
-               data: season.data.filter((day) => {
+               ...element,
+               data: element.data.filter((day:any) => {
                    let dateObj = new Date(day.date);
                    let year = dateObj.getFullYear();
                    return year >= yearValue;
