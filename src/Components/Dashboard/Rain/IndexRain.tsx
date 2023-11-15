@@ -71,15 +71,18 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
         }
           {displayRainByYearAverage &&  
           <Row
-            style={{height: '500px'}}
+            style={{height: '500px', marginLeft: '100px'}}
             >
-                <RainByYear
+                <Col> 
+                 <RainByYear
                 yearValue={yearValue}
                 width={800}
                 height={400}
                 dataByYear={dataByYear}
 
                 />
+                </Col>
+              
 
             </Row>
       }
