@@ -27,7 +27,6 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
 
         let adjustedWidth = width-70;
 
-
         const xScale = d3.scaleLinear<number>()
                             .domain([d3.min(tempData, d=> d.year) as number ??0, d3.max(tempData, d=> d.year) as number ?? 0])
                             .range([0, adjustedWidth]);
