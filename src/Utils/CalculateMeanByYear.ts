@@ -1,6 +1,5 @@
 import * as d3 from 'd3';
 import { GroupedDataByYear } from '../Components/Dashboard/Types';
-import { TempDataYear } from '../Components/Dashboard/Temperature/Types';
 
 export const calculateMeanByYear = (dataByYear: GroupedDataByYear[], yearValue: number, variable: string) => {
     

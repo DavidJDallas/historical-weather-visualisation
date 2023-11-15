@@ -2,6 +2,7 @@ import { TempByYearProps, TempDataYear } from "./Types";
 import {useEffect, useState, useRef} from 'react';
 import * as d3 from 'd3';
 import { GroupedDataByYear } from "../Types";
+import { calculateMeanByYear } from "../../../Utils/CalculateMeanByYear";
 
 const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => {
 
@@ -11,15 +12,9 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
     
     useEffect(() => {
 
-        const filteredDataByYear: GroupedDataByYear[] = dataByYear.filter(year => year.year >= yearValue)
-        const calculateMeanByYear = filteredDataByYear.map((year) => ({
-            year: year.year,
-            //Nullish operator used as d3.mean() passes on types of Number | undefined and causes problems later on in the code. This handles that and allows for just number type .
-            temperature: d3.mean(year.data.map((element) => Number(element.temperatureMax))) ?? 0,
-        })) 
-        
+        const calculatedMean = calculateMeanByYear(dataByYear, yearValue, 'temperature');
+        setTempData(calculatedMean);
 
-        setTempData(calculateMeanByYear);
     }, [dataByYear, yearValue])
 
 
