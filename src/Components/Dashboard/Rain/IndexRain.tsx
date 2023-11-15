@@ -72,7 +72,13 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
             <Row
             style={{height: '500px'}}
             >
-                <RainByYear/>
+                <RainByYear
+                yearValue={yearValue}
+                width={800}
+                height={400}
+                dataByYear={dataByYear}
+
+                />
 
             </Row>
       

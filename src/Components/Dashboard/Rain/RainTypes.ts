@@ -49,3 +49,17 @@ export interface RainDataSeason{
     season: string,
     rain: number | any
 }
+
+//Rain By Year
+
+export interface RainDataYearProps{
+    yearValue: number,
+    width: number,
+    height: number,
+    dataByYear: GroupedDataByYear[]
+}
+
+export interface RainDataYear{
+    year: number,
+    [variable: string]: number
+}
