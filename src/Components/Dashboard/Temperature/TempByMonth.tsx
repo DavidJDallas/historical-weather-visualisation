@@ -1,10 +1,7 @@
 import * as React from 'react';
 import {useState, useEffect, useRef} from 'react';
-import * as d3 from 'd3'
-import {interpolateViridis} from 'd3-scale-chromatic'
-import {scaleSequential} from 'd3-scale'
+import * as d3 from 'd3';
 import { FilteredDataByMonth, TempByMonthProps, TempDataMonth } from './Types';
-import LittleSpinner from '../../LittleSpinner';
 import './TempStyling.css'
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 
@@ -29,8 +26,7 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
 
    
 
-    useEffect((): void => {  
-        
+    useEffect((): void => {         
             
 
             if(tempData.length>0){  
