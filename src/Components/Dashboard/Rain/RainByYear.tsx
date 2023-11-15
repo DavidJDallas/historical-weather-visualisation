@@ -4,6 +4,7 @@ import { RainDataYear, RainDataYearProps } from './RainTypes';
 import { GroupedDataByYear } from '../Types';
 import * as d3 from 'd3';
 import { calculateMeanByYear } from '../../../Utils/CalculateMeanByYear';
+import { makeListYearSelective } from '../../../Utils/MakeListYearSelective';
 
 
 const RainByYear = ({yearValue, width, height, dataByYear}: RainDataYearProps) => {
@@ -16,6 +17,8 @@ const RainByYear = ({yearValue, width, height, dataByYear}: RainDataYearProps) =
         setRainData(meanByYear);
 
     }, [dataByYear, yearValue])
+
+    const selectiveListYear = makeListYearSelective(rainData, yearValue);
 
 
     return(
