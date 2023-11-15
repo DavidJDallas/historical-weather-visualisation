@@ -3,6 +3,7 @@ import {useEffect, useState, useRef} from 'react';
 import * as d3 from 'd3';
 import { GroupedDataByYear } from "../Types";
 import { calculateMeanByYear } from "../../../Utils/CalculateMeanByYear";
+import { makeListYearSelective } from "../../../Utils/MakeListYearSelective";
 
 const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => {
 
@@ -18,9 +19,7 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => 
     }, [dataByYear, yearValue])
 
 
-    let selectiveListYear = tempData                    
-                    .filter(element => yearValue > 1976 ? element.year % 3 === 0 : element.year % 4 ===0)
-                    .map(element => element.year.toString())
+    let selectiveListYear = makeListYearSelective(tempData, yearValue);
 
     useEffect(() => {
 
