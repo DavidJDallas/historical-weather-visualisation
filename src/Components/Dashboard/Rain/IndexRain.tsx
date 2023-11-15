@@ -17,6 +17,7 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
 
 
 
+    console.log(displayRainByYearAverage)
     return(<>
    
     <Container fluid={true}>
@@ -68,8 +69,8 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
             </Row> 
             : null    
         }
-          
-            <Row
+          {displayRainByYearAverage &&  
+          <Row
             style={{height: '500px'}}
             >
                 <RainByYear
@@ -81,7 +82,8 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
                 />
 
             </Row>
-      
+      }
+           
         
 
     </Container>

@@ -114,7 +114,7 @@ const RainByYear = ({yearValue, width, height, dataByYear}: RainDataYearProps) =
             .selectAll('text')
             .style('font-size', yearValue < 1980 ? '9px' : '11px')       
             
-            svg.selectAll('.grid-line')
+        svg.selectAll('.grid-line')
             .data(yScale.ticks())
             .enter().append('line')
             .attr('class', 'grid-line')
