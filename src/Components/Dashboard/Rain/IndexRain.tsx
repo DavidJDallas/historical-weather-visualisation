@@ -15,9 +15,6 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
     const [displayRainByYearAverage, setDisplayRainByYearAverage] = useState<boolean>(true);
     const [yearValue, setYearValue] = useState<number>(1942)
 
-
-
-    console.log(displayRainByYearAverage)
     return(<>
    
     <Container fluid={true}>
@@ -81,18 +78,9 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
                         dataByYear={dataByYear}
                     />
                 </Col>
-              
-
             </Row>
       }
-           
-        
-
     </Container>
-
-    
-
-
     </>)
 }
 

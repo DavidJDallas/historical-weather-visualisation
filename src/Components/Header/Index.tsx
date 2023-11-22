@@ -12,13 +12,13 @@ const Header = ({place, postcode, formSubmitted}: HeaderProps) => {
 
     return(<>
     <div className='header'>
-    {
-        formSubmitted ? 
-        <h1>Weather Data for {formattedPlace || formattedPostcode}</h1>    
-        :
-        <h1>Explore Trends in Weather Across Custom Timeframes </h1>
-    }      
- </div>
+        {
+            formSubmitted ? 
+            <h1>Weather Data for {formattedPlace || formattedPostcode}</h1>    
+            :
+            <h1>Explore Trends in Weather Across Custom Timeframes </h1>
+        }      
+    </div>
     </>)
 }
 

@@ -1,11 +1,7 @@
 import * as React from 'react';
 import {Form} from 'react-bootstrap/';
-import { useContext} from 'react';
-import {YearContext} from '../../../Context/Context';
-import {YearContextType} from '../../../Context/ContextTypes';
 import './TempStyling.css'
 import { MDBRange } from 'mdb-react-ui-kit';
-import { useState, useEffect } from 'react';
 import { RangeSliderProps } from './Types';
 
 const RangeSliderTemp = ({yearValue, setYearValue}: RangeSliderProps) => {   
@@ -18,9 +14,7 @@ const RangeSliderTemp = ({yearValue, setYearValue}: RangeSliderProps) => {
 
     const handleSliderChange = (event: any) => {
         setYearValue(event.target.value)
-    }
-
-    
+    }   
 
 
     return(

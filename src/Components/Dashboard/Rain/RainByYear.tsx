@@ -19,9 +19,6 @@ const RainByYear = ({yearValue, width, height, dataByYear}: RainDataYearProps) =
 
     const selectiveListYear = makeListYearSelective(rainData, yearValue);
 
-
-    console.log(rainData)
-
     useEffect(() => {
 
         d3.select(chartRef.current).selectAll('*').remove();
