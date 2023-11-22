@@ -2,7 +2,7 @@ import React from 'react';
 import { IndexProps } from './RainTypes';
 import RainByMonth from './RainByMonth';
 import { Container, Row, Col } from 'react-bootstrap';
-import {useState, useEffect} from 'react';
+import {useState} from 'react';
 import CheckFormRain from './CheckFormRain';
 import RangeSliderRain from './RangeSliderRain';
 import RainBySeason from './RainBySeason';
@@ -24,12 +24,12 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
     <Row >
                 <div className= 'checkbox-container'>
                      <CheckFormRain
-                    displayRainByMonthAverage={displayRainByMonthAverage}
-                    displayRainBySeasonAverage={displayRainBySeasonAverage}
-                    setDisplayRainByMonthAverage={setDisplayRainByMonthAverage}
-                    setDisplayRainBySeasonAverage={setDisplayRainBySeasonAverage}
-                    displayRainByYearAverage = {displayRainByYearAverage}
-                    setDisplayRainByYearAverage ={setDisplayRainByYearAverage}
+                        displayRainByMonthAverage={displayRainByMonthAverage}
+                        displayRainBySeasonAverage={displayRainBySeasonAverage}
+                        setDisplayRainByMonthAverage={setDisplayRainByMonthAverage}
+                        setDisplayRainBySeasonAverage={setDisplayRainBySeasonAverage}
+                        displayRainByYearAverage = {displayRainByYearAverage}
+                        setDisplayRainByYearAverage ={setDisplayRainByYearAverage}
                     />
                 </div>
                
@@ -74,13 +74,12 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
             style={{height: '500px', marginLeft: '100px'}}
             >
                 <Col> 
-                 <RainByYear
-                yearValue={yearValue}
-                width={800}
-                height={400}
-                dataByYear={dataByYear}
-
-                />
+                    <RainByYear
+                        yearValue={yearValue}
+                        width={800}
+                        height={400}
+                        dataByYear={dataByYear}
+                    />
                 </Col>
               
 

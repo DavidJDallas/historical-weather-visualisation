@@ -1,12 +1,7 @@
 import React from 'react';
-import Box from '@mui/material/Box';
-import TextField from '@mui/material/TextField';
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container } from 'react-bootstrap';
 import './LandingPage.css';
-import Stack from '@mui/material/Stack';
-import Button from '@mui/material/Button';
 import LandingPageSearch from './Search';
-import {useState} from 'react';
 import { IndexProps } from './LandingPageTypes';
 
 const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps) => {

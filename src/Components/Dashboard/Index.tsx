@@ -5,10 +5,9 @@ import * as d3 from 'd3';
 import {DailyData} from '../../Services/ServicesTypes'
 import { FormattedData } from './Types';
 import { useState, useEffect } from 'react';
-import {Route, Routes, createBrowserRouter, createRoutesFromElements, Outlet} from 'react-router-dom'
+import {Route, Routes} from 'react-router-dom'
 import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
-import { group } from 'console';
 import './Dashboard.css'
 
 const MainDashboard = ({weatherData}: MainDashboardProps) => {

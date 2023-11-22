@@ -1,7 +1,6 @@
 import { TempByYearProps, TempDataYear } from "./Types";
 import {useEffect, useState, useRef} from 'react';
 import * as d3 from 'd3';
-import { GroupedDataByYear } from "../Types";
 import { calculateMeanByYear } from "../../../Utils/CalculateMeanByYear";
 import { makeListYearSelective } from "../../../Utils/MakeListYearSelective";
 

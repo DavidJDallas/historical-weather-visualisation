@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {useState, useEffect, useRef} from 'react';
 import { RainDataYear, RainDataYearProps } from './RainTypes';
-import { GroupedDataByYear } from '../Types';
 import * as d3 from 'd3';
 import { calculateMeanByYear } from '../../../Utils/CalculateMeanByYear';
 import { makeListYearSelective } from '../../../Utils/MakeListYearSelective';

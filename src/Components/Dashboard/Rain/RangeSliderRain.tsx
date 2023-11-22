@@ -1,7 +1,6 @@
 import * as React from 'react';
 import {Form} from 'react-bootstrap/';
 import { MDBRange } from 'mdb-react-ui-kit';
-import { useState, useEffect } from 'react';
 import { RangeSliderRainProps } from './RainTypes';
 
 
