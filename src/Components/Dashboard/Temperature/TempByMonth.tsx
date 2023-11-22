@@ -23,7 +23,6 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) 
             }))
         setTempData(calculateMean);
     }, [dataByMonth, yearValue]);
-
    
 
     useEffect((): void => {         
