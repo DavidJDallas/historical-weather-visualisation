@@ -5,7 +5,6 @@ import TextField from '@mui/material/TextField';
 
 const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, setPostcode}: SearchFormProps): JSX.Element => {
   
-
     const handleTextChange = (event: React.KeyboardEvent) => {
         if(event.keyCode === 13 || event.which === 13){
             event.preventDefault()
@@ -13,7 +12,6 @@ const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, se
         } 
     };
     
-
     return(
     <>
         <Box
@@ -24,8 +22,6 @@ const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, se
           noValidate
           autoComplete="off"
       >
-
-   
       <TextField
          onSubmit={handlePostcodeSubmit} 
          onChange={(event) =>setPostcode(event.target.value)}
@@ -40,9 +36,6 @@ const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, se
          style={{width: '300px'}}
          id="standard-basic" label="Enter Place" variant="standard" 
       />    
-
-      
-      
     </Box>
 
   </>

@@ -10,13 +10,11 @@ import {
     MDBNavbarLink,
   } from 'mdb-react-ui-kit'; 
 
-  import { NavBarProps } from './Types';
-
+import { NavBarProps } from './Types';
 
 const NavBar = ({weatherTypeSelected, setWeatherTypeSelected}: NavBarProps): JSX.Element => {
       
 
-    console.log(weatherTypeSelected)
     return(
         <>
         <MDBNavbar expand='lg' light >
