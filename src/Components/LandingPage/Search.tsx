@@ -3,7 +3,7 @@ import { SearchFormProps } from './LandingPageTypes';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
 
-const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, setPostcode}: SearchFormProps) => {
+const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, setPostcode}: SearchFormProps): JSX.Element => {
   
 
     const handleTextChange = (event: React.KeyboardEvent) => {

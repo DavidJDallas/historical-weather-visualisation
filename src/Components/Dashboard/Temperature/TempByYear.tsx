@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { calculateMeanByYear } from "../../../Utils/CalculateMeanByYear";
 import { makeListYearSelective } from "../../../Utils/MakeListYearSelective";
 
-const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps) => {
+const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps): JSX.Element => {
 
 
     const [tempData, setTempData] = useState< TempDataYear[]>([]);

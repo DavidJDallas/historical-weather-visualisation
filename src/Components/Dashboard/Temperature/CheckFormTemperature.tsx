@@ -3,7 +3,14 @@ import {Form} from 'react-bootstrap';
 
 import { CheckFormProps } from '../Types';
 
-const CheckFormTemp = ({displayTempByMonthAverage, displayTempByYearAverage, displayTempBySeasonAverage, setDisplayTempByYearAverage, setDisplayTempByMonthAverage, setDisplayTempBySeasonAverage}: CheckFormProps) => {
+const CheckFormTemp = ({
+    displayTempByMonthAverage, 
+    displayTempByYearAverage, 
+    displayTempBySeasonAverage, 
+    setDisplayTempByYearAverage, 
+    setDisplayTempByMonthAverage, 
+    setDisplayTempBySeasonAverage
+}: CheckFormProps): JSX.Element => {
 
     const handleChangeTempMonthAverage = (event: any): void => {
         setDisplayTempByMonthAverage(!displayTempByMonthAverage)    

@@ -4,8 +4,7 @@ import './LandingPage.css';
 import LandingPageSearch from './Search';
 import { IndexProps } from './LandingPageTypes';
 
-const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps) => {
-
+const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps): JSX.Element => {
   
   const handlePostcodeSubmit = (event: React.SyntheticEvent) => {
     event.preventDefault();

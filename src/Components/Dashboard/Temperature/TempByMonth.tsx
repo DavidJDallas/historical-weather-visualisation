@@ -6,7 +6,7 @@ import './TempStyling.css'
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 
 
-const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps) => {
+const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps): JSX.Element => {
 
     const [tempData, setTempData] = useState< TempDataMonth[] | []>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);

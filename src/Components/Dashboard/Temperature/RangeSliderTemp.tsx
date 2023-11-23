@@ -4,7 +4,7 @@ import './TempStyling.css'
 import { MDBRange } from 'mdb-react-ui-kit';
 import { RangeSliderProps } from './Types';
 
-const RangeSliderTemp = ({yearValue, setYearValue}: RangeSliderProps) => {   
+const RangeSliderTemp = ({yearValue, setYearValue}: RangeSliderProps): JSX.Element => {   
 
 
     let years = [];

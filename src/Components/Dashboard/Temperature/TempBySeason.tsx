@@ -5,7 +5,7 @@ import {useState, useEffect, useRef} from 'react';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 
 
-const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProps) => {
+const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProps): JSX.Element => {
 
     const [tempData, setTempData] = useState<TempDataSeason[] | []>([])
     const chartRef = useRef<SVGSVGElement | null>(null);

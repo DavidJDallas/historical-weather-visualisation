@@ -9,7 +9,7 @@ import TempBySeason from './TempBySeason';
 import './TempStyling.css'
 import TempByYear from './TempByYear';
 
-const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: TemperatureProps) => {
+const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: TemperatureProps): JSX.Element => {
 
     const [displayTempBySeasonAverage, setDisplayTempBySeasonAverage] = useState<boolean>(true);
     const [displayTempByMonthAverage, setDisplayTempByMonthAverage] = useState<boolean>(true);

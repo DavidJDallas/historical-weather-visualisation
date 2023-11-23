@@ -2,7 +2,7 @@ import React from 'react';
 import {HeaderProps} from './Types';
 import './Header.css'
 
-const Header = ({place, postcode, formSubmitted}: HeaderProps) => {    
+const Header = ({place, postcode, formSubmitted}: HeaderProps): JSX.Element => {    
 
 
     const formattedPostcode: string | undefined = postcode ? postcode.toUpperCase() : undefined;

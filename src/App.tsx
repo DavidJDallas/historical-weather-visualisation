@@ -1,4 +1,4 @@
-import React, { ReactNode } from 'react';
+import React from 'react';
 import { getGeoLocation, getHistoricalWeatherData } from './Services/APICalls';
 import LandingPage from './Components/LandingPage/Index';
 import Header from './Components/Header/Index';
