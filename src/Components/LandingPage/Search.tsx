@@ -12,6 +12,7 @@ const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, se
             handlePostcodeSubmit(event)
         } 
     };
+    ///Adding comment in to check git
 
     return(
     <>
