@@ -5,13 +5,9 @@ import './Dashboard.css'
 import {
     MDBContainer,
     MDBNavbar,
-    MDBNavbarBrand,
-    MDBNavbarToggler,
     MDBNavbarNav,
     MDBNavbarItem,
     MDBNavbarLink,
-    MDBCollapse,
-    MDBIcon
   } from 'mdb-react-ui-kit'; 
 
   import { NavBarProps } from './Types';
@@ -23,8 +19,6 @@ const NavBar = ({weatherTypeSelected, setWeatherTypeSelected}: NavBarProps): JSX
     console.log(weatherTypeSelected)
     return(
         <>
-  
-        
         <MDBNavbar expand='lg' light >
            
             <MDBContainer fluid>

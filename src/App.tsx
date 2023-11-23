@@ -2,12 +2,11 @@ import React, { ReactNode } from 'react';
 import { getGeoLocation, getHistoricalWeatherData } from './Services/APICalls';
 import LandingPage from './Components/LandingPage/Index';
 import Header from './Components/Header/Index';
-import {useState, useEffect, createContext, useMemo} from 'react';
-import {Container, Row, Col, Image} from 'react-bootstrap'
+import {useState, useEffect } from 'react';
+import {Container, Row } from 'react-bootstrap'
 import MainDashboard from './Components/Dashboard/Index';
 import { LatAndLong, DailyData } from './Services/ServicesTypes';
 import { AxiosError } from 'axios';
-import LogIn from './Components/LogIn';
 import { useRateLimiter } from './Services/RateLimiter';
 import BigSpinner from './Components/BigSpinner';
 
@@ -30,7 +29,6 @@ const App: React.FC = (): JSX.Element => {
             longitude: apiResponse.longitude
           })   
         
-          
       } catch(err){
           console.log(err);
       } 
