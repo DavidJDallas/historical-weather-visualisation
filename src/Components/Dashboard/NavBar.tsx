@@ -12,22 +12,17 @@ import {
     MDBNavbarLink,
     MDBCollapse,
     MDBIcon
-  } from 'mdb-react-ui-kit';
-  import {useState} from 'react';
-  
+  } from 'mdb-react-ui-kit'; 
+
+  import { NavBarProps } from './Types';
 
 
-const NavBar: React.FC = () => {
-    const [showNav, setShowNav] = useState(false);
-    
-    interface CustomNavLinkProps extends NavLinkProps{
-        activeClassName: string;
-    }
+const NavBar = ({weatherTypeSelected, setWeatherTypeSelected}: NavBarProps): JSX.Element => {
+      
 
+    console.log(weatherTypeSelected)
     return(
         <>
-        
-
   
         
         <MDBNavbar expand='lg' light >
@@ -45,6 +40,7 @@ const NavBar: React.FC = () => {
                         borderBottom: isActive ? '2px solid #7eb0d5' : '2px solid transparent',
                         fontSize: '2rem'
                         })}
+                        onClick= {() => setWeatherTypeSelected(true)}
                     >
                         Rain
                     </NavLink>
@@ -61,6 +57,7 @@ const NavBar: React.FC = () => {
                         borderBottom: isActive ? '2px solid #7eb0d5' : '2px solid transparent',
                         fontSize: '2rem'
                         })}
+                        onClick= {() => setWeatherTypeSelected(true)}
                     >
                         Temperature
                     </NavLink>

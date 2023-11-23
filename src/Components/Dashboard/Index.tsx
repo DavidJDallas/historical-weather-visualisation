@@ -10,12 +10,13 @@ import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
 import './Dashboard.css'
 
-const MainDashboard = ({weatherData}: MainDashboardProps) => {
+const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
 
     const [formattedData, setFormattedData] = useState<FormattedData[] | []>([]);
     const [dataBySeason, setDataBySeason] = useState<GroupedDataBySeason[] | []>([]);
     const [dataByMonth, setDataByMonth] = useState<GroupedDataByMonth[] | [] >([]);
     const [dataByYear, setDataByYear] = useState<GroupedDataByYear[] | []>([])
+    const [weatherTypeSelected, setWeatherTypeSelected] = useState<boolean>(false);
     
 
     const parsedTime = d3.timeParse('%Y-%m-%d');
@@ -145,26 +146,40 @@ const MainDashboard = ({weatherData}: MainDashboardProps) => {
     }, [formattedData])
         
 
+   console.log(weatherTypeSelected)
 
     return(<>
 
-    <NavBar/>
+    <NavBar
+    weatherTypeSelected={weatherTypeSelected}
+    setWeatherTypeSelected={setWeatherTypeSelected}
+    
+    />
         <div className='dashboard-container'>
-        <Routes>            
-            <Route path="/temp" element={<Temperature
+            {!weatherTypeSelected ?
+            
+            <h3>Choose whether you would like to see patterns in weather for temperature or rain. Customise these as you like via various parameters.</h3>
+
+            :
+               <Routes>            
+            <Route path="/temp" element={
+            <Temperature
                 dataBySeason ={dataBySeason}
                 dataByMonth = {dataByMonth}
                 dataByYear = {dataByYear}
                 formattedData = {formattedData}
-            />}/>           
-            <Route path ="/rain" element={<Rain
-            dataBySeason ={dataBySeason}
-            dataByMonth = {dataByMonth}
-            dataByYear = {dataByYear}
-            formattedData = {formattedData}
-            
+            />
+            }/>           
+            <Route path ="/rain" element={
+            <Rain
+                dataBySeason ={dataBySeason}
+                dataByMonth = {dataByMonth}
+                dataByYear = {dataByYear}
+                formattedData = {formattedData}            
             />}/>
         </Routes>
+            }
+     
         </div>
 
    

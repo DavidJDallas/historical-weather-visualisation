@@ -36,3 +36,10 @@ export interface CheckFormProps{
     displayTempByYearAverage: boolean,
     setDisplayTempByYearAverage: (data: boolean) => void,
 }
+
+//NavBar
+
+export interface NavBarProps{
+    weatherTypeSelected: boolean,
+    setWeatherTypeSelected: (data: boolean) => void
+}
