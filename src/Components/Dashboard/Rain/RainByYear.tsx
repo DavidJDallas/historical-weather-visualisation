@@ -120,6 +120,13 @@ const RainByYear = ({yearValue, width, height, dataByYear}: RainDataYearProps) =
             .attr('y2', d => yScale(d))
             .attr('stroke', '#ccc')
             .attr('stroke-opacity', 0.5);
+
+            svg.append('text')
+            .attr('x', width/2)
+            .attr('y', 30)
+            .style('text-anchor', 'middle')
+            .style('font-size', '18px')
+            .text(`Average Rainfall Per Day by Year`);
                     
         
 
