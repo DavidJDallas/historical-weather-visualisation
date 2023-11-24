@@ -3,20 +3,17 @@ import { IndexProps } from './RainTypes';
 import RainByMonth from './RainByMonth';
 import { Container, Row, Col } from 'react-bootstrap';
 import {useState} from 'react';
-import CheckFormRain from './CheckFormRain';
 import RangeSliderRain from './RangeSliderRain';
 import RainBySeason from './RainBySeason';
 import RainByYear from './RainByYear';
-import CheckFormAverageOrTotal from './CheckFormAverageOrTotal';
+import CheckFormRain from './CheckFormRain';
 
 const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps): JSX.Element => {
 
     const [displayRainBySeasonAverage, setDisplayRainBySeasonAverage] = useState<boolean>(true);
     const [displayRainByMonthAverage, setDisplayRainByMonthAverage] = useState<boolean>(true);
     const [displayRainByYearAverage, setDisplayRainByYearAverage] = useState<boolean>(true);
-    const [yearValue, setYearValue] = useState<number>(1942)
-    const [averageOrTotal, setAverageOrTotal] = useState<string>('total');
-    console.log(averageOrTotal)
+    const [yearValue, setYearValue] = useState<number>(1942);
 
 
     return(<>
@@ -48,16 +45,11 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
             style={{height: '300px'}}>
                 {displayRainByMonthAverage &&    
                 <Col>
-                    <CheckFormAverageOrTotal
-                        averageOrTotal={averageOrTotal}
-                        setAverageOrTotal={setAverageOrTotal}
-                    />
                     <RainByMonth
                                 dataByMonth={dataByMonth}
                                 width={400}
                                 height={250}
                                 yearValue={yearValue}
-                                averageOrTotal={averageOrTotal}
                             />
                 </Col>}
                     {displayRainBySeasonAverage && 
@@ -67,7 +59,6 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
                             yearValue={yearValue}
                             width={400}
                             height={250}
-                            averageOrTotal={averageOrTotal}
                         />
                     </Col>
                     }

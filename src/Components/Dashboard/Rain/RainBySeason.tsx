@@ -5,7 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 import { FilteredDataBySeason } from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 
-const RainBySeason = ({dataBySeason, width, height, yearValue, averageOrTotal}: RainDataSeasonProps) => {
+const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonProps) => {
 
     const [rainData, setRainData] = useState<[] | RainDataSeason[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);

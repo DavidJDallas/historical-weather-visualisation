@@ -5,13 +5,11 @@ import { useEffect, useState, useRef } from 'react';
 import { FilteredDataByMonth} from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 
-const RainByMonth = ({dataByMonth, width, height, yearValue, averageOrTotal}: RainByMonthProps) => {
+const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps) => {
 
     const [rainData, setRainData] = useState<[] | RainDataMonth[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);
-    const [displayAverage, setDisplayAverage] = useState<boolean>(true)
-   
-    
+    const [displayAverage, setDisplayAverage] = useState<boolean>(true);
 
     useEffect(() => {
         const filteredDataByYear: FilteredDataByMonth[] = filterDataByYear(dataByMonth, yearValue);
@@ -90,7 +88,7 @@ const RainByMonth = ({dataByMonth, width, height, yearValue, averageOrTotal}: Ra
                     tooltip.style('visibility', 'hidden')
                 });
                 
-                bars.transition().duration(1000).attr('y', (d) => yScale(d.rain))
+                bars.transition().duration(5000).attr('y', (d) => yScale(d.rain))
                 
          svg.append('text')
                .attr('x', width/2)

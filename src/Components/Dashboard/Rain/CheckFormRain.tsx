@@ -50,15 +50,6 @@ const CheckFormRain = ({displayRainByMonthAverage, displayRainBySeasonAverage, d
             defaultChecked
             
           />
-          {/* <Form.Check
-            inline = {true}          
-            label= 'Amount of Dry Days per Month and Season'
-            type={'checkbox'}
-            id={`inline-${'checkbox'}-3`}
-            onChange = {handleChangeDisplayRainDryDays}
-            defaultChecked
-
-          /> */}
         </div>
     </Form>
         </>
