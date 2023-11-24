@@ -37,6 +37,11 @@ export interface RainDataMonth{
     rain: number | any
 }
 
+export interface CheckFormAverageOrTotalProps{
+    averageOrTotal: string,
+    setAverageOrTotal: (data: any) => void
+}
+
 //Rain By Season
 
 export interface RainDataSeasonProps{

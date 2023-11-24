@@ -7,6 +7,7 @@ import CheckFormRain from './CheckFormRain';
 import RangeSliderRain from './RangeSliderRain';
 import RainBySeason from './RainBySeason';
 import RainByYear from './RainByYear';
+import CheckFormAverageOrTotal from './CheckFormAverageOrTotal';
 
 const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps): JSX.Element => {
 
@@ -14,7 +15,7 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
     const [displayRainByMonthAverage, setDisplayRainByMonthAverage] = useState<boolean>(true);
     const [displayRainByYearAverage, setDisplayRainByYearAverage] = useState<boolean>(true);
     const [yearValue, setYearValue] = useState<number>(1942)
-    const [averageOrTotal, setAverageOrTotal] = useState<string>('');
+    const [averageOrTotal, setAverageOrTotal] = useState<string>('total');
     console.log(averageOrTotal)
 
 
@@ -47,7 +48,10 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
             style={{height: '300px'}}>
                 {displayRainByMonthAverage &&    
                 <Col>
-                
+                    <CheckFormAverageOrTotal
+                        averageOrTotal={averageOrTotal}
+                        setAverageOrTotal={setAverageOrTotal}
+                    />
                     <RainByMonth
                                 dataByMonth={dataByMonth}
                                 width={400}

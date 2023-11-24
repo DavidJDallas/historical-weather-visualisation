@@ -9,6 +9,8 @@ const RainByMonth = ({dataByMonth, width, height, yearValue, averageOrTotal}: Ra
 
     const [rainData, setRainData] = useState<[] | RainDataMonth[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);
+    const [displayAverage, setDisplayAverage] = useState<boolean>(true)
+   
     
 
     useEffect(() => {
@@ -16,13 +18,13 @@ const RainByMonth = ({dataByMonth, width, height, yearValue, averageOrTotal}: Ra
 
        const calculateMean = filteredDataByYear.map((object) => ({
                month: object.month,
-               rain: averageOrTotal === 'average' ? 
+               rain: displayAverage ? 
                d3.mean((object.data.map((element) => element.rain)))
                :
                d3.sum((object.data.map((element) => element.rain)))
            }))
        setRainData(calculateMean);
-   }, [dataByMonth, yearValue]);
+   }, [dataByMonth, yearValue, displayAverage]);
 
    useEffect((): void => {  
         
@@ -89,12 +91,13 @@ const RainByMonth = ({dataByMonth, width, height, yearValue, averageOrTotal}: Ra
                 });
                 
                 bars.transition().duration(1000).attr('y', (d) => yScale(d.rain))
+                
          svg.append('text')
                .attr('x', width/2)
                .attr('y', 30)
                .style('text-anchor', 'middle')
                .style('font-size', '18px')
-               .text(`Average Rainfall per day by Month (mm)`);
+               .text(` Rainfall per day by Month (mm)`);
         
         svg.append('g')
             .attr('transform', `translate(0, ${height})`)
@@ -113,11 +116,19 @@ const RainByMonth = ({dataByMonth, width, height, yearValue, averageOrTotal}: Ra
 
 
 
-}, [rainData, height, width]);
+}, [rainData, height, width, displayAverage]);
 
-
+const handleCheckboxChange = () => {
+    setDisplayAverage((prev: any) => !prev);
+  };
     return(
         <>
+           <div>
+        <label>
+          <input type="checkbox" checked={displayAverage} onChange={handleCheckboxChange} />
+          Display Average
+        </label>
+      </div>
         <svg className=''ref={chartRef} height={'100%'} width={'100%'} preserveAspectRatio='xMinYMin meet' ></svg>
         </>
     )
