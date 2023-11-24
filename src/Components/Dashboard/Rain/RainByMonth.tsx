@@ -9,20 +9,17 @@ const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps)
 
     const [rainData, setRainData] = useState<[] | RainDataMonth[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);
-    const [displayAverage, setDisplayAverage] = useState<boolean>(true);
 
     useEffect(() => {
         const filteredDataByYear: FilteredDataByMonth[] = filterDataByYear(dataByMonth, yearValue);
 
        const calculateMean = filteredDataByYear.map((object) => ({
                month: object.month,
-               rain: displayAverage ? 
-               d3.mean((object.data.map((element) => element.rain)))
-               :
-               d3.sum((object.data.map((element) => element.rain)))
+               rain: d3.mean((object.data.map((element) => element.rain)))
+            
            }))
        setRainData(calculateMean);
-   }, [dataByMonth, yearValue, displayAverage]);
+   }, [dataByMonth, yearValue]);
 
    useEffect((): void => {  
         
@@ -52,7 +49,9 @@ const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps)
                         .padding(0);
 
     const yAxis = d3.axisLeft(yScale)
-                    .tickFormat(d => d.toString().slice(0,3));       
+                    .tickFormat(d => d.toString().slice(0,5)) 
+                    
+
 
     const svg= d3.select(chartRef.current)
                         .append('svg')
@@ -114,19 +113,12 @@ const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps)
 
 
 
-}, [rainData, height, width, displayAverage]);
+}, [rainData, height, width]);
 
-const handleCheckboxChange = () => {
-    setDisplayAverage((prev: any) => !prev);
-  };
+
     return(
         <>
-           <div>
-        <label>
-          <input type="checkbox" checked={displayAverage} onChange={handleCheckboxChange} />
-          Display Average
-        </label>
-      </div>
+          
         <svg className=''ref={chartRef} height={'100%'} width={'100%'} preserveAspectRatio='xMinYMin meet' ></svg>
         </>
     )
