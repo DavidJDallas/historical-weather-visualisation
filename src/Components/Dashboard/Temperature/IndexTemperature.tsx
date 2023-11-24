@@ -38,7 +38,7 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                     setYearValue = {setYearValue}
                 />
             </Row>
-            {displayTempByMonthAverage || displayTempBySeasonAverage ?
+            
                 <Row
                 style={{height: '300px'}}
                 >
@@ -66,7 +66,7 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                     </Col>
                     }
                 </Row>
-            : null}
+         
             
             <Row
             style={{height: '500px', marginLeft: '100px'}}

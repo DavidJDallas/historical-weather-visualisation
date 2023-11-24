@@ -23,6 +23,7 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
 
 
 
+
    useEffect((): void => {                 
 
     if(tempData.length>0){  
@@ -91,6 +92,7 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
                 .on('mouseout', () => {
                         tooltip.style('visibility', 'hidden')
                     });
+
                 
          svg.append('text')
                .attr('x', width/2)

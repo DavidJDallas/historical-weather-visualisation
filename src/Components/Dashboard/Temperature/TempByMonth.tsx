@@ -60,11 +60,20 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps):
                                 .attr('height', height+200);
 
             //Below removes all tooltips before implementing new ones to avoid tooltips lagging. The d3.selectAll().remove() doesn't cover tooltips since tooltips are added to the body. 
-            //d3.selectAll('.tempMonthToolTip').remove();
+            d3.selectAll('.tempMonthToolTip').remove();
+
     
             const tooltip = d3.select('body').append('div')
-                                .attr('class', 'tempMonthToolTip')
-                                //styles added in css file
+                            .style('position', 'absolute')
+                            .style('z-index', '10')
+                            .style('visibility', 'hidden')
+                            .style('background-color', 'white')
+                            .style('border-style', 'solid')
+                            .style('border-width', '2px')
+                            .style('border-color', '#50e991')
+                            .style('padding', '5px')
+                            .style('font-size', '12px');
+
                                 
     
             svg.selectAll('rect')
@@ -77,6 +86,8 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps):
                         .attr('height', d => height - yScale(d.temperature))
                         .attr('fill', d=> interpolatorColourFunction(colourScale(d.temperature)))                        
                         .on('mouseover', (event, d) => {
+                            console.log(d.month, 'd.month');
+                            console.log(d.temperature, 'd.temperature')
                             tooltip.html(`${(d.month)}: ${String(d.temperature).slice(0,6)} `+ '&deg c')
                                 .style('visibility', 'visible')
                         })

@@ -59,8 +59,16 @@ const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonPr
     //d3.selectAll('.tempMonthToolTip').remove();
 
     const tooltip = d3.select('body').append('div')
-                        .attr('class', 'tempMonthToolTip')
-                        //styles added in css file
+        .style('position', 'absolute')
+        .style('z-index', '10')
+        .style('visibility', 'hidden')
+        .style('background-color', 'white')
+        .style('border-style', 'solid')
+        .style('border-width', '2px')
+        .style('border-color', '#50e991')
+        .style('padding', '5px')
+        .style('font-size', '12px');
+                     
                         
 
     svg.selectAll('rect')
