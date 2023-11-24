@@ -143,10 +143,9 @@ const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
     useEffect(() => {
         const groupedBySeason = groupDataBySeason(formattedData);
         setDataBySeason(groupedBySeason);
-    }, [formattedData])
-        
+    }, [formattedData]);    
 
-   console.log(weatherTypeSelected)
+   
 
     return(<>
 

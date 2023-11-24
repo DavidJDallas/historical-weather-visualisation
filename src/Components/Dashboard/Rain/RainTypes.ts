@@ -27,6 +27,7 @@ export interface RainByMonthProps{
     width: number,
     height: number,
     yearValue: number,
+    averageOrTotal: string,
 }
 
 //Rain By Month
@@ -42,7 +43,8 @@ export interface RainDataSeasonProps{
     dataBySeason: GroupedDataBySeason[],
     width: number,
     height: number,
-    yearValue: number
+    yearValue: number,
+    averageOrTotal: string
 }
 
 export interface RainDataSeason{

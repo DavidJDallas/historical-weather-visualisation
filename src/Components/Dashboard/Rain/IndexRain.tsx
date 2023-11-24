@@ -14,6 +14,9 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
     const [displayRainByMonthAverage, setDisplayRainByMonthAverage] = useState<boolean>(true);
     const [displayRainByYearAverage, setDisplayRainByYearAverage] = useState<boolean>(true);
     const [yearValue, setYearValue] = useState<number>(1942)
+    const [averageOrTotal, setAverageOrTotal] = useState<string>('');
+    console.log(averageOrTotal)
+
 
     return(<>
    
@@ -44,11 +47,13 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
             style={{height: '300px'}}>
                 {displayRainByMonthAverage &&    
                 <Col>
+                
                     <RainByMonth
                                 dataByMonth={dataByMonth}
                                 width={400}
                                 height={250}
                                 yearValue={yearValue}
+                                averageOrTotal={averageOrTotal}
                             />
                 </Col>}
                     {displayRainBySeasonAverage && 
@@ -58,6 +63,7 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
                             yearValue={yearValue}
                             width={400}
                             height={250}
+                            averageOrTotal={averageOrTotal}
                         />
                     </Col>
                     }
@@ -66,6 +72,14 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
             </Row> 
             : null    
         }
+        <Row>
+            <Col>
+        
+            </Col>
+
+
+
+        </Row>
           {displayRainByYearAverage &&  
           <Row
             style={{height: '500px', marginLeft: '100px'}}

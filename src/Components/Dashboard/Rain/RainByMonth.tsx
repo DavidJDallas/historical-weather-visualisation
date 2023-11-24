@@ -5,17 +5,21 @@ import { useEffect, useState, useRef } from 'react';
 import { FilteredDataByMonth} from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 
-const RainByMonth = ({dataByMonth, width, height, yearValue}: RainByMonthProps) => {
+const RainByMonth = ({dataByMonth, width, height, yearValue, averageOrTotal}: RainByMonthProps) => {
 
     const [rainData, setRainData] = useState<[] | RainDataMonth[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);
+    
 
     useEffect(() => {
         const filteredDataByYear: FilteredDataByMonth[] = filterDataByYear(dataByMonth, yearValue);
 
        const calculateMean = filteredDataByYear.map((object) => ({
                month: object.month,
-               rain: d3.mean((object.data.map((element) => element.rain)))
+               rain: averageOrTotal === 'average' ? 
+               d3.mean((object.data.map((element) => element.rain)))
+               :
+               d3.sum((object.data.map((element) => element.rain)))
            }))
        setRainData(calculateMean);
    }, [dataByMonth, yearValue]);
@@ -63,7 +67,7 @@ const RainByMonth = ({dataByMonth, width, height, yearValue}: RainByMonthProps) 
                         //styles added in css file
                         
 
-    svg.selectAll('rect')
+    const bars = svg.selectAll('rect')
                 .data(rainData)
                 .enter()
                 .append('rect')
@@ -84,6 +88,7 @@ const RainByMonth = ({dataByMonth, width, height, yearValue}: RainByMonthProps) 
                     tooltip.style('visibility', 'hidden')
                 });
                 
+                bars.transition().duration(1000).attr('y', (d) => yScale(d.rain))
          svg.append('text')
                .attr('x', width/2)
                .attr('y', 30)
