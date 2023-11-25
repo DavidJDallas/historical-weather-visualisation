@@ -13,6 +13,12 @@ export interface FormattedData{
 
 export type TwoDimArray = [number, FormattedData[]]
 
+export interface GroupedData{
+    month?: string,
+    season?: string,
+    data: FormattedData[]
+}
+
 export interface GroupedDataByMonth{
     month: string,
     data: FormattedData[]
