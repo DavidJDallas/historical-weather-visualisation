@@ -12,8 +12,6 @@ export interface FilteredDataByMonth{
     data: FormattedData[]
 }
 
-
-
 //TempByMonth
 export interface TempByMonthProps{
     dataByMonth: GroupedDataByMonth[],

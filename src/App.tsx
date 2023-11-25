@@ -20,7 +20,7 @@ const App: React.FC = (): JSX.Element => {
   const rateLimiter = useRateLimiter(1, 5000 );
   const [loading, setLoading] = useState<boolean>(false);
 
-  const getGeoLocationData = async () => {  
+  const getGeoLocationData = async (): Promise<void> => {  
       setLoading(true);
     try{
         const apiResponse = await getGeoLocation(postcode || place) as LatAndLong;
@@ -32,16 +32,15 @@ const App: React.FC = (): JSX.Element => {
       } catch(err){
           console.log(err);
       } 
-    
   }
   
-  useEffect(() => {
+  useEffect((): void => {
     if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
       getWeatherData()
     }   
   }, [latAndLong]);
 
-  const getWeatherData = async () => {
+  const getWeatherData = async (): Promise<void> => {
 
     //custom rate limiter hook used here to stop client-side requests being made too frequently to the weather API. This is done as due to the fact that relatively large amounts of data are being called, if too many requests are made then the API will issue a 429 (too many calls) error and block usage for the day. 
     rateLimiter.enqueue(async () => {

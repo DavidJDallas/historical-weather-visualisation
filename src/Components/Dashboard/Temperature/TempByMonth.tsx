@@ -12,7 +12,6 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps):
     const chartRef = useRef<SVGSVGElement | null>(null);
     
     //useMemo is a React Hook that lets you cache the result of a calculation between re-renders. It looks at the dependency array and sees if anything has changed. If it has changed, it will re-run it. If not, it won't.
-
   
     useEffect(() => {
          const filteredDataByYear: FilteredDataByMonth[] = filterDataByYear(dataByMonth, yearValue);

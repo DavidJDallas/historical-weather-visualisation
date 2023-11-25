@@ -5,7 +5,7 @@ import { RangeSliderProps } from './Types';
 import { ChangeEvent } from 'react';
 
 
-const RangeSlider = ({yearValue, setYearValue}: RangeSliderProps) => {   
+const RangeSlider = ({yearValue, setYearValue}: RangeSliderProps): JSX.Element => {   
 
 
     let years: number[] = [];

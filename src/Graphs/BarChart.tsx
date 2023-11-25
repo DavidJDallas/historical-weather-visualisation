@@ -6,7 +6,7 @@ import { BarChartProps } from './GraphTypes';
 
 const BarChartTemplate = ({
   data, width, height, xAccessor, yAccessor, yearValue, title, interpolateFirstColour, interpolateSecondColour
-}: BarChartProps) => {
+}: BarChartProps): JSX.Element => {
 
     const chartRef = useRef<SVGSVGElement | null>(null);
 

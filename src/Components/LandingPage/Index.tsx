@@ -7,11 +7,11 @@ import { FormEvent } from 'react';
 
 const LandingPage = ({getGeoLocationData, setPlace, setPostcode, postcode, place}: IndexProps): JSX.Element => {
   
-  const handlePostcodeSubmit = () => {    
+  const handlePostcodeSubmit = (): void => {    
     getGeoLocationData();
   }
 
-  const handlePlacesubmit = () => {   
+  const handlePlacesubmit = (): void => {   
     getGeoLocationData();
   }
     return(<>
