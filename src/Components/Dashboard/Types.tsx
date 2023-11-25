@@ -1,3 +1,4 @@
+import { Dispatch, SetStateAction } from "react";
 import { DailyData } from "../../Services/ServicesTypes";
 
 export interface MainDashboardProps{
@@ -42,4 +43,12 @@ export interface CheckFormProps{
 export interface NavBarProps{
     weatherTypeSelected: boolean,
     setWeatherTypeSelected: (data: boolean) => void
+}
+
+
+//Range Slider
+
+export interface RangeSliderProps{
+    yearValue: number,
+    setYearValue: Dispatch<SetStateAction<number>>
 }

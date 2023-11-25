@@ -3,7 +3,7 @@ import {TemperatureProps} from './Types'
 import {useState } from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import CheckForm from './CheckFormTemperature';
-import RangeSliderTemp from './RangeSliderTemp';
+import RangeSlider from '../RangeSlider';
 import TempByMonth from './TempByMonth';
 import TempBySeason from './TempBySeason';
 import './TempStyling.css'
@@ -33,7 +33,7 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
                
             </Row>
             <Row >
-                <RangeSliderTemp
+                <RangeSlider
                     yearValue ={yearValue}
                     setYearValue = {setYearValue}
                 />

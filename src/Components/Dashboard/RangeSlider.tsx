@@ -1,19 +1,20 @@
 import * as React from 'react';
 import {Form} from 'react-bootstrap/';
-import './TempStyling.css'
 import { MDBRange } from 'mdb-react-ui-kit';
 import { RangeSliderProps } from './Types';
+import { ChangeEvent } from 'react';
 
-const RangeSliderTemp = ({yearValue, setYearValue}: RangeSliderProps): JSX.Element => {   
+
+const RangeSlider = ({yearValue, setYearValue}: RangeSliderProps) => {   
 
 
-    let years = [];
+    let years: number[] = [];
     for (let i = 1945; i <= 2023; i++) {
        years.push(i);
     }
 
-    const handleSliderChange = (event: any) => {
-        setYearValue(event.target.value)
+    const handleSliderChange = (event: ChangeEvent<HTMLInputElement>): void => {      
+        setYearValue(Number(event.target.value));
     }   
 
 
@@ -38,4 +39,4 @@ const RangeSliderTemp = ({yearValue, setYearValue}: RangeSliderProps): JSX.Eleme
 
 }
 
-export default RangeSliderTemp
+export default RangeSlider

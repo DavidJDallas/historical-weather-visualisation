@@ -3,7 +3,7 @@ import { IndexProps } from './RainTypes';
 import RainByMonth from './RainByMonth';
 import { Container, Row, Col } from 'react-bootstrap';
 import {useState} from 'react';
-import RangeSliderRain from './RangeSliderRain';
+import RangeSlider from '../RangeSlider';
 import RainBySeason from './RainBySeason';
 import RainByYear from './RainByYear';
 import CheckFormRain from './CheckFormRain';
@@ -32,7 +32,7 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
                
             </Row>
             <Row>
-                <RangeSliderRain
+                <RangeSlider
                     yearValue={yearValue}
                     setYearValue={setYearValue}
                 />
