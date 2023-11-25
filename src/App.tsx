@@ -110,6 +110,8 @@ const App: React.FC = (): JSX.Element => {
           setPostcode={setPostcode}
           setPlace={setPlace}
           getGeoLocationData={getGeoLocationData}
+          postcode={postcode}
+          place={place}
         />
         </div> 
         </Row>

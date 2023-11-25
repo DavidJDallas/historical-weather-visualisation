@@ -1,14 +1,19 @@
 import React from "react";
+import { FormEvent } from "react";
 
 export interface IndexProps {
     setPlace: (value: string) => void,
     setPostcode:  (value: string) => void,
     getGeoLocationData: () => void
+    postcode: string,
+    place: string
 }
 
 export interface SearchFormProps{
-    handlePostcodeSubmit: (event: React.SyntheticEvent) => void,
-    handlePlaceSubmit: (event: React.SyntheticEvent) => void,
+    handlePostcodeSubmit: () => void,
+    handlePlaceSubmit: () => void,
     setPlace: (value: string) => void,
     setPostcode: (value: string) => void,
+    postcode: string,
+    place: string
 }

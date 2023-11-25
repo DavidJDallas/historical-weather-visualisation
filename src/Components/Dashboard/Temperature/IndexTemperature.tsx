@@ -22,12 +22,12 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
             <Row >
                 <div className= 'checkbox-container'>
                      <CheckForm
-                    displayTempByMonthAverage={displayTempByMonthAverage}
-                    displayTempBySeasonAverage={displayTempBySeasonAverage}
-                    setDisplayTempByMonthAverage={setDisplayTempByMonthAverage}
-                    setDisplayTempBySeasonAverage={setDisplayTempBySeasonAverage}
-                    displayTempByYearAverage = {displayTempByYearAverage}
-                    setDisplayTempByYearAverage ={setDisplayTempByYearAverage}
+                        displayTempByMonthAverage={displayTempByMonthAverage}
+                        displayTempBySeasonAverage={displayTempBySeasonAverage}
+                        setDisplayTempByMonthAverage={setDisplayTempByMonthAverage}
+                        setDisplayTempBySeasonAverage={setDisplayTempBySeasonAverage}
+                        displayTempByYearAverage = {displayTempByYearAverage}
+                        setDisplayTempByYearAverage ={setDisplayTempByYearAverage}
                     />
                 </div>
                

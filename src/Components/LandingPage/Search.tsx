@@ -1,14 +1,23 @@
-import React from 'react';
+import React, { SyntheticEvent , KeyboardEvent} from 'react';
 import { SearchFormProps } from './LandingPageTypes';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { FormEvent } from 'react';
+import { Placeholder } from 'react-bootstrap';
 
-const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, setPostcode}: SearchFormProps): JSX.Element => {
+const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, setPostcode, place, postcode}: SearchFormProps): JSX.Element => {
   
-    const handleTextChange = (event: React.KeyboardEvent) => {
-        if(event.keyCode === 13 || event.which === 13){
-            event.preventDefault()
-            handlePostcodeSubmit(event)
+    const handleTextChange = (event: KeyboardEvent<HTMLInputElement>) => {
+        if(event.key === 'Enter'){
+           event.preventDefault()
+            if(place.length>0){             
+            handlePostcodeSubmit()
+            } else if (postcode.length>0){
+              handlePlaceSubmit()
+            } else{
+              console.log('error - postcode or place must be submitted')
+            }
+            
         } 
     };
     

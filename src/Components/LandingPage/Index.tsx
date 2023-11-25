@@ -3,17 +3,15 @@ import {Container } from 'react-bootstrap';
 import './LandingPage.css';
 import LandingPageSearch from './Search';
 import { IndexProps } from './LandingPageTypes';
+import { FormEvent } from 'react';
 
-const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps): JSX.Element => {
+const LandingPage = ({getGeoLocationData, setPlace, setPostcode, postcode, place}: IndexProps): JSX.Element => {
   
-  const handlePostcodeSubmit = (event: React.SyntheticEvent) => {
-    event.preventDefault();
+  const handlePostcodeSubmit = () => {    
     getGeoLocationData();
   }
 
-  const handlePlacesubmit = (event: React.SyntheticEvent) => {
-   
-    event.preventDefault();
+  const handlePlacesubmit = () => {   
     getGeoLocationData();
   }
     return(<>
@@ -28,6 +26,8 @@ const LandingPage = ({getGeoLocationData, setPlace, setPostcode}: IndexProps): J
           handlePlaceSubmit={handlePlacesubmit}
           setPlace={setPlace}
           setPostcode={setPostcode}
+          postcode={postcode}
+          place={place}
         />
       </Container>
         </div>
