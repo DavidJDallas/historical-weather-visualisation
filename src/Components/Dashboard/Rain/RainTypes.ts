@@ -1,3 +1,4 @@
+import { ChangeEvent, Dispatch, SetStateAction } from "react";
 import { GroupedDataByMonth, GroupedDataByYear, GroupedDataBySeason, FormattedData } from "../Types";
 
 
@@ -19,7 +20,7 @@ export interface CheckFormRainProps{
 
 export interface RangeSliderRainProps{
     yearValue: number, 
-    setYearValue: (data: any) => void
+    setYearValue: Dispatch<SetStateAction<number>>
 }
 
 export interface RainByMonthProps{

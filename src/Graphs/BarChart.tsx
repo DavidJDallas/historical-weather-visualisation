@@ -14,8 +14,8 @@ const BarChartTemplate = ({
     if(data.length>0){
         d3.select(chartRef.current).selectAll('*').remove();
     
-        const colourScale = d3.scaleSequential()
-        .domain([0, d3.max(data.map((element) => element[yAccessor]))])
+        //const colourScale = d3.scaleSequential()
+        //.domain([0, d3.max(data.map((element) => element[yAccessor]))])
         
     
     

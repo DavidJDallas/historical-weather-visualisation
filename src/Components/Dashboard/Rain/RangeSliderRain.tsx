@@ -2,6 +2,7 @@ import * as React from 'react';
 import {Form} from 'react-bootstrap/';
 import { MDBRange } from 'mdb-react-ui-kit';
 import { RangeSliderRainProps } from './RainTypes';
+import { ChangeEvent } from 'react';
 
 
 const RangeSliderRain = ({yearValue, setYearValue}: RangeSliderRainProps) => {   
@@ -12,8 +13,8 @@ const RangeSliderRain = ({yearValue, setYearValue}: RangeSliderRainProps) => {
        years.push(i);
     }
 
-    const handleSliderChange = (event: any) => {
-        setYearValue(event.target.value)
+    const handleSliderChange = (event: ChangeEvent<HTMLInputElement>) => {      
+        setYearValue(Number(event.target.value));
     }   
 
 
