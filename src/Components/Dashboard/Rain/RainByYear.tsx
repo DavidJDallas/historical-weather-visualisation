@@ -6,7 +6,7 @@ import { calculateMeanByYear } from '../../../Utils/CalculateMeanByYear';
 import { makeListYearSelective } from '../../../Utils/MakeListYearSelective';
 
 
-const RainByYear = ({yearValue, width, height, dataByYear}: RainDataYearProps) => {
+const RainByYear = ({yearValue, width, height, dataByYear}: RainDataYearProps): JSX.Element => {
 
     const [rainData, setRainData] = useState<RainDataYear[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);

@@ -7,7 +7,7 @@ import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 import BarChartTemplate from '../../../Graphs/BarChart';
 import { FormattedData } from '../Types';
 
-const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps) => {
+const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps): JSX.Element => {
 
     const [rainData, setRainData] = useState<[] | RainDataMonth[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);

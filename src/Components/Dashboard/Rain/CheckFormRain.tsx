@@ -3,9 +3,9 @@ import {Form} from 'react-bootstrap';
 import { CheckFormRainProps } from './RainTypes';
 
 
-const CheckFormRain = ({displayRainByMonthAverage, displayRainBySeasonAverage, displayRainByYearAverage, setDisplayRainByMonthAverage, setDisplayRainBySeasonAverage, setDisplayRainByYearAverage}: CheckFormRainProps) => {
+const CheckFormRain = ({displayRainByMonthAverage, displayRainBySeasonAverage, displayRainByYearAverage, setDisplayRainByMonthAverage, setDisplayRainBySeasonAverage, setDisplayRainByYearAverage}: CheckFormRainProps): JSX.Element => {
 
-    const handleChangeRainMonthAverage = (event: any): void => {
+    const handleChangeRainMonthAverage = (): void => {
         setDisplayRainByMonthAverage(!displayRainByMonthAverage)    
     }
     const handleChangeRainSeasonAverage = (): void => {

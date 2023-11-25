@@ -6,7 +6,7 @@ import { FilteredDataBySeason } from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 import { FormattedData } from '../Types';
 
-const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonProps) => {
+const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonProps): JSX.Element => {
 
     const [rainData, setRainData] = useState<[] | RainDataSeason[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);

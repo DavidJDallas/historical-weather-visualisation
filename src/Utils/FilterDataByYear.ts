@@ -1,5 +1,5 @@
 import { FormattedData } from "../Components/Dashboard/Types";
-import { GroupedData } from "../Components/Dashboard/Types";
+
 export const filterDataByYear = (data: any, yearValue: number) => {
 
     return data.map((element: any) => {
