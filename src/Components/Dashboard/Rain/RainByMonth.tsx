@@ -4,6 +4,7 @@ import { RainByMonthProps, RainDataMonth } from './RainTypes';
 import { useEffect, useState, useRef } from 'react';
 import { FilteredDataByMonth} from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
+import BarChartTemplate from '../../../Graphs/BarChart';
 
 const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps) => {
 
@@ -122,6 +123,17 @@ const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps)
 
     return(
         <>
+        <BarChartTemplate
+            data={rainData}
+            width={width}
+            height={height}
+            yearValue={yearValue}
+            title={'Average Rainfall by Day Per Month(mm'}
+            interpolateFirstColour={'#77ccff'}
+            interpolateSecondColour={'#0066ff'}
+            xAccessor={'month'}
+            yAccessor={'rain'}
+        />
           
         <svg className=''ref={chartRef} height={'100%'} width={'100%'} preserveAspectRatio='xMinYMin meet' ></svg>
         </>

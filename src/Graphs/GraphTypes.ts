@@ -1,11 +1,13 @@
+import { RainDataMonth } from "../Components/Dashboard/Rain/RainTypes";
+
 export interface BarChartProps{
-    data: any,
+    data: RainDataMonth[],
     width: number,
     height: number,
     yearValue: number,
     title: string,
     interpolateFirstColour: string,
     interpolateSecondColour: string,
-    xVariable: string,
-    yVariable: string
+    xAccessor: string,
+    yAccessor: string
 }
