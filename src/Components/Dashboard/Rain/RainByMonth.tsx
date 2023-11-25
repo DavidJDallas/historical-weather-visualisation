@@ -5,6 +5,7 @@ import { useEffect, useState, useRef } from 'react';
 import { FilteredDataByMonth} from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 import BarChartTemplate from '../../../Graphs/BarChart';
+import { FormattedData } from '../Types';
 
 const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps) => {
 
@@ -14,9 +15,9 @@ const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps)
     useEffect(() => {
         const filteredDataByYear: FilteredDataByMonth[] = filterDataByYear(dataByMonth, yearValue);
 
-       const calculateMean = filteredDataByYear.map((object) => ({
+       const calculateMean: RainDataMonth[] = filteredDataByYear.map((object) => ({
                month: object.month,
-               rain: d3.mean((object.data.map((element) => element.rain)))
+               rain: d3.mean((object.data.map((element: FormattedData) => element.rain)))
             
            }))
        setRainData(calculateMean);

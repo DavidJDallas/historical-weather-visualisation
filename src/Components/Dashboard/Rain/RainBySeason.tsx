@@ -4,6 +4,7 @@ import { RainDataSeasonProps, RainDataSeason } from './RainTypes';
 import { useEffect, useState, useRef } from 'react';
 import { FilteredDataBySeason } from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
+import { FormattedData } from '../Types';
 
 const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonProps) => {
 
@@ -13,9 +14,9 @@ const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonPr
     useEffect(() => {
         const filteredDataBySeason: FilteredDataBySeason[] = filterDataByYear(dataBySeason, yearValue);
         
-       const calculateMean = filteredDataBySeason.map((object) => ({
+       const calculateMean: RainDataSeason[] = filteredDataBySeason.map((object) => ({
                season: object.season,
-             rain: d3.mean((object.data.map((element: any) => element.rain)))
+             rain: d3.mean((object.data.map((element: FormattedData) => element.rain)))
            }))
        setRainData(calculateMean);
    }, [dataBySeason, yearValue]);

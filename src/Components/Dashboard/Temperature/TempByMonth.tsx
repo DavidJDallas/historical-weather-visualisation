@@ -4,7 +4,7 @@ import * as d3 from 'd3';
 import { FilteredDataByMonth, TempByMonthProps, TempDataMonth } from './Types';
 import './TempStyling.css'
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
-
+import { FormattedData } from '../Types';
 
 const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps): JSX.Element => {
 
@@ -17,9 +17,9 @@ const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps):
     useEffect(() => {
          const filteredDataByYear: FilteredDataByMonth[] = filterDataByYear(dataByMonth, yearValue);
 
-        const calculateMean = filteredDataByYear.map((object) => ({
+        const calculateMean: TempDataMonth[] = filteredDataByYear.map((object) => ({
                 month: object.month,
-                temperature: d3.mean((object.data.map((element) => element.temperatureMax)))
+                temperature: d3.mean((object.data.map((element: FormattedData) => element.temperatureMax)))
             }))
         setTempData(calculateMean);
     }, [dataByMonth, yearValue]);

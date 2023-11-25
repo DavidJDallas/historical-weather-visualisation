@@ -3,7 +3,7 @@ import * as d3 from 'd3';
 import { TempBySeasonProps, FilteredDataBySeason, TempDataSeason } from './Types';
 import {useState, useEffect, useRef} from 'react';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
-
+import { FormattedData } from '../Types';
 
 const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProps): JSX.Element => {
 
@@ -14,9 +14,9 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
     useEffect(() => {
         const filteredDataBySeason: FilteredDataBySeason[] = filterDataByYear(dataBySeason, yearValue);
         
-       const calculateMean = filteredDataBySeason.map((object) => ({
+       const calculateMean: TempDataSeason[] = filteredDataBySeason.map((object) => ({
                season: object.season,
-               temperature: d3.mean((object.data.map((element) => element.temperatureMax)))
+               temperature: d3.mean((object.data.map((element: FormattedData) => element.temperatureMax)))
            }))
        setTempData(calculateMean);
    }, [dataBySeason, yearValue]);
