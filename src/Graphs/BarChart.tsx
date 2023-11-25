@@ -4,16 +4,7 @@ import {useState, useEffect, useRef} from 'react';
 import { interpolateViridis } from 'd3';
 
 const BarChartTemplate = ({
-    // chartRef, 
-    // data, 
-    // width, 
-    // height, 
-    // yearValue, 
-    // title, 
-    // interpolateFirstColour, 
-    // interpolateSecondColour,
-    // xVariable,
-    // yVariable
+  data, width, height, xAccessor, yAccessor
 }) => {
 
     return(<>

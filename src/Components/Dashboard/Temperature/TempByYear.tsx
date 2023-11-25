@@ -6,7 +6,6 @@ import { makeListYearSelective } from "../../../Utils/MakeListYearSelective";
 
 const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps): JSX.Element => {
 
-
     const [tempData, setTempData] = useState< TempDataYear[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);
     
@@ -30,7 +29,7 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps): JS
                             .domain([d3.min(tempData, d=> d.year) as number ??0, d3.max(tempData, d=> d.year) as number ?? 0])
                             .range([0, adjustedWidth]);
     
-            const yScale = d3.scaleLinear<number>()
+        const yScale = d3.scaleLinear<number>()
                             .domain([d3.min(tempData.map((element) => element.temperature /1.2) as number[]) ?? 0, d3.max(tempData.map((element) => element.temperature *1.2) as number[]) ?? 0])
                             .range([height, 0]);
                         
