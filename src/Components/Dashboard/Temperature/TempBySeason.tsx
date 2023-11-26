@@ -4,6 +4,7 @@ import { TempBySeasonProps, FilteredDataBySeason, TempDataSeason } from './Types
 import {useState, useEffect, useRef} from 'react';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 import { FormattedData } from '../Types';
+import BarChartTemplate from '../../../Graphs/BarChart';
 
 const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProps): JSX.Element => {
 
@@ -118,6 +119,22 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
 
     return(
         <>
+        <BarChartTemplate
+              data={tempData}
+              width={width}
+              height={height}
+              yearValue={yearValue}
+              title={'Average Rainfall by Day Per Month(mm)'}
+              interpolateFirstColour={'#77ccff'}
+              interpolateSecondColour={'#0066ff'}
+              xAccessor={'season'}
+              yAccessor={'temperature'}
+              domainFirstValueX={0}
+              domainFirstValueY={0}
+              sliceLength={3}
+              gapBetweenBars={2}
+        
+        />
                <svg className=''ref={chartRef} height={'100%'} width={'100%'} preserveAspectRatio='xMinYMin meet' ></svg>
         </>
     )
