@@ -8,6 +8,7 @@ import TempByMonth from './TempByMonth';
 import TempBySeason from './TempBySeason';
 import './TempStyling.css'
 import TempByYear from './TempByYear';
+import '../../Dashboard/Dashboard.css';
 
 const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: TemperatureProps): JSX.Element => {
 
@@ -40,7 +41,7 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
             </Row>
             
                 <Row
-                style={{height: '300px'}}
+                className='tempIndexRow'
                 >
                 
                         {displayTempByMonthAverage &&   
@@ -69,6 +70,7 @@ const Temperature = ({dataByYear, dataByMonth, dataBySeason, formattedData}: Tem
          
             
             <Row
+            
             style={{height: '500px', marginLeft: '100px'}}
             >
                 {displayTempByYearAverage && 

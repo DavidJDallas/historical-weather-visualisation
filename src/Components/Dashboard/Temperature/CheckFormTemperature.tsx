@@ -12,7 +12,7 @@ const CheckFormTemp = ({
     setDisplayTempBySeasonAverage
 }: CheckFormProps): JSX.Element => {
 
-    const handleChangeTempMonthAverage = (event: any): void => {
+    const handleChangeTempMonthAverage = (): void => {
         setDisplayTempByMonthAverage(!displayTempByMonthAverage)    
     }
     const handleChangeTempSeasonAverage = (): void => {

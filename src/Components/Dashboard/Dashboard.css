@@ -10,3 +10,13 @@
 .nav-bar{
 
 }
+
+.data-by-month-season{
+    height: 300px
+}
+
+.data-by-year{
+    height: 500px;
+    margin-left: 100px;
+   
+}
