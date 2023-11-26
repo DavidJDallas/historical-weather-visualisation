@@ -23,105 +23,6 @@ const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps)
        setRainData(calculateMean);
    }, [dataByMonth, yearValue]);
 
-   useEffect((): void => {  
-        
-            
-
-    if(rainData.length>0){  
-        d3.select(chartRef.current).selectAll('*').remove();
-        
-    let adjustedWidth = width-30
-    
-    const colourScale = d3.scaleSequential()
-                        .domain([0, d3.max(rainData.map((element) => element.rain))])
-
-    const interpolatorColourFunction = d3.interpolateRgb('#77ccff', '#0066ff')
-
-    const xScale = d3.scaleLinear()
-                        .domain([0, rainData.length])
-                        .range([30, adjustedWidth]);
-
-    const yScale = d3.scaleLinear()                             
-                            .domain([0, d3.max(rainData.map((element) => element.rain *1.2) as number[]) ?? 0])
-                            .range([height, 75]);
-
-    const xAxis = d3.scaleBand()
-                        .domain(rainData.map((x) => x.month.slice(0,3)))
-                        .range([30, adjustedWidth])
-                        .padding(0);
-
-    const yAxis = d3.axisLeft(yScale)
-                    .tickFormat(d => d.toString().slice(0,5)) 
-                    
-
-
-    const svg= d3.select(chartRef.current)
-                        .append('svg')
-                        .attr('width', width)
-                        .attr('height', height+200);
-
-    //Below removes all tooltips before implementing new ones to avoid tooltips lagging. The d3.selectAll().remove() doesn't cover tooltips since tooltips are added to the body. 
-    d3.selectAll('.tempMonthToolTip').remove();
-
-     
-    const tooltip = d3.select('body').append('div')
-        .style('position', 'absolute')
-        .style('z-index', '10')
-        .style('visibility', 'hidden')
-        .style('background-color', 'white')
-        .style('border-style', 'solid')
-        .style('border-width', '2px')
-        .style('border-color', '#50e991')
-        .style('padding', '5px')
-        .style('font-size', '12px');
-                        
-
-    const bars = svg.selectAll('rect')
-                .data(rainData)
-                .enter()
-                .append('rect')
-                .attr('x', (d,i) => xScale(i)+1)
-                .attr('y', d => yScale(d.rain))
-                .attr('width', xScale(1)-xScale(0) -1)
-                .attr('height', d => height - yScale(d.rain))
-                .attr('fill', d=> interpolatorColourFunction(colourScale(d.rain)))                        
-                .on('mouseover', (event, d) => {
-                    tooltip.html(`${(d.month)}: ${String(d.rain).slice(0,4)} `+ 'mm')
-                        .style('visibility', 'visible')
-                })
-            .on('mousemove', (event) => {
-                    tooltip.style('top', event.pageY - 10 + 'px')
-                    tooltip.style('left', event.pageX + 10 + 'px')
-                })
-            .on('mouseout', () => {
-                    tooltip.style('visibility', 'hidden')
-                });
-                
-                bars.transition().duration(5000).attr('y', (d) => yScale(d.rain))
-                
-         svg.append('text')
-               .attr('x', width/2)
-               .attr('y', 30)
-               .style('text-anchor', 'middle')
-               .style('font-size', '18px')
-               .text(`Average Rainfall per day by Month (mm)`);
-        
-        svg.append('g')
-            .attr('transform', `translate(0, ${height})`)
-            .call(d3.axisBottom(xAxis))
-            .selectAll('text')
-            .style('font-size', '13px')
-                    
-        svg.append('g') 
-            .attr('transform', `translate(30,0)`)              
-            .call(yAxis)
-            .selectAll('text')
-            .style('font-size', '9px')    
-            
-    }
-}, [rainData, height, width ]);
-
-
     return(
         <>
         <BarChartTemplate
@@ -129,14 +30,17 @@ const RainByMonth = ({dataByMonth, width, height, yearValue }: RainByMonthProps)
             width={width}
             height={height}
             yearValue={yearValue}
-            title={'Average Rainfall by Day Per Month(mm'}
+            title={'Average Rainfall by Day Per Month(mm)'}
             interpolateFirstColour={'#77ccff'}
             interpolateSecondColour={'#0066ff'}
             xAccessor={'month'}
             yAccessor={'rain'}
+            domainFirstValueX={0}
+            domainFirstValueY={0}
+            sliceLength={3}
+            gapBetweenBars={2}
         />
-          
-        <svg className=''ref={chartRef} height={'100%'} width={'100%'} preserveAspectRatio='xMinYMin meet' ></svg>
+       
         </>
     )
 

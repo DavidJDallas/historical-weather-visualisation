@@ -22,8 +22,6 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
    }, [dataBySeason, yearValue]);
 
 
-
-
    useEffect((): void => {                 
 
     if(tempData.length>0){  
