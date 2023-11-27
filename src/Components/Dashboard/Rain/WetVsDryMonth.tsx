@@ -2,11 +2,8 @@ import * as React from 'react';
 import * as d3 from 'd3';
 import {useState, useEffect, useRef} from 'react';
 import { WetVsDryMonthObject, WetVsDryMonthProps } from './RainTypes';
-import { RainDataMonth } from './RainTypes';
 import { FilteredDataByMonth } from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
-import { FormattedData } from '../Types';
-
 
 const WetVsDryMonth = ({yearValue, width, dataByMonth, height}: WetVsDryMonthProps) => {
 
