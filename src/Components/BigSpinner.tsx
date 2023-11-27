@@ -6,7 +6,7 @@ const BigSpinner: React.FC = (): JSX.Element => {
 
     return(  
     
-    <Box sx={{ width: '100%' }}>
+    <Box sx={{ width: '80%' }}>
         <LinearProgress />
     </Box>
     
