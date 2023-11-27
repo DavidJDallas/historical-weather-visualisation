@@ -7,6 +7,7 @@ import RangeSlider from '../RangeSlider';
 import RainBySeason from './RainBySeason';
 import RainByYear from './RainByYear';
 import CheckFormRain from './CheckFormRain';
+import WetVsDryMonth from './WetVsDryMonth';
 
 const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps): JSX.Element => {
 
@@ -66,11 +67,26 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
             </Row> 
             : null    
         }
-        <Row>
+        <Row
+        style={{height: '300px'}}
+        >
             <Col>
+            <WetVsDryMonth
+                yearValue={yearValue}
+                width={400}
+                height={250}
+                dataByMonth={dataByMonth}
+            />
         
             </Col>
 
+
+
+        </Row>
+        <Row>
+            <Col>
+            
+            </Col>
 
 
         </Row>
