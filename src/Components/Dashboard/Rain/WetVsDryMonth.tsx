@@ -2,7 +2,7 @@ import * as React from 'react';
 import * as D3 from 'd3';
 import {useState, useEffect} from 'react';
 
-const WetVsDry = () => {
+const WetVsDryMonth = () => {
 
     
 
@@ -12,4 +12,4 @@ const WetVsDry = () => {
     )
 }
 
-export default WetVsDry
+export default WetVsDryMonth;

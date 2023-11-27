@@ -63,3 +63,12 @@ export interface RainDataYear{
     year: number,
     [variable: string]: number
 }
+
+//wetvsdry
+
+export interface WetVsDryMonthProps{
+    yearValue: number,
+    width: number,
+    height: number,
+    dataByMonth: GroupedDataByMonth[],
+}
