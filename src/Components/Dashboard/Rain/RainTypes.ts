@@ -72,3 +72,9 @@ export interface WetVsDryMonthProps{
     height: number,
     dataByMonth: GroupedDataByMonth[],
 }
+
+export interface WetVsDryMonthObject{
+    month: string,
+    wetDays: number,
+    dryDays: number
+}
