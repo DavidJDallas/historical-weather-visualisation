@@ -54,3 +54,17 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
             return `Non-axios related error: ${error}`
         }
 }}
+
+export const postHistoricalWeatherData = async(data: any) => {
+    try{
+        axios.post(`http://localhost:3000`, {
+            params: {
+
+            }
+        });
+
+    }
+    catch(err){
+        console.log(err)
+    }
+}
