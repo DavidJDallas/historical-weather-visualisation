@@ -9,6 +9,8 @@ import {Route, Routes} from 'react-router-dom'
 import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
 import './Dashboard.css'
+import SideMargin from './SideMargin/SideMarginIndex';
+import {Container, Row, Col} from 'react-bootstrap';
 
 const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
 
@@ -148,38 +150,46 @@ const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
    
 
     return(<>
+    <Container>
+    <Row>
+        <Col xs={3}>
+            {/* SideMargin component goes here */}
+            {/* <SideMargin /> */}
+        </Col>
 
-    <NavBar
-    weatherTypeSelected={weatherTypeSelected}
-    setWeatherTypeSelected={setWeatherTypeSelected}
-    
-    />
-        <div className='dashboard-container'>
-            {!weatherTypeSelected ?
-            
-            <h3>Choose whether you would like to see patterns in weather for temperature or rain. Customise these as you like via various parameters.</h3>
-
-            :
-               <Routes>            
-            <Route path="/temp" element={
-            <Temperature
-                dataBySeason ={dataBySeason}
-                dataByMonth = {dataByMonth}
-                dataByYear = {dataByYear}
-                formattedData = {formattedData}
+        <Col xs={9}>
+            <NavBar
+                weatherTypeSelected={weatherTypeSelected}
+                setWeatherTypeSelected={setWeatherTypeSelected}
             />
-            }/>           
-            <Route path ="/rain" element={
-            <Rain
-                dataBySeason ={dataBySeason}
-                dataByMonth = {dataByMonth}
-                dataByYear = {dataByYear}
-                formattedData = {formattedData}            
-            />}/>
-        </Routes>
-            }
-     
-        </div>
+
+            <div className='dashboard-container'>
+                {!weatherTypeSelected ?
+                    <h3>Choose whether you would like to see patterns in weather for temperature or rain. Customise these as you like via various parameters.</h3>
+                    :
+                    <Routes>
+                        <Route path="/temp" element={
+                            <Temperature
+                                dataBySeason={dataBySeason}
+                                dataByMonth={dataByMonth}
+                                dataByYear={dataByYear}
+                                formattedData={formattedData}
+                            />
+                        } />
+                        <Route path="/rain" element={
+                            <Rain
+                                dataBySeason={dataBySeason}
+                                dataByMonth={dataByMonth}
+                                dataByYear={dataByYear}
+                                formattedData={formattedData}
+                            />
+                        } />
+                    </Routes>
+                }
+            </div>
+        </Col>
+    </Row>
+</Container>
 
    
 

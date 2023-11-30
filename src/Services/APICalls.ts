@@ -43,6 +43,8 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
             }, 
             responseType: 'json'
         })
+
+        postHistoricalWeatherData(dailyData);
         
 
         return dailyData
@@ -55,13 +57,15 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
         }
 }}
 
-export const postHistoricalWeatherData = async(data: any) => {
+export const postHistoricalWeatherData = async(data: DailyData) => {
     try{
-        axios.post(`http://localhost:3000`, {
-            params: {
-
-            }
+        const response = await axios.post(`http://localhost:3000`, {
+            Rain: data.rain_sum,
+            TemperatureMax: data.temperature_2m_max,
+            Time: data.time
         });
+
+        console.log(response);
 
     }
     catch(err){
