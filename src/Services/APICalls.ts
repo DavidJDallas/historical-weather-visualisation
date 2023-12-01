@@ -79,3 +79,7 @@ export const postHistoricalWeatherData = async(data: DailyData): Promise<void> =
         console.log(err)
     }
 }
+
+export const getWeatherDataFromBackend = async(data: DailyData): Promise<void> => {
+    
+}
