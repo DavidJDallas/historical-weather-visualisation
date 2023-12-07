@@ -1,7 +1,6 @@
 import * as React from 'react';
 import * as d3 from 'd3';
-import {useState, useEffect, useRef} from 'react';
-import { interpolateViridis } from 'd3';
+import {useEffect, useRef} from 'react';
 import { BarChartProps } from './GraphTypes';
 
 const BarChartTemplate = ({

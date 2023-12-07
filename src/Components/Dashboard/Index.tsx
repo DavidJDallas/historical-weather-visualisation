@@ -152,12 +152,9 @@ const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
     return(<>
     <Container>
     <Row>
-        <Col xs={3}>
-            {/* SideMargin component goes here */}
-            {/* <SideMargin /> */}
-        </Col>
+     
 
-        <Col xs={9}>
+      
             <NavBar
                 weatherTypeSelected={weatherTypeSelected}
                 setWeatherTypeSelected={setWeatherTypeSelected}
@@ -187,7 +184,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
                     </Routes>
                 }
             </div>
-        </Col>
+        
     </Row>
 </Container>
 
