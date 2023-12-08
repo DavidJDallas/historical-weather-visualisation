@@ -31,7 +31,7 @@ const StackedBarChartTemplate = ({
                           .range([height, 75])
 
         const xAxis = d3.scaleBand()
-                    .domain(data.map(x => x[xAccessor].slice(0,sliceLength)))
+                    .domain(data.map(x => x[xAccessor]))
                     .range([30, width-30])
                     .padding(0);
 

@@ -76,7 +76,8 @@ export interface WetVsDryMonthProps{
 export interface WetVsDryMonthObject{
     month: string,
     wetDays: number,
-    dryDays: number
+    dryDays: number,
+    total: number
 }
 
 export interface WetVsDrySeasonProps{
@@ -91,3 +92,5 @@ export interface WetVsDrySeasonObject{
     wetDays: number,
     dryDays: number,
 }
+
+export type stackedData = d3.Series<{ [key: string]: string | number }, string >

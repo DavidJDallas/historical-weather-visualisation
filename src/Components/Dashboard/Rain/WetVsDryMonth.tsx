@@ -1,14 +1,15 @@
 import * as React from 'react';
 import * as d3 from 'd3';
 import {useState, useEffect, useRef} from 'react';
-import { WetVsDryMonthObject, WetVsDryMonthProps } from './RainTypes';
+import { WetVsDryMonthObject, WetVsDryMonthProps, stackedData } from './RainTypes';
 import { FilteredDataByMonth } from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 import StackedBarChartTemplate from '../../../Graphs/StackedBarChart';
 
 const WetVsDryMonth = ({yearValue, width, dataByMonth, height}: WetVsDryMonthProps) => {
 
-    const [rainData, setRainData] = useState<WetVsDryMonthObject[] | []>([]);
+    const [rainData, setRainData] = useState<stackedData[] | []>([]);
+
     const chartRef = useRef<SVGSVGElement | null>(null);
 
     useEffect(() => {
@@ -25,7 +26,18 @@ const WetVsDryMonth = ({yearValue, width, dataByMonth, height}: WetVsDryMonthPro
             }               
                
            })
-       setRainData(calculateWetAndDryDays);
+
+           const series: (keyof WetVsDryMonthObject)[] = ["wetDays", "dryDays"];
+           const transposedData: { [key: string]: string | number }[] = calculateWetAndDryDays.map((d) => {
+               const transposedEntry: { [key: string]: string | number } = { x: d.month };
+               series.forEach((s) => (transposedEntry[s] = d[s]));
+               return transposedEntry;
+           });
+
+           const stackedData = d3.stack<{ [key: string]: string | number }>().keys(series)(transposedData);
+
+    
+       setRainData(stackedData);
    }, [dataByMonth, yearValue]);
 
 console.log(rainData)
