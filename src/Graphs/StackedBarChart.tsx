@@ -38,15 +38,7 @@ const StackedBarChartTemplate = ({
         const yAxis = d3.axisLeft(yScale)
                       .tickFormat(d => d.toString().slice(0,3));
 
-        console.log(data)
-        const subGroup = 'wetDays'
-        const stackedData = d3.stack()
-                            .keys(data.map(d => d.month))
-                            (data)
-                            
-
-        console.log(stackedData)
-
+       
         const svg= d3.select(chartRef.current)
                       .append('svg')
                       .attr('width', width)
