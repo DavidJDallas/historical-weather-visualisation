@@ -1,11 +1,11 @@
 import * as React from 'react';
 import * as d3 from 'd3';
 import {useEffect, useRef} from 'react';
-import { BarChartProps } from './GraphTypes';
+import { StackedBarChartProps } from './GraphTypes';
 
 const StackedBarChartTemplate = ({
-  data, width, height, xAccessor, yAccessor, yearValue, title, interpolateFirstColour, interpolateSecondColour, domainFirstValueX, domainFirstValueY, sliceLength, gapBetweenBars
-}: BarChartProps): JSX.Element => {
+  data, width, height, xAccessor, yAccessor, yearValue, title, domainFirstValueX, domainFirstValueY, sliceLength, gapBetweenBars
+}: StackedBarChartProps): JSX.Element => {
 
     const chartRef = useRef<SVGSVGElement | null>(null);
 
@@ -18,7 +18,7 @@ const StackedBarChartTemplate = ({
         const colourScale = d3.scaleSequential()
         .domain([0, d3.max(data.map((element) => element[yAccessor]))])
 
-        const interpolatorColourFunction = d3.interpolateRgb(interpolateFirstColour, interpolateSecondColour);
+   
 
         const colourScheme = d3.scaleOrdinal(d3.schemeCategory10);
 
@@ -38,8 +38,14 @@ const StackedBarChartTemplate = ({
         const yAxis = d3.axisLeft(yScale)
                       .tickFormat(d => d.toString().slice(0,3));
 
+        console.log(data)
+        const subGroup = 'wetDays'
         const stackedData = d3.stack()
-                            .keys()
+                            .keys(data.map(d => d.month))
+                            (data)
+                            
+
+        console.log(stackedData)
 
         const svg= d3.select(chartRef.current)
                       .append('svg')
@@ -65,7 +71,7 @@ const StackedBarChartTemplate = ({
         .attr('y', d=> yScale(d[yAccessor]))
         .attr('width', xScale(5)-xScale(4) -gapBetweenBars)
         .attr('height', d=> height-yScale(d[yAccessor]))
-        .attr('fill', d=> interpolatorColourFunction(colourScale(d[yAccessor])))
+        .attr('fill', d=> colourScale(d[yAccessor]))
         .on('mouseover', (event, d) => {
           tooltip.html(`${(d[xAccessor])}: ${String(d[yAccessor]).slice(0,4)} `+ 'mm')
           .style('visibility', 'visible')
@@ -99,7 +105,7 @@ svg.append('g')
    
     
     }
-    }, [data, height, width, domainFirstValueX, domainFirstValueY, interpolateFirstColour, interpolateSecondColour, title, xAccessor, yAccessor]);
+    }, [data, height, width, domainFirstValueX, domainFirstValueY, title, xAccessor, yAccessor]);
 
     return(<>
      <svg className=''ref={chartRef} height={'100%'} width={'100%'} preserveAspectRatio='xMinYMin meet' ></svg>

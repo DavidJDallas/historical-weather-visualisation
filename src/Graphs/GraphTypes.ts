@@ -15,3 +15,17 @@ export interface BarChartProps{
     sliceLength: number,
     gapBetweenBars: number
 }
+
+export interface StackedBarChartProps{
+    data: any[],
+    width: number,
+    height: number,
+    yearValue: number,
+    title: string,
+    xAccessor: string,
+    yAccessor: string,
+    domainFirstValueX: any,
+    domainFirstValueY: any,
+    sliceLength: number,
+    gapBetweenBars: number
+}
