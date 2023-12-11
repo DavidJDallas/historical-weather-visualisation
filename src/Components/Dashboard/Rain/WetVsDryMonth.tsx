@@ -53,8 +53,7 @@ const WetVsDryMonth = ({yearValue, width, dataByMonth, height}: WetVsDryMonthPro
             domainFirstValueX = {0}
             domainFirstValueY={0}
             sliceLength={3}
-            gapBetweenBars={2}
-            
+            gapBetweenBars={2}            
         />
         </>
     )

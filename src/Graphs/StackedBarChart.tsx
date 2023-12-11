@@ -11,15 +11,11 @@ const StackedBarChartTemplate = ({
 
     useEffect(() => {
     if(data.length>0){
-        d3.select(chartRef.current).selectAll('*').remove();
+        d3.select(chartRef.current).selectAll('*').remove()
 
-        
-    
         const colourScale = d3.scaleSequential()
         .domain([0, d3.max(data.map((element) => element[yAccessor]))])
-
-   
-
+        
         const colourScheme = d3.scaleOrdinal(d3.schemeCategory10);
 
         const xScale = d3.scaleLinear()
