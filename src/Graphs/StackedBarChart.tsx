@@ -90,8 +90,7 @@ svg.append('g')
    .attr('transform', `translate(30,0)`)              
    .call(yAxis)
    .selectAll('text')
-   .style('font-size', '9px')    
-   
+   .style('font-size', '9px');   
     
     }
     }, [data, height, width, domainFirstValueX, domainFirstValueY, title, xAccessor, yAccessor]);
