@@ -8,14 +8,15 @@ const StackedBarChartTemplate = ({
 }: StackedBarChartProps): JSX.Element => {
 
     const chartRef = useRef<SVGSVGElement | null>(null);
+    console.log(data);
 
     useEffect(() => {
     if(data.length>0){
-        d3.select(chartRef.current).selectAll('*').remove()
+        d3.select(chartRef.current).selectAll('*').remove();
 
         const colourScale = d3.scaleSequential()
-        .domain([0, d3.max(data.map((element) => element[yAccessor]))])
-        
+        .domain([0, d3.max(data.map((element) => element[yAccessor]))]);
+
         const colourScheme = d3.scaleOrdinal(d3.schemeCategory10);
 
         const xScale = d3.scaleLinear()
@@ -24,7 +25,7 @@ const StackedBarChartTemplate = ({
                         
         const yScale = d3.scaleLinear()
                           .domain([domainFirstValueY, d3.max(data.map((element) => element[yAccessor] *1.2) as number[] ?? 0)])
-                          .range([height, 75])
+                          .range([height, 75]);
 
         const xAxis = d3.scaleBand()
                     .domain(data.map(x => x[xAccessor]))
