@@ -11,6 +11,7 @@ import Rain from './Rain/IndexRain';
 import './Dashboard.css'
 import SideMargin from './SideMargin/SideMarginIndex';
 import {Container, Row, Col} from 'react-bootstrap';
+import SaveChartData from './SaveChartData';
 
 const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
 
@@ -158,6 +159,10 @@ const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
             <NavBar
                 weatherTypeSelected={weatherTypeSelected}
                 setWeatherTypeSelected={setWeatherTypeSelected}
+            />
+
+            <SaveChartData
+            
             />
 
             <div className='dashboard-container'>

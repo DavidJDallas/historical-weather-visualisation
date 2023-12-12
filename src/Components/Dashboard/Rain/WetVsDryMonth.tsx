@@ -12,6 +12,8 @@ const WetVsDryMonth = ({yearValue, width, dataByMonth, height}: WetVsDryMonthPro
 
     const chartRef = useRef<SVGSVGElement | null>(null);
 
+    //The useEffect below transforms the data into a suitable format for the stacked bar chart to work with.
+
     useEffect(() => {
         const filteredDataByYear: FilteredDataByMonth[] = filterDataByYear(dataByMonth, yearValue);
         
