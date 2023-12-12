@@ -58,3 +58,10 @@ export interface RangeSliderProps{
     yearValue: number,
     setYearValue: Dispatch<SetStateAction<number>>
 }
+
+
+// SaveChartData
+
+export interface SaveChartDataProps{
+    weatherData: DailyData
+}

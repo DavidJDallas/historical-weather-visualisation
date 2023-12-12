@@ -1,7 +1,8 @@
 import * as React from 'react';
 import { Button } from 'react-bootstrap';
+import { SaveChartDataProps } from './Types';
 
-const SaveChartData = () => {
+const SaveChartData = ({weatherData}: SaveChartDataProps) => {
 
     const handleClick = () => {
         console.log('done')

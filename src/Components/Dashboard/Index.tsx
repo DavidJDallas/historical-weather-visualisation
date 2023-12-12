@@ -22,6 +22,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
     const [weatherTypeSelected, setWeatherTypeSelected] = useState<boolean>(false);
     
 
+    console.log(weatherData)
     const parsedTime = d3.timeParse('%Y-%m-%d');
     const dates = weatherData && weatherData.time.map(element => parsedTime(element)) as Date[]
 
@@ -162,7 +163,7 @@ const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
             />
 
             <SaveChartData
-            
+            weatherData={weatherData}
             />
 
             <div className='dashboard-container'>
