@@ -4,7 +4,6 @@ import { SearchContextProps } from './ContextTypes';
 import { LatAndLong } from '../Services/ServicesTypes';
 import { DailyData } from '../Services/ServicesTypes';
 
-
 export const SearchContext = createContext<SearchContextProps >({
     place: '',
     setPlace: () => {},

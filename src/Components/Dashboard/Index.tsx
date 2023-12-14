@@ -9,12 +9,10 @@ import {Route, Routes} from 'react-router-dom'
 import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
 import './Dashboard.css'
-import SideMargin from './SideMargin/SideMarginIndex';
 import {Container, Row, Col} from 'react-bootstrap';
 import SaveChartData from './SaveChartData';
 import { SearchContext } from '../../Context/SearchContext';
 import { SearchContextProps } from '../../Context/ContextTypes';
-
 
 const MainDashboard = (): JSX.Element => {
 
@@ -31,8 +29,6 @@ const MainDashboard = (): JSX.Element => {
     console.log(weatherData)
     const parsedTime = d3.timeParse('%Y-%m-%d');
     const dates = weatherData && weatherData.time.map(element => parsedTime(element)) as Date[]
-
-
 
     //Format the data from an object with arrays as values into an array of objects with each object corresponding to one day.
 
@@ -169,7 +165,6 @@ const MainDashboard = (): JSX.Element => {
             />
 
             <SaveChartData
-            weatherData={weatherData}
             />
 
             <div className='dashboard-container'>

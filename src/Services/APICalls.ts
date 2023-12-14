@@ -43,8 +43,6 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
             }, 
             responseType: 'json'
         })
-
-        postHistoricalWeatherData(dailyData);
         
 
         return dailyData
@@ -68,12 +66,9 @@ export const postHistoricalWeatherData = async(data: DailyData): Promise<void> =
         });
 
         //sets the unique ID associated with this data on the backend in local storage so that it's more easily accessible later.
-        localStorage.setItem('dataItem', response.data.id);
-
-
+        localStorage.setItem('dataItem', response.data.id);  
 
         console.log(response);
-
     }
     catch(err){
         console.log(err)
