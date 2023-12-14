@@ -5,7 +5,7 @@ import LandingPageSearch from './Search';
 import { IndexProps } from './LandingPageTypes';
 import { FormEvent } from 'react';
 
-const LandingPage = ({getGeoLocationData, setPlace, setPostcode, postcode, place}: IndexProps): JSX.Element => {
+const LandingPage = ({getGeoLocationData,  setPostcode, postcode}: IndexProps): JSX.Element => {
   
   const handlePostcodeSubmit = (): void => {    
     getGeoLocationData();
@@ -24,10 +24,10 @@ const LandingPage = ({getGeoLocationData, setPlace, setPostcode, postcode, place
         <LandingPageSearch
           handlePostcodeSubmit={handlePostcodeSubmit}
           handlePlaceSubmit={handlePlacesubmit}
-          setPlace={setPlace}
+        
           setPostcode={setPostcode}
           postcode={postcode}
-          place={place}
+   
         />
       </Container>
         </div>

@@ -9,7 +9,12 @@ interface SearchContextProps{
     setPostcode: React.Dispatch<React.SetStateAction<string>>,
 }
 
-export const SearchContext = createContext<SearchContextProps | null>(null);
+export const SearchContext = createContext<SearchContextProps >({
+    place: '',
+    setPlace: () => {},
+    postcode: '',
+    setPostcode: () => {},
+});
 
 const SearchProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
 

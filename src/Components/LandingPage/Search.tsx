@@ -2,10 +2,20 @@ import React, { SyntheticEvent , KeyboardEvent} from 'react';
 import { SearchFormProps } from './LandingPageTypes';
 import Box from '@mui/material/Box';
 import TextField from '@mui/material/TextField';
+import { SearchContext } from '../../Context/SearchContext';
+import { useContext } from 'react';
 
 
-const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit, setPlace, setPostcode, place, postcode}: SearchFormProps): JSX.Element => {
+const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit,  setPostcode,  postcode}: SearchFormProps): JSX.Element => {
   
+    const searchContext = useContext(SearchContext)
+
+    const {place, setPlace} = searchContext;
+
+    console.log(place);
+    
+
+
     const handleTextChange = (event: KeyboardEvent<HTMLInputElement>): void => {
         if(event.key === 'Enter'){
            event.preventDefault()

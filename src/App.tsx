@@ -9,8 +9,14 @@ import { LatAndLong, DailyData } from './Services/ServicesTypes';
 import { AxiosError } from 'axios';
 import { useRateLimiter } from './Services/RateLimiter';
 import BigSpinner from './Components/BigSpinner';
+import { SearchContext } from './Context/SearchContext';
+import { useContext } from 'react';
 
 const App: React.FC = (): JSX.Element => {
+
+  const searchContext = useContext(SearchContext);
+
+  console.log(searchContext)
 
   const [postcode, setPostcode] = useState<string>('');
   const [place, setPlace] = useState<string>('');
@@ -107,10 +113,10 @@ const App: React.FC = (): JSX.Element => {
       <div className=''>
        <LandingPage
           setPostcode={setPostcode}
-          setPlace={setPlace}
+          
           getGeoLocationData={getGeoLocationData}
           postcode={postcode}
-          place={place}
+         
         />
         </div> 
         </Row>
