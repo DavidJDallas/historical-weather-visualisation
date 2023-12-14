@@ -1,16 +1,8 @@
 import * as React from 'react';
 import { createContext, useState } from 'react';
-import { Search } from 'react-router-dom';
+import { SearchContextProps } from './ContextTypes';
 import { LatAndLong } from '../Services/ServicesTypes';
 
-interface SearchContextProps{
-    place: string,
-    setPlace: React.Dispatch<React.SetStateAction<string>>,
-    postcode: string,
-    setPostcode: React.Dispatch<React.SetStateAction<string>>,
-    latAndLong: LatAndLong,
-    setLatAndLong: React.Dispatch<React.SetStateAction<LatAndLong>>
-}
 
 export const SearchContext = createContext<SearchContextProps >({
     place: '',
