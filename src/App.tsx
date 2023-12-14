@@ -14,18 +14,15 @@ import { useContext } from 'react';
 
 const App: React.FC = (): JSX.Element => {
 
+  //Import state from the context file
   const searchContext = useContext(SearchContext);
+  const {place, postcode, latAndLong, setLatAndLong} = searchContext;
 
-  const {place, setPlace, postcode, setPostcode} = searchContext;
-
-  console.log(searchContext)
-
-  
-  const [latAndLong, setLatAndLong] = useState<LatAndLong>({latitude: 0, longitude: 0});
   const [weatherData, setWeatherData] = useState<DailyData | undefined>();
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const rateLimiter = useRateLimiter(1, 5000 );
   const [loading, setLoading] = useState<boolean>(false);
+  console.log(latAndLong)
 
   const getGeoLocationData = async (): Promise<void> => {  
       setLoading(true);

@@ -8,13 +8,8 @@ import { useContext } from 'react';
 
 const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit}: SearchFormProps): JSX.Element => {
   
-    const searchContext = useContext(SearchContext)
-
+    const searchContext = useContext(SearchContext);
     const {place, setPlace, postcode, setPostcode} = searchContext;
-
-    console.log(searchContext);
-    
-
 
     const handleTextChange = (event: KeyboardEvent<HTMLInputElement>): void => {
         if(event.key === 'Enter'){
