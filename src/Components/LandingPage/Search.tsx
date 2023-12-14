@@ -6,13 +6,13 @@ import { SearchContext } from '../../Context/SearchContext';
 import { useContext } from 'react';
 
 
-const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit,  setPostcode,  postcode}: SearchFormProps): JSX.Element => {
+const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit}: SearchFormProps): JSX.Element => {
   
     const searchContext = useContext(SearchContext)
 
-    const {place, setPlace} = searchContext;
+    const {place, setPlace, postcode, setPostcode} = searchContext;
 
-    console.log(place);
+    console.log(searchContext);
     
 
 

@@ -5,6 +5,8 @@ import router from './Routes/router';
 import './General.css'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import App from './App';
+import { SearchContext } from './Context/SearchContext';
+import SearchProvider from './Context/SearchContext';
 
 const root = ReactDOM.createRoot(
   document.getElementById('root') as HTMLElement
@@ -12,8 +14,9 @@ const root = ReactDOM.createRoot(
 
 root.render(
   <React.StrictMode>
-    <RouterProvider router={router}/>
- 
+    <SearchProvider>
+       <RouterProvider router={router}/>
+    </SearchProvider> 
   </React.StrictMode>
 );
 

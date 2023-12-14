@@ -16,10 +16,11 @@ const App: React.FC = (): JSX.Element => {
 
   const searchContext = useContext(SearchContext);
 
+  const {place, setPlace, postcode, setPostcode} = searchContext;
+
   console.log(searchContext)
 
-  const [postcode, setPostcode] = useState<string>('');
-  const [place, setPlace] = useState<string>('');
+  
   const [latAndLong, setLatAndLong] = useState<LatAndLong>({latitude: 0, longitude: 0});
   const [weatherData, setWeatherData] = useState<DailyData | undefined>();
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
@@ -111,11 +112,8 @@ const App: React.FC = (): JSX.Element => {
       /> 
       : <Row className='row-main'>
       <div className=''>
-       <LandingPage
-          setPostcode={setPostcode}
-          
+       <LandingPage         
           getGeoLocationData={getGeoLocationData}
-          postcode={postcode}
          
         />
         </div> 
