@@ -19,25 +19,11 @@ const App: React.FC = (): JSX.Element => {
   const searchContext: SearchContextProps = useContext<SearchContextProps>(SearchContext);
   
   const {place, postcode, latAndLong, setLatAndLong} = searchContext;
-
   const [weatherData, setWeatherData] = useState<DailyData | undefined>();
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const rateLimiter = useRateLimiter(1, 5000 );
   const [loading, setLoading] = useState<boolean>(false);
 
-  // const getGeoLocationData = async (): Promise<void> => {  
-  //     setLoading(true);
-  //   try{
-  //       const {latitude, longitude} =  await getGeoLocation(postcode || place) as LatAndLong;
-  //       setLatAndLong({
-  //           latitude,
-  //           longitude
-  //         })   
-        
-  //     } catch(err){
-  //         console.log(err);
-  //     } 
-  // }
   
   useEffect((): void => {
     if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
