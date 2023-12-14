@@ -25,19 +25,19 @@ const App: React.FC = (): JSX.Element => {
   const rateLimiter = useRateLimiter(1, 5000 );
   const [loading, setLoading] = useState<boolean>(false);
 
-  const getGeoLocationData = async (): Promise<void> => {  
-      setLoading(true);
-    try{
-        const apiResponse = await getGeoLocation(postcode || place) as LatAndLong;
-        setLatAndLong({
-            latitude: apiResponse.latitude,
-            longitude: apiResponse.longitude
-          })   
+  // const getGeoLocationData = async (): Promise<void> => {  
+  //     setLoading(true);
+  //   try{
+  //       const {latitude, longitude} =  await getGeoLocation(postcode || place) as LatAndLong;
+  //       setLatAndLong({
+  //           latitude,
+  //           longitude
+  //         })   
         
-      } catch(err){
-          console.log(err);
-      } 
-  }
+  //     } catch(err){
+  //         console.log(err);
+  //     } 
+  // }
   
   useEffect((): void => {
     if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
@@ -49,7 +49,8 @@ const App: React.FC = (): JSX.Element => {
 
     //custom rate limiter hook used here to stop client-side requests being made too frequently to the weather API. This is done as due to the fact that relatively large amounts of data are being called, if too many requests are made then the API will issue a 429 (too many calls) error and block usage for the day. 
     rateLimiter.enqueue(async () => {
-      try{   
+      try{  
+        setLoading(true) 
         const {latitude, longitude} = latAndLong;     
         const apiResponse: DailyData | unknown | AxiosError = await getHistoricalWeatherData(latitude, longitude);      
       
@@ -111,7 +112,10 @@ const App: React.FC = (): JSX.Element => {
       : <Row className='row-main'>
       <div className=''>
        <LandingPage         
-          getGeoLocationData={getGeoLocationData}
+          postcode={postcode}
+          place={place}
+          setLatAndLong={setLatAndLong}
+          setLoading={setLoading}
          
         />
         </div> 

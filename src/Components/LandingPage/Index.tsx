@@ -4,15 +4,17 @@ import './LandingPage.css';
 import LandingPageSearch from './Search';
 import { IndexProps } from './LandingPageTypes';
 import { FormEvent } from 'react';
+import { getGeoLocationData } from '../../Utils/getGeoLocationData';
+import { getGeoLocation } from '../../Services/APICalls';
 
-const LandingPage = ({getGeoLocationData}: IndexProps): JSX.Element => {
+const LandingPage = ({postcode, place, setLatAndLong}: IndexProps): JSX.Element => {
   
   const handlePostcodeSubmit = (): void => {    
-    getGeoLocationData();
+    getGeoLocationData(postcode, place, setLatAndLong, getGeoLocation);
   }
 
   const handlePlacesubmit = (): void => {   
-    getGeoLocationData();
+    getGeoLocationData(postcode, place, setLatAndLong, getGeoLocation);
   }
     return(<>
 
