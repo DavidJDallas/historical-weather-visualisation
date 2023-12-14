@@ -1,4 +1,4 @@
-import { LatAndLong } from "../Services/ServicesTypes"
+import { DailyData, LatAndLong } from "../Services/ServicesTypes"
 
 export interface SearchContextProps{
     place: string,
@@ -6,5 +6,7 @@ export interface SearchContextProps{
     postcode: string,
     setPostcode: React.Dispatch<React.SetStateAction<string>>,
     latAndLong: LatAndLong,
-    setLatAndLong: React.Dispatch<React.SetStateAction<LatAndLong>>
+    setLatAndLong: React.Dispatch<React.SetStateAction<LatAndLong>>,
+    weatherData: DailyData,
+    setWeatherData: React.Dispatch<React.SetStateAction<DailyData>>
 };

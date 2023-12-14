@@ -18,11 +18,12 @@ const App: React.FC = (): JSX.Element => {
   //Import state from the context file
   const searchContext: SearchContextProps = useContext<SearchContextProps>(SearchContext);
   
-  const {place, postcode, latAndLong, setLatAndLong} = searchContext;
-  const [weatherData, setWeatherData] = useState<DailyData | undefined>();
+  const {place, postcode, latAndLong, setLatAndLong, weatherData, setWeatherData} = searchContext;
   const [formSubmitted, setFormSubmitted] = useState<boolean>(false);
   const rateLimiter = useRateLimiter(1, 5000 );
   const [loading, setLoading] = useState<boolean>(false);
+
+  console.log(weatherData)
 
   
   useEffect((): void => {
@@ -91,9 +92,10 @@ const App: React.FC = (): JSX.Element => {
         
       </Row>
      
-      {weatherData ? 
+     {/*The condition weatherData.rain_sum.length>3 is introduced because I've set the intial state of weatherData to be a an object of arrays with length of 3 of random data. This is to have this state having an initial value rather than be undefined, which was causing bugs when using d3 as it defines the type as DailyData | undefined, which d3 won't accept. This feels like a bit of a get-around, and I should address this in the future as it has ugly consequences like the below.  */}
+      { formSubmitted && weatherData.rain_sum.length>3 ? 
       <MainDashboard
-        weatherData={weatherData}      
+           
       /> 
       : <Row className='row-main'>
       <div className=''>

@@ -20,8 +20,7 @@ const LandingPageSearch = ({handlePostcodeSubmit,handlePlaceSubmit}: SearchFormP
                 handlePlaceSubmit()
             } else{
                 console.log('error - postcode or place must be submitted')
-            }
-            
+            }            
         } 
     };
     

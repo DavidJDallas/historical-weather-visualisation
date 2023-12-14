@@ -4,7 +4,7 @@ import {GroupedDataByMonth, GroupedDataBySeason, GroupedDataByYear, MainDashboar
 import * as d3 from 'd3';
 import {DailyData} from '../../Services/ServicesTypes'
 import { FormattedData } from './Types';
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useContext } from 'react';
 import {Route, Routes} from 'react-router-dom'
 import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
@@ -12,8 +12,14 @@ import './Dashboard.css'
 import SideMargin from './SideMargin/SideMarginIndex';
 import {Container, Row, Col} from 'react-bootstrap';
 import SaveChartData from './SaveChartData';
+import { SearchContext } from '../../Context/SearchContext';
+import { SearchContextProps } from '../../Context/ContextTypes';
 
-const MainDashboard = ({weatherData}: MainDashboardProps): JSX.Element => {
+
+const MainDashboard = (): JSX.Element => {
+
+    const searchContext: SearchContextProps = useContext<SearchContextProps>(SearchContext);
+    const {weatherData} = searchContext
 
     const [formattedData, setFormattedData] = useState<FormattedData[] | []>([]);
     const [dataBySeason, setDataBySeason] = useState<GroupedDataBySeason[] | []>([]);
