@@ -30,6 +30,8 @@ export const getGeoLocation = async (postcodeOrPlace: string): Promise <LatAndLo
 export const getHistoricalWeatherData = async (latitude: number, longitude: number): Promise<DailyData | unknown | AxiosError> => {
     
     try{       
+
+        console.log('called')
        
         const {data: {daily: dailyData}}: HistoricalWeatherDataType= await axios.get(`https://archive-api.open-meteo.com/v1/archive`, {
             params: {

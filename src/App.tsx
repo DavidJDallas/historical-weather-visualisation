@@ -23,8 +23,6 @@ const App: React.FC = (): JSX.Element => {
   const rateLimiter = useRateLimiter(1, 5000 );
   const [loading, setLoading] = useState<boolean>(false);
 
-  console.log(weatherData)
-
   
   useEffect((): void => {
     if(latAndLong.latitude !== 0 && latAndLong.longitude !== 0 ){     
@@ -93,7 +91,7 @@ const App: React.FC = (): JSX.Element => {
       </Row>
      
      {/*The condition weatherData.rain_sum.length>3 is introduced because I've set the intial state of weatherData to be a an object of arrays with length of 3 of random data. This is to have this state having an initial value rather than be undefined, which was causing bugs when using d3 as it defines the type as DailyData | undefined, which d3 won't accept. This feels like a bit of a get-around, and I should address this in the future as it has ugly consequences like the below.  */}
-      { formSubmitted && weatherData.rain_sum.length>3 ? 
+      { formSubmitted && weatherData.rain_sum.length>1 ? 
       <MainDashboard
            
       /> 

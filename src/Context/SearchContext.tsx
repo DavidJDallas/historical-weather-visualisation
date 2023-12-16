@@ -12,9 +12,9 @@ export const SearchContext = createContext<SearchContextProps >({
     latAndLong: {latitude: 0, longitude: 0}, 
     setLatAndLong: () => {},
     weatherData: {
-        rain_sum: [0,1,2],
-        temperature_2m_max: [0,1,2],
-        time: ['01', '02', '03']
+        rain_sum: [0],
+        temperature_2m_max: [0],
+        time: ['01']
     },
     setWeatherData: () => {}
 });
@@ -26,8 +26,8 @@ const SearchProvider: React.FC<React.PropsWithChildren> = ({ children }) => {
     const [latAndLong, setLatAndLong] = useState<LatAndLong>({latitude: 0, longitude: 0});
     const [weatherData, setWeatherData] = useState<DailyData>(
         {
-            rain_sum: [0,1,2],
-            temperature_2m_max: [0,1,2],
+            rain_sum: [0, 1, 2],
+            temperature_2m_max: [0, 1 ,2],
             time: ['01', '02', '03']
         }
     );

@@ -4,7 +4,7 @@ import {GroupedDataByMonth, GroupedDataBySeason, GroupedDataByYear, MainDashboar
 import * as d3 from 'd3';
 import {DailyData} from '../../Services/ServicesTypes'
 import { FormattedData } from './Types';
-import { useState, useEffect, useContext } from 'react';
+import { useState, useEffect, useContext, useMemo } from 'react';
 import {Route, Routes} from 'react-router-dom'
 import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
@@ -19,33 +19,26 @@ const MainDashboard = (): JSX.Element => {
     const searchContext: SearchContextProps = useContext<SearchContextProps>(SearchContext);
     const {weatherData} = searchContext
 
-    const [formattedData, setFormattedData] = useState<FormattedData[] | []>([]);
+    // const [formattedData, setFormattedData] = useState<FormattedData[] | []>([]);
     const [dataBySeason, setDataBySeason] = useState<GroupedDataBySeason[] | []>([]);
     const [dataByMonth, setDataByMonth] = useState<GroupedDataByMonth[] | [] >([]);
     const [dataByYear, setDataByYear] = useState<GroupedDataByYear[] | []>([])
     const [weatherTypeSelected, setWeatherTypeSelected] = useState<boolean>(false);
     
-
     console.log(weatherData)
-    const parsedTime = d3.timeParse('%Y-%m-%d');
-    const dates = weatherData && weatherData.time.map(element => parsedTime(element)) as Date[]
-
-    //Format the data from an object with arrays as values into an array of objects with each object corresponding to one day.
-
-    const initialFormatting = (data: DailyData): FormattedData[] => {
-
-       
+ 
+    const formattedData = useMemo(() => {
+        if (weatherData.rain_sum.length>3) {
+            const parsedTime = d3.timeParse('%Y-%m-%d');
+            const dates = weatherData.time.map((element) => parsedTime(element)) as Date[];
             return dates.map((date, i) => ({
-                    date: date,
-                    rain: data.rain_sum[i],
-                    temperatureMax: data.temperature_2m_max[i],                 
-                }))
-    }
-
-    useEffect(() => {
-        const initialData = initialFormatting(weatherData);
-        setFormattedData(initialData);
-    }, [])
+                date: date,
+                rain: weatherData.rain_sum[i],
+                temperatureMax: weatherData.temperature_2m_max[i],
+            }));
+        }
+        return [];
+    }, [weatherData]);
 
 
 
@@ -86,7 +79,7 @@ const MainDashboard = (): JSX.Element => {
             11: 'December'
         }
 
-        const dataGroupedByMonth: GroupedDataByMonth[] = Array
+    const dataGroupedByMonth: GroupedDataByMonth[] = Array
                             .from(d3.group(data, (d) => d.date.getMonth()))
                             .map((element: TwoDimArray) => {
                                
