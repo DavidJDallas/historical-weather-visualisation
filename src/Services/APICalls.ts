@@ -78,5 +78,9 @@ export const postHistoricalWeatherData = async(data: DailyData): Promise<void> =
 }
 
 export const getWeatherDataFromBackend = async(data: DailyData): Promise<void> => {
-    
+    //get all data items
+}
+
+export const deleteWeatherDataFromBackend = async(): Promise<void> => {
+    //delete all data items
 }
