@@ -77,10 +77,12 @@ export const postHistoricalWeatherData = async(data: DailyData): Promise<void> =
     }
 }
 
-export const getWeatherDataFromBackend = async(data: DailyData): Promise<void> => {
-    //get all data items
+export const getAllWeatherDataFromBackend = async(): Promise<void> => {
+    const response = await axios.get(`http://localhost:3000/api/main`)
+    console.log(response);
 }
 
 export const deleteWeatherDataFromBackend = async(): Promise<void> => {
-    //delete all data items
+    const response = await axios.delete(`http://localhost:3000/api/main`)
+    console.log(response)
 }
