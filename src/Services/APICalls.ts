@@ -59,16 +59,18 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
 
 
 //The function below posts the data from the initial call onto the corresponding backend for this app. This is so the user can compare various locations historical data without invoking a 429 error on the open-meteo API. 
-export const postHistoricalWeatherData = async(data: DailyData): Promise<DailyData | unknown | AxiosError> => {
+export const postHistoricalWeatherData = async(data: DailyData, location: string): Promise<DailyData | unknown | AxiosError> => {
     try{
         const response = await axios.post(`http://localhost:3000/api/main`, {
             Rain: data.rain_sum,
             TemperatureMax: data.temperature_2m_max,
-            Time: data.time
+            Time: data.time,
+            Place: location
         });
 
         //sets the unique ID associated with this data on the backend in local storage so that it's more easily accessible later.
         localStorage.setItem('dataItem', response.data.id);  
+        console.log(response);
 
         return response;
     }

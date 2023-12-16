@@ -14,7 +14,7 @@ const SaveChartData = () => {
     //Next: Work out how I'm going to reference the stored data in future calls. How will I know what I'm calling on the backend DB? Maybe just a request for get all and have it on the backend that data is temporary and gets wiped after every session? And create an endpoint on backend for users to delete all data or delete last data, in which case the last data point would just easily be accessed via the only local storage?
     
     const handleClick = () => {
-        postHistoricalWeatherData(weatherData);
+        place ? postHistoricalWeatherData(weatherData, place) : postHistoricalWeatherData(weatherData, postcode)
       
     }
 
