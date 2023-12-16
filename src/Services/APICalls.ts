@@ -1,4 +1,4 @@
-import axios, {AxiosError} from "axios";
+import axios, {Axios, AxiosError} from "axios";
 import {  APICallGeoLocation, HistoricalWeatherDataType, DailyData, LatAndLong} from './ServicesTypes';
 
 export const getGeoLocation = async (postcodeOrPlace: string): Promise <LatAndLong | unknown> => {
@@ -59,7 +59,7 @@ export const getHistoricalWeatherData = async (latitude: number, longitude: numb
 
 
 //The function below posts the data from the initial call onto the corresponding backend for this app. This is so the user can compare various locations historical data without invoking a 429 error on the open-meteo API. 
-export const postHistoricalWeatherData = async(data: DailyData): Promise<void> => {
+export const postHistoricalWeatherData = async(data: DailyData): Promise<DailyData | unknown | AxiosError> => {
     try{
         const response = await axios.post(`http://localhost:3000/api/main`, {
             Rain: data.rain_sum,
@@ -70,19 +70,42 @@ export const postHistoricalWeatherData = async(data: DailyData): Promise<void> =
         //sets the unique ID associated with this data on the backend in local storage so that it's more easily accessible later.
         localStorage.setItem('dataItem', response.data.id);  
 
-        console.log(response);
+        return response;
     }
-    catch(err){
-        console.log(err)
+    catch(error: unknown){
+        if(error instanceof AxiosError){               
+            return `There was an error with the API call: ${error}`
+        } else {
+            return `Non-axios related error: ${error}`
+        }
     }
 }
 
-export const getAllWeatherDataFromBackend = async(): Promise<void> => {
-    const response = await axios.get(`http://localhost:3000/api/main`)
-    console.log(response);
+export const getAllWeatherDataFromBackend = async(): Promise<DailyData | unknown | AxiosError> => {
+    try{
+        const response = await axios.get(`http://localhost:3000/api/main`)
+        return response
+    } catch(error: unknown){
+        if(error instanceof AxiosError){               
+            return `There was an error with the API call: ${error}`
+        } else {
+            return `Non-axios related error: ${error}`
+        }
+    }
 }
 
-export const deleteWeatherDataFromBackend = async(): Promise<void> => {
-    const response = await axios.delete(`http://localhost:3000/api/main`)
-    console.log(response)
+export const deleteWeatherDataFromBackend = async(): Promise<string | unknown | AxiosError> => {
+    try{
+         const response = await axios.delete(`http://localhost:3000/api/main`)
+        console.log(response)
+        return response
+    } catch(error: unknown){
+        if(error instanceof AxiosError){               
+            return `There was an error with the API call: ${error}`
+        } else {
+            return `Non-axios related error: ${error}`
+        }
+    }
+    
+   
 }
