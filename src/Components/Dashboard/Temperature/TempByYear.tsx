@@ -3,10 +3,12 @@ import {useEffect, useState, useRef} from 'react';
 import * as d3 from 'd3';
 import { calculateMeanByYear } from "../../../Utils/CalculateMeanByYear";
 import { makeListYearSelective } from "../../../Utils/MakeListYearSelective";
+import { getAllWeatherDataFromBackend } from "../../../Services/APICalls";
 
 const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps): JSX.Element => {
 
     const [tempData, setTempData] = useState< TempDataYear[]>([]);
+    const [additionalTempData, setAdditionalTempData] = useState<TempDataYear[]>([]);
     const chartRef = useRef<SVGSVGElement | null>(null);
     
     useEffect(() => {
@@ -16,6 +18,12 @@ const TempByYear = ({dataByYear, width, height, yearValue}: TempByYearProps): JS
 
     }, [dataByYear, yearValue])
 
+    const getAdditionalData = async() => {
+        const response = await getAllWeatherDataFromBackend();
+        console.log(response);
+    }
+
+    getAdditionalData();
 
     let selectiveListYear = makeListYearSelective(tempData, yearValue);
 
