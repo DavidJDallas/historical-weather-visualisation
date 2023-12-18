@@ -62,7 +62,6 @@ const MainDashboard = (): JSX.Element => {
     <Container>
     <Row>      
             <NavBar
-                weatherTypeSelected={weatherTypeSelected}
                 setWeatherTypeSelected={setWeatherTypeSelected}
             />
 

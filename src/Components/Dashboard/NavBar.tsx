@@ -12,7 +12,7 @@ import {
 
 import { NavBarProps } from './Types';
 
-const NavBar = ({weatherTypeSelected, setWeatherTypeSelected}: NavBarProps): JSX.Element => {
+const NavBar = ({setWeatherTypeSelected}: NavBarProps): JSX.Element => {
       
 
     return(

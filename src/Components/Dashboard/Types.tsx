@@ -47,7 +47,6 @@ export interface CheckFormProps{
 //NavBar
 
 export interface NavBarProps{
-    weatherTypeSelected: boolean,
     setWeatherTypeSelected: (data: boolean) => void
 }
 
