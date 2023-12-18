@@ -13,13 +13,14 @@ import {Container, Row, Col} from 'react-bootstrap';
 import SaveChartData from './SaveChartData';
 import { SearchContext } from '../../Context/SearchContext';
 import { SearchContextProps } from '../../Context/ContextTypes';
+import { formatData } from '../../Utils/InitialDataFormatting/FormattedData';
+import { groupDataByYear } from '../../Utils/InitialDataFormatting/GroupDataByYear';
 
 const MainDashboard = (): JSX.Element => {
 
     const searchContext: SearchContextProps = useContext<SearchContextProps>(SearchContext);
     const {weatherData} = searchContext
 
-    // const [formattedData, setFormattedData] = useState<FormattedData[] | []>([]);
     const [dataBySeason, setDataBySeason] = useState<GroupedDataBySeason[] | []>([]);
     const [dataByMonth, setDataByMonth] = useState<GroupedDataByMonth[] | [] >([]);
     const [dataByYear, setDataByYear] = useState<GroupedDataByYear[] | []>([])
@@ -28,38 +29,18 @@ const MainDashboard = (): JSX.Element => {
     console.log(weatherData)
  
     const formattedData = useMemo(() => {
-        if (weatherData.rain_sum.length>3) {
-            const parsedTime = d3.timeParse('%Y-%m-%d');
-            const dates = weatherData.time.map((element) => parsedTime(element)) as Date[];
-            return dates.map((date, i) => ({
-                date: date,
-                rain: weatherData.rain_sum[i],
-                temperatureMax: weatherData.temperature_2m_max[i],
-            }));
-        }
-        return [];
+       return formatData(weatherData)
     }, [weatherData]);
 
 
 
     //Group data into years and format data this way. First, data is grouped into years using the d3 function getFullYear(). This creates a Map. The map is then converted into an Array, and then converted into an array of objects via the .map() function.
 
-    const groupDataByYear = (data: FormattedData[]): GroupedDataByYear[] => {
-        const dataGroupedByYear: GroupedDataByYear[] = Array
-                                        .from(d3.group(data, (d) => d.date.getFullYear()))
-                                        .map((element, i) => ({
-                                                year: element[0],
-                                                data: element[1]
-                                            }))
 
-        return dataGroupedByYear
-    }   
 
-    useEffect(() => {
-        
+    useEffect(() => {        
         const dataByYear = groupDataByYear(formattedData);
-        setDataByYear(dataByYear);
-        
+        setDataByYear(dataByYear);        
     }, [formattedData]);
 
     const groupDataByMonth = (data: FormattedData[]): GroupedDataByMonth[] => {

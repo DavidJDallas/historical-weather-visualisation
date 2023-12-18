@@ -99,6 +99,7 @@ export const getAllWeatherDataFromBackend = async(): Promise<DailyData | unknown
 export const getWeatherDataById = async(id: string) => {
     try{
         const response = await axios.get(`http://localhost:3000/api/main${id}`)
+        return response
     } catch(error: unknown){
         if(error instanceof AxiosError){               
             return `There was an error with the API call: ${error}`
