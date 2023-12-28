@@ -4,9 +4,7 @@ import { MDBRange } from 'mdb-react-ui-kit';
 import { RangeSliderProps } from './Types';
 import { ChangeEvent } from 'react';
 
-
 const RangeSlider = ({yearValue, setYearValue}: RangeSliderProps): JSX.Element => {   
-
 
     let years: number[] = [];
     for (let i = 1945; i <= 2023; i++) {
