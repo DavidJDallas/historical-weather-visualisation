@@ -44,7 +44,7 @@ const WetVsDryMonth = ({yearValue, width, dataByMonth, height}: WetVsDryMonthPro
 
     return(
         <>
-        <StackedBarChartTemplate
+        {/* <StackedBarChartTemplate
             data={rainData}
             width = {width}
             height ={height}
@@ -56,7 +56,7 @@ const WetVsDryMonth = ({yearValue, width, dataByMonth, height}: WetVsDryMonthPro
             domainFirstValueY={0}
             sliceLength={3}
             gapBetweenBars={2}            
-        />
+        /> */}
         </>
     )
 }

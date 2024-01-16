@@ -2,8 +2,6 @@ import React from 'react';
 import NavBar from './NavBar';
 import {GroupedDataByMonth, GroupedDataBySeason, GroupedDataByYear, MainDashboardProps, TwoDimArray} from './Types';
 import * as d3 from 'd3';
-import {DailyData} from '../../Services/ServicesTypes'
-import { FormattedData } from './Types';
 import { useState, useEffect, useContext, useMemo } from 'react';
 import {Route, Routes} from 'react-router-dom'
 import Temperature from './Temperature/IndexTemperature';
@@ -35,8 +33,6 @@ const MainDashboard = (): JSX.Element => {
     }, [weatherData]);
 
     //Group data into years and format data this way. First, data is grouped into years using the d3 function getFullYear(). This creates a Map. The map is then converted into an Array, and then converted into an array of objects via the .map() function.
-
-
 
     useEffect(() => {        
         const dataByYear = groupDataByYear(formattedData);
@@ -95,8 +91,6 @@ const MainDashboard = (): JSX.Element => {
         
     </Row>
 </Container>
-
-   
 
 
     </>)
