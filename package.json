@@ -31,7 +31,7 @@
   },
   "scripts": {
     "start": "react-scripts start",
-    "build": "react-scripts build",
+    "build": "CI=false react-scripts build",
     "test": "jest",
     "eject": "react-scripts eject"
   },
@@ -76,9 +76,11 @@
       ]
     }
   },
-  "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "version-number",
-    "@babel/preset-env": "^7.23.8",
-    "@types/d3": "^7.4.0"
-  }
+ 
+    "devDependencies": {
+      "@babel/plugin-proposal-private-property-in-object": "^7.14.5",
+      "@babel/preset-env": "^7.23.8",
+      "@types/d3": "^7.4.0"
+    }
+  
 }
