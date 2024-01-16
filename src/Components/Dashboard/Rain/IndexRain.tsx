@@ -67,10 +67,10 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
             </Row> 
             : null    
         }
-        <Row
+        {/* <Row
         style={{height: '300px'}}
         >
-            <Col>
+            {/* <Col>
             <WetVsDryMonth
                 yearValue={yearValue}
                 width={400}
@@ -78,18 +78,18 @@ const Rain = ({dataBySeason, dataByMonth, dataByYear, formattedData}: IndexProps
                 dataByMonth={dataByMonth}
             />
         
-            </Col>
+            </Col> */}
 
 
-
-        </Row>
+{/* 
+        </Row> 
         <Row>
             <Col>
             
             </Col>
 
 
-        </Row>
+        </Row> */}
           {displayRainByYearAverage &&  
           <Row
             style={{height: '500px', marginLeft: '100px'}}
