@@ -4,7 +4,7 @@ import {useEffect, useRef} from 'react';
 import { BarChartProps } from './GraphTypes';
 
 const BarChartTemplate = ({
-  data, width, height, xAccessor, yAccessor, yearValue, title, interpolateFirstColour, interpolateSecondColour, domainFirstValueX, domainFirstValueY, sliceLength, gapBetweenBars
+  data, width, height, xAccessor, yAccessor, yearValue, title, interpolateFirstColour, interpolateSecondColour, domainFirstValueX, domainFirstValueY, sliceLength, gapBetweenBars, unit
 }: BarChartProps): JSX.Element => {
 
     const chartRef = useRef<SVGSVGElement | null>(null);
@@ -60,7 +60,7 @@ const BarChartTemplate = ({
         .attr('height', d=> height-yScale(d[yAccessor]))
         .attr('fill', d=> interpolatorColourFunction(colourScale(d[yAccessor])))
         .on('mouseover', (event, d) => {
-          tooltip.html(`${(d[xAccessor])}: ${String(d[yAccessor]).slice(0,4)} `+ 'mm')
+          tooltip.html(`${(d[xAccessor])}: ${String(d[yAccessor]).slice(0,4)} ${unit}`)
           .style('visibility', 'visible')
         })
         .on('mousemove', (event) => {

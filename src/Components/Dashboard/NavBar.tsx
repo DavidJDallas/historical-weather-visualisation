@@ -1,7 +1,6 @@
-import React from 'react'
-import {Link, NavLink, NavLinkProps} from 'react-router-dom'
-import {Row, Col, Container} from 'react-bootstrap'
-import './Dashboard.css'
+import React from 'react';
+import {NavLink} from 'react-router-dom';
+import './Dashboard.css';
 import {
     MDBContainer,
     MDBNavbar,
@@ -9,12 +8,10 @@ import {
     MDBNavbarItem,
     MDBNavbarLink,
   } from 'mdb-react-ui-kit'; 
-
 import { NavBarProps } from './Types';
 
 const NavBar = ({setWeatherTypeSelected}: NavBarProps): JSX.Element => {
       
-
     return(
         <>
         <MDBNavbar expand='lg' light >

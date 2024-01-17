@@ -1,7 +1,7 @@
 import React from 'react';
 import * as d3 from 'd3';
 import { RainDataSeasonProps, RainDataSeason } from './RainTypes';
-import { useEffect, useState, useRef } from 'react';
+import { useEffect, useState } from 'react';
 import { FilteredDataBySeason } from '../Temperature/Types';
 import { filterDataByYear } from '../../../Utils/FilterDataByYear';
 import { FormattedData } from '../Types';
@@ -10,7 +10,6 @@ import BarChartTemplate from '../../../Graphs/BarChart';
 const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonProps): JSX.Element => {
 
     const [rainData, setRainData] = useState<[] | RainDataSeason[]>([]);
-    const chartRef = useRef<SVGSVGElement | null>(null);
 
     useEffect(() => {
         const filteredDataBySeason: FilteredDataBySeason[] = filterDataByYear(dataBySeason, yearValue);
@@ -38,6 +37,7 @@ const RainBySeason = ({dataBySeason, width, height, yearValue}: RainDataSeasonPr
             domainFirstValueY={0}
             sliceLength={6}
             gapBetweenBars={6}
+            unit={'mm'}
         />
 
         </>

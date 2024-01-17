@@ -27,7 +27,7 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
               width={width}
               height={height}
               yearValue={yearValue}
-              title={'Average Temperature Per Month (mm)'}
+              title={'Average Temperature Per Month (degrees c)'}
               interpolateFirstColour={'blue'}
               interpolateSecondColour={'red'}
               xAccessor={'season'}
@@ -36,6 +36,7 @@ const TempBySeason = ({dataBySeason, width, height, yearValue}: TempBySeasonProp
               domainFirstValueY={0}
               sliceLength={8}
               gapBetweenBars={3}
+              unit={'°c'}
         />
         </>
     )

@@ -13,7 +13,8 @@ export interface BarChartProps{
     domainFirstValueX: any,
     domainFirstValueY: any,
     sliceLength: number,
-    gapBetweenBars: number
+    gapBetweenBars: number,
+    unit: string
 }
 
 export interface StackedBarChartProps{

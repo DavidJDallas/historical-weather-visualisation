@@ -1,11 +1,11 @@
 import React from 'react';
-import { getGeoLocation, getHistoricalWeatherData } from './Services/APICalls';
+import { getHistoricalWeatherData } from './Services/APICalls';
 import LandingPage from './Components/LandingPage/Index';
 import Header from './Components/Header/Index';
 import {useState, useEffect } from 'react';
 import {Container, Row } from 'react-bootstrap'
 import MainDashboard from './Components/Dashboard/Index';
-import { LatAndLong, DailyData } from './Services/ServicesTypes';
+import { DailyData } from './Services/ServicesTypes';
 import { AxiosError } from 'axios';
 import { useRateLimiter } from './Services/RateLimiter';
 import BigSpinner from './Components/BigSpinner';

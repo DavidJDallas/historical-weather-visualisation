@@ -1,13 +1,12 @@
 import React from 'react';
 import NavBar from './NavBar';
-import {GroupedDataByMonth, GroupedDataBySeason, GroupedDataByYear, MainDashboardProps, TwoDimArray} from './Types';
-import * as d3 from 'd3';
+import {GroupedDataByMonth, GroupedDataBySeason, GroupedDataByYear} from './Types';
 import { useState, useEffect, useContext, useMemo } from 'react';
 import {Route, Routes} from 'react-router-dom'
 import Temperature from './Temperature/IndexTemperature';
 import Rain from './Rain/IndexRain';
 import './Dashboard.css'
-import {Container, Row, Col} from 'react-bootstrap';
+import {Container, Row} from 'react-bootstrap';
 import SaveChartData from './SaveChartData';
 import { SearchContext } from '../../Context/SearchContext';
 import { SearchContextProps } from '../../Context/ContextTypes';
@@ -52,7 +51,7 @@ const MainDashboard = (): JSX.Element => {
         setDataBySeason(groupedBySeason);
     }, [formattedData]);    
 
-   
+   //Save chart data component which is commented out below will be used to save data from the weather API to a backend database. Going forward, this will be used to make comparision charts between various locations. 
 
     return(<>
     <Container>
@@ -61,8 +60,8 @@ const MainDashboard = (): JSX.Element => {
                 setWeatherTypeSelected={setWeatherTypeSelected}
             />
 
-            <SaveChartData
-            />
+            {/* <SaveChartData
+            /> */}
 
             <div className='dashboard-container'>
                 {!weatherTypeSelected ?
