@@ -1,5 +1,5 @@
 import * as React from 'react';
-import {useState, useEffect, useRef} from 'react';
+import {useState, useEffect} from 'react';
 import * as d3 from 'd3';
 import { FilteredDataByMonth, TempByMonthProps, TempDataMonth } from './Types';
 import './TempStyling.css'
@@ -10,7 +10,6 @@ import BarChartTemplate from '../../../Graphs/BarChart';
 const TempByMonth = ({dataByMonth, width, height, yearValue}: TempByMonthProps): JSX.Element => {
 
     const [tempData, setTempData] = useState< TempDataMonth[] | []>([]);
-    const chartRef = useRef<SVGSVGElement | null>(null);
     
     //useMemo is a React Hook that lets you cache the result of a calculation between re-renders. It looks at the dependency array and sees if anything has changed. If it has changed, it will re-run it. If not, it won't.
   
